@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Members</title>
+  <link href="assets/bootstrap.css" rel="stylesheet">
+</head>
+
+<body>
+  <header>
+    <div class="navbar navbar-dark navbar-expand-sm bg-dark shadow-sm">
+      <div class="container">
+        <a href="#" class="navbar-brand d-flex justify-content-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-aperture"><circle cx="12" cy="12" r="10"></circle><line x1="14.31" y1="8" x2="20.05" y2="17.94"></line><line x1="9.69" y1="8" x2="21.17" y2="8"></line><line x1="7.38" y1="12" x2="13.12" y2="2.06"></line><line x1="9.69" y1="16" x2="3.95" y2="6.06"></line><line x1="14.31" y1="16" x2="2.83" y2="16"></line><line x1="16.62" y1="12" x2="10.88" y2="21.94"></line></svg>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav">
+            <li class="nav-item active"><a class="nav-link" href="#">Members</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main role="main">
+    <section class="jumbotron mb-0 bg-white text-center">
+      <div class="container">
+        <img id="avatar" class="img-thumbnail mb-2 rounded-circle" src="/assets/default.png" alt="heima" width="128">
+        <h1 id="name" class="display-4">heima</h1>
+        <p id="bio" class="lead text-muted">MAKE IT BETTER!</p>
+        <div>
+          <a href="#" class="btn btn-primary my-2">Edit</a>
+          <a href="#" class="btn btn-danger my-2">Delete</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="py-5 bg-light">
+      <div class="container">
+        <p>Other information about this member...</p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="py-5 text-muted">
+    <p class="container">
+      <span>this demo &copy; heima
+      <a class="float-right" href="#">Back to top &uparrow;</a>
+    </p>
+  </footer>
+  <script src="/assets/jquery.js"></script>
+  <script>
+    // index.html 中修改
+    // 1. 修改index.html中的view按钮，a标签，设置跳转的地址 /detail.html
+    // 2. 跳转到/detail.html的时候要通过查询字符串传递id  /detail.html?id=1
+
+    // detail.html
+    // 3. 获取到url上查询字符串中的内容 id
+
+    // ?id=15      ?name=1&age=3
+    var querystring = location.search;
+
+    // 通用的方式，解析url上的参数
+    // 写一个函数，传入一个查询字符串，返回一个对象
+    function qs(querystring) {
+      var obj = {};
+      // 判断是否有问号
+      if (querystring.includes('?')) {
+        // 去掉问号
+        querystring = querystring.replace('?', '');
+
+        // 使用&切割字符串返回数组
+        var tmpArr = querystring.split('&');
+        // console.log(tmpArr);
+        // 遍历数组
+        tmpArr.forEach(function (item) {
+          // item ---> id=15
+          var kv = item.split('=');
+          var key = kv[0];
+          var value = kv[1];
+          obj[key] = value;
+        });
+        return obj;
+      } else {
+        return null;
+      }
+    }
+    var obj = qs(querystring);
+    // console.log(obj);
+
+    // 4. 根据id查询用户的详情，请求相应的接口 /api/member-detail
+    // 5. 测试接口
+    // 6. 发送请求，获取数据
+    $.ajax({
+      type: 'get',
+      url: '/api/member-detail',
+      data: { id: obj.id },
+      success: function (data) {
+        // 判断数据是否存在。。。。
+        
+        // 7. 把数据渲染到界面
+        $('#avatar').attr('src', data.avatar);
+        $('#name').text(data.name);
+        $('#bio').text(data.bio);
+      },
+      error: function () {
+        alert('获取数据失败');
+      }
+    });
+  </script>
+</body>
+
+</html>

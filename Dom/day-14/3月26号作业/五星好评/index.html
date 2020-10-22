@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=W, initial-scale=1.0">
+    <title></title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .box {
+            width: 400px;
+            height: 140px;
+            border: 1px solid #ccc;
+            padding: 60px 0;
+            padding-left: 20px;
+            margin: 100px auto;
+            overflow: hidden;
+            box-sizing: border-box;
+
+        }
+
+        .box ul {
+            float: left;
+            width: 120px;
+            overflow: hidden;
+        }
+
+        .box li {
+            float: left;
+            width: 20px;
+            height: 20px;
+            background: url(./star2.png) no-repeat;
+            background-size: 100%;
+            margin-left: 2px;
+
+        }
+
+        .box>span {
+            float: left;
+        }
+
+        .box .star {
+            background: url(./star1.png) no-repeat;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <span></span>
+    </div>
+    <script>
+        let aLi = document.querySelectorAll('.box li');
+        let evaluate = document.querySelector('.box span')
+        let msgA = ['极差', '失望', '一般', '满意', '惊喜'];
+        let flag = 0; // 评星标识
+        let msgFlag = null; // 评价标识
+        for (let i = 0; i < aLi.length; i++) {
+            // 1、移入
+            aLi[i].addEventListener('mouseover', function () {
+                let num = i + 1;
+                for (let i = 0; i < aLi.length; i++) {
+                    aLi[i].className = i < num ? 'star' : '';
+                }
+                evaluate.innerHTML = msgA[i];
+            })
+            // 2、移出 [2&3]
+            aLi[i].addEventListener('mouseout', function () {
+                evaluate.innerHTML = msgFlag;
+                for (let i = 0; i < aLi.length; i++) {
+                    aLi[i].className = i < flag ? 'star' : '';
+                }
+            })
+            // 3、点击 [2&3]
+            aLi[i].addEventListener('click', function () {
+                flag = i + 1;
+                evaluate.innerHTML = msgFlag = msgA[i];
+                for (let i = 0; i < aLi.length; i++) {
+                    aLi[i].className = i < flag ? 'star' : '';
+                }
+            })
+        }
+    </script>
+
+</body>
+
+</html>

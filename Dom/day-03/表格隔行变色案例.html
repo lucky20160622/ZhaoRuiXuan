@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  
+</head>
+<body>
+    <!-- 需求1. 实现隔行变色的效果(效果在附件):
+- 页面中有一个按钮和一个ul,ul里面有10个li元素
+- 点击按钮，实现10个li的隔行变色效果，奇数行是红色，偶数行是黄色
+- 鼠标经过li元素上面，当前的这个li就是绿色，鼠标离开这个li，这个li显示原来的颜色 -->
+<button>按钮</button>
+<ul>
+    <li>拉拉</li>
+    <li>岁月从不败美人</li>
+    <li>拉拉</li>
+    <li>岁月从不败美人</li>
+    <li>拉拉</li>
+    <li>岁月从不败美人</li>
+    <li>拉拉</li>
+    <li>岁月从不败美人</li>
+    <li>拉拉</li>
+    <li>岁月从不败美人</li>
+</ul>
+<script>
+    var li=document.querySelector('li')
+    var li=document.querySelectorAll('li')
+    var btn=document.querySelector('button')
+    btn.onclick=function(){
+     for(var i=0;i<li.length;i++){
+         if(i%2==0){
+             li[i].style.color="rgb(134, 19, 201)"
+         }else{
+             li[i].style.color="#c91523"
+         }
+     }
+    }
+    for (var i = 0; i < li.length; i++) {
+        li[i].onmouseover = function() {
+          this.style.color='green'
+        };
+          //恢复默认色 黑色
+        li[i].onmouseout = function() {
+          this.style.color=''
+        };
+      }
+</script>
+</body>
+</html>
+

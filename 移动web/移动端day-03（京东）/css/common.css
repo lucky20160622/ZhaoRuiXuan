@@ -1,0 +1,8 @@
+* {
+    box-sizing: border-box;
+}
+
+.sprites {
+    background-image: url("../images/jd-sprites.png");
+    background-size: 200px 200px;
+}

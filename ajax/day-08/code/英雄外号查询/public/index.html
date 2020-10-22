@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Document</title>
+  <style>
+    .name {
+      color: #8a2602;
+    }
+
+    .title {
+      color: #8a2602;
+    }
+
+    .search_title {
+      display: block;
+      margin: 80px auto 0;
+    }
+
+    .search_wrap {
+      width: 600px;
+      height: 40px;
+      margin: 30px auto 0;
+      background-color: #ff0;
+    }
+
+    .hero {
+      width: 498px;
+      height: 38px;
+      border: 1px solid #6e4242;
+      padding: 0px;
+      text-indent: 10px;
+      outline: none;
+      float: left;
+      border-top-left-radius: 4px;
+      border-bottom-left-radius: 4px;
+    }
+
+    .search {
+      width: 100px;
+      height: 40px;
+      border: 0px;
+      float: left;
+      font-size: 18px;
+      background-color: #8a2602;
+      color: #fff;
+      border-top-right-radius: 4px;
+      border-bottom-right-radius: 4px;
+      cursor: pointer;
+      outline: none;
+    }
+
+    .yangpi {
+      width: 411px;
+      height: 197px;
+      margin: 47px auto 0;
+      background: url('image/yangpi_bg.png') no-repeat;
+      position: relative;
+
+    }
+
+    .wrap {
+      width: 240px;
+      height: 100px;
+      position: absolute;
+      left: 100px;
+      top: 60px;
+      font-size: 18px;
+      color: #8a2602;
+      line-height: 36px;
+    }
+  </style>
+</head>
+
+<body>
+  <img src="image/search_title.png" alt="" class="search_title">
+  <div class="search_wrap">
+    <input type="text" placeholder="请输入查询的名字" class="hero" />
+    <input type="button" value="英雄查询" class="search" />
+  </div>
+  <h2 class="yangpi">
+    <div class="wrap">
+      英雄名称：<span class="name"></span><br>
+      英雄外号：<span class="title"></span>
+    </div>
+  </h2>
+</body>
+
+</html>
+<script src="./lib/jquery-3.4.1/jquery-3.4.1.min.js"></script>
+<script>
+  /*
+    简单分析
+    - 在输入框 .hero 中输入内容
+    - 点击 .search
+    - 将输入框内容作为请求参数发送给服务端 $.get()
+    - 将响应的外号展示在.title中，输入框中的英雄名称展示在.name中
+  */
+
+  // 设置点击事件
+  $('.search').on('click', function () {
+    // 获取输入框内容
+    var value = $('.hero').val();
+
+    // 为了用户体验更好，可以在请求发送前，将内容设置为... 表示加载中的含义
+    $('.name').text('...');
+    $('.title').text('...');
+
+    // 发送请求
+    $.get({
+      url: 'https://autumnfish.cn/api/hero/simple',
+      data: {
+        name: value
+      },
+      success: function (res) {
+        // 进行内容展示
+        $('.name').text(value);
+        $('.title').text(res);
+      }
+    });
+  });
+
+
+
+
+</script>

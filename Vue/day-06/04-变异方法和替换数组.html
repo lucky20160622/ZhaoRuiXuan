@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <input type="text" v-model.trim="fName">
+    <button @click="handleAdd">添加</button>
+    <button @click="handleDel">删除</button>
+    <button @click="handleRep">替换</button>
+
+    <ul>
+      <li v-for="(item,index) in aFruit">{{item}}</li>
+    </ul>
+  </div>
+
+  <script src="./lib/vue-3.0.0.js"></script>
+  <script>
+    let vm = Vue.createApp({
+      // data数据域
+      data() {
+        return {
+          // 水果列表
+          aFruit: ['apple', 'orange', 'banana', 'lemon', 'water melon'],
+          // 水果名称
+          fName: ''
+        }
+      },
+      methods: {
+        // 添加方法
+        handleAdd() {
+          if (this.fName) {
+            this.aFruit.push(this.fName)
+          } else {
+            alert("请添加内容")
+          }
+          this.fName = '';
+        },
+        // 删除
+        handleDel() {
+          this.aFruit.pop();
+        },
+        // 替换 只留下前两个
+        handleRep() {
+          let arr = this.aFruit.splice(0, 2);
+          // console.log(arr);
+          this.aFruit = arr;
+        }
+
+      }
+
+    }).mount('#app')
+
+  </script>
+</body>
+
+</html>

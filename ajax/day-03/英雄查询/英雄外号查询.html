@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Document</title>
+  <style>
+    .name {
+      color: #8a2602;
+    }
+
+    .title {
+      color: #8a2602;
+    }
+
+    .search_title {
+      display: block;
+      margin: 80px auto 0;
+    }
+
+    .search_wrap {
+      width: 600px;
+      height: 40px;
+      margin: 30px auto 0;
+      background-color: #ff0;
+    }
+
+    .hero {
+      width: 498px;
+      height: 38px;
+      border: 1px solid #6e4242;
+      padding: 0px;
+      text-indent: 10px;
+      outline: none;
+      float: left;
+      border-top-left-radius: 4px;
+      border-bottom-left-radius: 4px;
+    }
+
+    .search {
+      width: 100px;
+      height: 40px;
+      border: 0px;
+      float: left;
+      font-size: 18px;
+      background-color: #8a2602;
+      color: #fff;
+      border-top-right-radius: 4px;
+      border-bottom-right-radius: 4px;
+      cursor: pointer;
+      outline: none;
+    }
+
+    .yangpi {
+      width: 411px;
+      height: 197px;
+      margin: 47px auto 0;
+      background: url('images/yangpi_bg.png') no-repeat;
+      position: relative;
+
+    }
+
+    .wrap {
+      width: 240px;
+      height: 100px;
+      position: absolute;
+      left: 100px;
+      top: 60px;
+      font-size: 18px;
+      color: #8a2602;
+      line-height: 36px;
+    }
+  </style>
+</head>
+
+<body>
+  <img src="images/search_title.png" alt="" class="search_title">
+
+  <div class="search_wrap">
+    <input type="text" placeholder="请输入查询的名字" class="hero" />
+    <input type="button" value="英雄查询" class="search" />
+  </div>
+  <h2 class="yangpi">
+    <div class="wrap">
+      英雄名称：<span class="name"></span><br>
+      英雄外号：<span class="title"></span>
+    </div>
+  </h2>
+  <!-- 接口说明:
+请求地址：https://autumnfish.cn/api/hero/simple
+请求方法：get
+请求参数：name
+示例：https://autumnfish.cn/api/hero/simple?name=提莫
+
+需求:
+ 1. 用户在表单中输入英雄，点击"英雄查询"按钮，根据接口文档发起请求，获取数据
+
+ 2. 将获取的英雄外号在"英雄外号:后面显示"
+
+ 3. 英雄名称就是用户在表单中输入的值 -->
+  <script src="./libs/jquery-1.12.4.min.js"></script>
+  <script>
+    // 给按钮添加点击事件
+    $('.search').on('click', function () {
+      // 获取输入框中的值
+      var hero = $('.hero').val()
+      // 给英雄名赋值
+      $('.name').text(hero)
+      $('.title').text('...加载中')
+      // 发起ajax请求
+      $.ajax({
+        type: 'get',
+        // 请求地址
+        url: 'https://autumnfish.cn/api/hero/simple',
+        // 请求数据
+        data: {
+          name: hero
+        },
+        // 请求成功返回函数
+        success: function (result) {
+          $('.title').text(result)
+        }
+      })
+    })
+
+  </script>
+  <!-- <script>
+    //  给英雄查询添加点击事件
+    $('.search').on('click', function () {
+      // 获取输入框的值
+      var hero = $('.hero').val()
+      // 给英雄名称赋值
+      $('.name').text(hero)
+      $('.title').text('加载中...')
+      // 发起ajax请求
+      $.ajax({
+        url: 'https://autumnfish.cn/api/hero/simple',
+        data: {
+          name: hero
+        },
+        success: function (result) {
+          $('.title').text(result)
+        }
+      })
+      // 如果请求成功,把数据渲染到英雄外号上面
+    })
+  </script> -->
+  <!-- <script src="./ajax.js"></script>
+  <script>
+   let ipt = document.querySelector('.hero')
+    let btn = document.querySelector('.search')
+    let aName = document.querySelector('.name')
+    let aTitle = document.querySelector('.title')
+    btn.addEventListener('click', function () {
+      let aData = ipt.value
+      // console.log(aData);
+      $.ajax({
+        // 请求方式i
+        type: 'get',
+        // 地址
+        url: 'https://autumnfish.cn/api/hero/simple',
+        // 值
+        data: {
+          name: aData
+        },
+        success: (data) => {
+          // console.log(data);
+          aName.innerHTML = aData
+          aTitle.innerHTML = data
+
+        }
+      })
+
+    })
+  </script> -->
+</body>
+
+</html>

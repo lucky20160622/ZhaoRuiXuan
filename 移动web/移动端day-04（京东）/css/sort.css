@@ -1,0 +1,152 @@
+main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  padding-top: 45px;
+}
+
+header {
+  position: fixed;
+  width: 100%;
+  height: 45px;
+  border-bottom: 1px solid #ccc;
+  background-image: url("../image/header-bg.png");
+  background-repeat: repeat-x;
+}
+
+header .header-back {
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  width: 14px;
+  height: 20px;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  background-position: -24px 0px;
+}
+
+header .header-search {
+  width: 100%;
+  height: 44px;
+  padding: 0 40px;
+}
+
+header .header-search input {
+  width: 100%;
+  height: 30px;
+  border-radius: 3px;
+  margin-top: 7px;
+  padding: 0px 5px;
+}
+
+header .header-menu {
+  position: absolute;
+  top: 50%;
+  right: 9px;
+  width: 20px;
+  height: 20px;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  background-position: -61px 0px;
+}
+
+main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  padding-top: 45px;
+}
+
+.aside {
+  width: 90px;
+  height: 100%;
+  background-color: red;
+  overflow: hidden;
+}
+
+.aside ul {
+  width: 100%;
+  height: 100%;
+}
+
+.aside ul li {
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  background-color: #f3f4f6;
+  border-bottom: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+}
+
+section {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  height: 100%;
+  padding: 0px 15px;
+}
+
+section h3 {
+  color: #898989;
+  padding: 18px 0px;
+}
+
+section .section-tuijian ul {
+  width: 100%;
+  overflow: hidden;
+}
+
+section .section-tuijian li {
+  width: 33.33%;
+  float: left;
+  border: 1px solid #ccc;
+  padding: 15px 0px;
+  text-align: center;
+}
+
+section .section-daogou {
+  width: 100%;
+}
+
+section .section-daogou ul {
+  overflow: hidden;
+  width: 100%;
+}
+
+section .section-daogou li {
+  width: 33.33%;
+  float: left;
+}
+
+section .section-daogou img {
+  width: 100%;
+}
+
+section .section-daogou span {
+  margin-left: 20px;
+}
+
+section .section-fenlei ul {
+  width: 100%;
+  overflow: hidden;
+}
+
+section .section-fenlei li {
+  width: 33.33%;
+  float: left;
+}
+
+section .section-fenlei img {
+  width: 100%;
+}
+
+section .section-fenlei span {
+  margin-left: 21px;
+}
+/*# sourceMappingURL=sort.css.map */

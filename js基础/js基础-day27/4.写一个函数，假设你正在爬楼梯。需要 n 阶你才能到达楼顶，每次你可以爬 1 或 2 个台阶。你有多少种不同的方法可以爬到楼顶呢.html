@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //16.写一个函数，假设你正在爬楼梯。需要 n 阶你才能到达楼顶，每次你可以爬 1 或 2 个台阶。你有多少种不同的方法可以爬到楼顶呢
+        //步骤:
+        //创建用户录入
+        var num = Number(prompt("请输入需要多少阶才能到达楼顶"));  
+        
+        //调用方法
+        alert("有"+jumpFloor(num)+"种方式爬到楼顶");
+        
+        //创建方法
+        function jumpFloor(num){
+           //如果num 小于 0 
+            if(num <= 0){
+                return 0;
+            }
+            //如果num 等于 1
+            if(num == 1){
+                return 1;
+            }
+            //如果num 等于 2
+            if(num == 2){
+                return 2;
+            }
+            //返回 调用两次方法相加的和
+            return jumpFloor(num-1) + jumpFloor(num-2);
+        }
+        
+        
+        </script>
+</body>
+</html>

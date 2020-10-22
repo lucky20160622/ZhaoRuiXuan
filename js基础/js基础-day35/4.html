@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+//     4. var str= 'qweqweoeqweroqweqweodfsfdo'
+//   1)查找字符串中所有字母 'o'出现的位置
+//   2)把字符串中的所有字母'o'替换成 '-';
+var str= 'qweqweoeqweroqweqweodfsfdo'
+let arr=[]
+for(var i=0;i<str.length;i++){
+    if(str[i]=='o'){
+    arr[arr.length]=i
+    }
+}
+console.log(arr);
+for(var i=0;i<str.length;i++){
+    str=str.replace('o','-')
+}
+console.log(str);
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>看笑话</title>
+  <style>
+    body {
+      margin: 0px;
+    }
+
+    .header_con {
+      height: 100px;
+      background-color: #458ccb;
+    }
+
+    .header {
+      width: 1100px;
+      height: 100px;
+      margin: 0px auto;
+    }
+
+    .logo {
+      float: left;
+      width: 197px;
+      height: 67px;
+      margin-top: 16px;
+    }
+
+    .getJoke {
+      border: 1px solid #27aeb6;
+      width: 200px;
+      height: 36px;
+      border-radius: 18px;
+      text-indent: 15px;
+      font-size: 18px;
+      outline: none;
+      float: right;
+      margin-top: 32px;
+    }
+
+    .items {
+      width: 1100px;
+      text-align: center;
+      margin: 30px auto;
+    }
+
+    .item0,
+    .item1,
+    .item2 {
+      width: 475px;
+      height: 421px;
+      display: inline-block;
+      margin: 20px;
+      overflow: auto;
+      background: url('images/bean02.png') no-repeat;
+      position: relative;
+    }
+
+    .item1 {
+      background: url('images/bean03.png') no-repeat;
+    }
+
+    .item2 {
+      background: url('images/bean04.png') no-repeat;
+    }
+
+    .item_txt {
+      width: 370px;
+      height: 146px;
+      position: absolute;
+      left: 64px;
+      top: 96px;
+      text-align: left;
+      overflow: auto;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="header_con">
+    <div class="header">
+      <a href="#" class="logo"><img src="images/logo.png" alt=""></a>
+      <!-- 输入框 -->
+      <input type="text" placeholder="要看几条笑话呀" class="getJoke" />
+    </div>
+  </div>
+
+  <!-- 这个.items是放置笑话的父盒子 -->
+  <div class="items">
+    <!-- 下面的结构是一条笑话需要的结构 -->
+    <!-- 
+    <div class="item0">
+      <div class="item_txt">
+        白雪公主逃出皇宫来到森林深处，看到七个小矮人正在欢乐地唱歌起舞。小矮人发现有陌生人闯入，为首的一个上前问她，你是谁？白雪公主迟疑了一下回答，我。。。曾经是一个公主。。。小矮人大笑一声，热情地把她拉到人群中说：你来的正好，妹子，我们现在就缺个点歌的！
+      </div>
+    </div>
+  </div> -->
+  </div>
+
+</body>
+<!-- 引入jQuery -->
+<script src="./libs/jquery-1.12.4.min.js"></script>
+<!-- 引入template模块引擎 -->
+<script src="./libs/template-web.js"></script>
+<!-- template模板 -->
+<script type="text/template" id="temp_jokes">
+  {{each list}}
+    <div class="item0">
+      <div class="item_txt">
+        {{$value}}
+      </div>
+    </div>
+    {{/each}}
+</script>
+<!-- 本页面js -->
+<script>
+  // 给输入框绑定事件
+  $(".getJoke").on("keydown", function (e) {
+    // 当触发事件的是回车键时
+    if (e.keyCode == 13) {
+      // 检查输入框中的值
+      if ($(this).val().trim()) {
+        // 发起请求
+        $.ajax({
+          type: "get",
+          url: "https://autumnfish.cn/api/joke/list",
+          data: {
+            num: Number($(this).val().trim())
+          },
+          success: function (data) {
+            // 制作模板
+            let htmlStr = template("temp_jokes", {
+              list: data.jokes
+            })
+            // 插入
+            $(".items").html(htmlStr);
+          }
+        })
+      }
+    }
+
+  })
+</script>
+
+</html>

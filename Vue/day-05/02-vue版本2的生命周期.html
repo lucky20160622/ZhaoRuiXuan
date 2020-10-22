@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <div>{{msg}}</div>
+    <button @click='update'>更新</button>
+    <button @click='destroy'>销毁</button>
+  </div>
+  <script type="text/javascript" src="./lib/vue-2.5.17.js"></script>
+  <script type="text/javascript">
+    /*
+      Vue实例的生命周期
+      
+    */
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        msg: '生命周期'
+      },
+      methods: {
+        update: function () {
+          this.msg = 'hello';
+        },
+        destroy: function () {
+          this.$destroy();
+        }
+      },
+      // 在实例初始化之后,数据观测和事件配置之前被调用 此时data和methods以及页面的DOM结构都没有初始化 什么都做不了
+      beforeCreate: function () {
+        console.log('beforeCreate');
+      },
+      // 在实例创建完成后被立即调用 此时data和methods已经可以使用 但是页面还没有被渲染出来
+      created: function () {
+        console.log('created');
+      },
+      // 在挂载开始之前被调用 此时页面上还看不到真是数据 只是一个模板而已
+      beforeMount: function () {
+        console.log('beforeMount');
+      },
+      // el被新创建的vm.$el替换,并挂载到实例上去之后调用该钩子.数据已经真是渲染到页面上 在这个钩子函数里面我们可以使用一些第三方的插件
+      mounted: function () {
+        console.log('mounted');
+      },
+      // 数据更新时调用,发生在虚拟DOM打补丁之前.页面上数据还是旧的
+      beforeUpdate: function () {
+        console.log('beforeUpdate');
+      },
+      // 由于数据更新导致的虚拟DOM重新渲染和打补丁,在这之后会调用该钩子,页面上的数据已经替换成最新的了
+      updated: function () {
+        console.log('updated');
+      },
+      // 实例销毁之前调用
+      beforeDestroy: function () {
+        console.log('beforeDestroy');
+      },
+      // 实例销毁之后调用
+      destroyed: function () {
+        console.log('destroyed');
+      }
+    });
+  </script>
+</body>
+
+</html>

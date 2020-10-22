@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <div>
+      <span>
+        <input type="text" v-model='fname'>
+        <button @click='add'>添加</button>
+        <button @click='del'>删除</button>
+        <button @click='change'>替换</button>
+      </span>
+    </div>
+    <ul>
+      <li :key='index' v-for='(item,index) in list'>{{item}}</li>
+    </ul>
+  </div>
+  <script src="./lib/vue-3.0.0.js"></script>
+  <script>
+    let vm = Vue.createApp({
+      data() {
+        return {
+          fname: "",
+          list: ['apple', 'orange', 'banana']
+        }
+      },
+      methods: {
+        add() {
+          this.list.push(this.fname);
+          this.fname = "";
+        },
+        del() {
+          this.list.pop();
+        },
+        change() {
+          // this.list[this.list.length - 1] = this.fname;
+          this.list = this.list.splice(0, 2);
+        }
+      }
+    }).mount('#app')
+  </script>
+</body>
+
+</html>

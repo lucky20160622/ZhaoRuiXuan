@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      
+    </style>
+</head>
+<body>
+    <!-- 页面有一个按钮，按钮上面的文字是”开”，点击后变成”关”，同时网页的背景色是黑色，再次点击就变成”开”,同时网页的背景色是白色，如此反复循环 -->
+    <button>开</button>
+    <script>
+       var body=document.body
+        var btn=document.querySelector('button')
+        var flag=0
+         btn.onclick=function(){
+             if(flag==0){
+                 btn.innerHTML="关"
+                 body.style.backgroundColor="black"
+                 flag=1
+             }else{
+                 btn.innerHTML="开"
+                 body.style.backgroundColor="white"
+                 flag=0
+             }
+         }
+    </script>
+</body>
+</html>

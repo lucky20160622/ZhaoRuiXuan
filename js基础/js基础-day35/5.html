@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    // 5.删除一个字符串中出现最多的字符, var str="assdfscfwssseee"
+    var str = "assdfscfwssseee";
+        var obj = {}
+        //变量存入对象中,如果是第一次出现就让对象添加属性和初始化值,如果已经有了就让次数自增一
+        for (let i = 0; i < str.length; i++) {
+            var code = str.charAt(i)
+            //obj[code]属性存在就返回true,可以执行if代码块,否则执行else,第一次出现就定义成1
+            if (obj[code]) {
+                obj[code]++
+            } else {
+                obj[code] = 1
+            }
+        }
+        console.log(obj)
+
+
+        //比较哪一个出现的字符次数多
+        //初始化次数最多的值
+        var most = obj.a, mostfirst
+        //遍历对象寻找最大值
+        for (let key in obj) {
+            if (most < obj[key]) {
+                most = obj[key]
+                mostfirst = key
+            }
+        }
+        console.log(most, mostfirst)
+
+
+        //遍历字符串,如果其中的值和mostfirst值相等就讲取出后的返回值重新赋值给str
+        for (let i = 0; i < str.length; i++) {
+            if (str[i] == mostfirst) {
+                //将最多字符的替换成空字符串
+                str = str.replace(str[i], '')
+                //每清除一个,就让索引回到上一次循环的索引值让它可以判断每个值是否符合规定
+                //否则可能会让多个紧挨的相等的值留下一部分,因为索引一直在自增,而字符串可能会变少
+                i--
+            }
+        }
+        console.log(str)
+
+    </script>
+</body>
+</html>

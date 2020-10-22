@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>天知道</title>
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/main2.css" />
+
+  <style>
+    .tem .iconfont {
+      font-size: 50px;
+    }
+
+    table {
+      width: 600px;
+      border-collapse: collapse;
+      margin: 20px auto;
+    }
+
+    td,
+    th {
+      height: 50px;
+      text-align: center;
+      border: 1px solid #CCC;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="search_form">
+      <div class="logo"><img src="img/logo.png" alt="logo" /></div>
+      <div class="form_group">
+        <input type="text" class="input_txt" placeholder="请输入查询的天气" />
+        <button class="input_sub">搜 索</button>
+      </div>
+      <div class="hotkey">
+        <a href="javascript:;">北京</a>
+        <a href="javascript:;">上海</a>
+        <a href="javascript:;">广州</a>
+        <a href="javascript:;">深圳</a>
+      </div>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>日期</th>
+          <th>高温</th>
+          <th>低温</th>
+          <th>风向</th>
+          <th>天气</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- 模板 -->
+        <tr>
+          <td>5月15日星期五</td>
+          <td>25℃</td>
+          <td>15℃</td>
+          <td>东南风</td>
+          <td>多云</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+<!-- 引入jQuery -->
+<script src="./js/jquery-1.12.4.min.js"></script>
+<!-- 引入template模块引擎 -->
+<script src="./js/template-web.js"></script>
+<!-- template模板 -->
+<script type="text/template" id="temp_weather">
+  {{each list}}
+  <tr>
+    <td>{{month}}月{{$value.date}}</td>
+    <td>{{$value.high.split(" ")[1]}}</td>
+    <td>{{$value.low.split(" ")[1]}}</td>
+    <td>{{$value.fengxiang}}</td>
+    <td>{{$value.type}}</td>
+  </tr>
+  {{/each}}
+</script>
+<!-- 本页面js -->
+<script>
+  $(".input_sub").on("click", clickSearch)
+
+  function clickSearch() {
+    // 发起请求
+    $.ajax({
+      type: "get",
+      url: "http://wthrcdn.etouch.cn/weather_mini",
+      data: {
+        city: $(".input_txt").val()
+      },
+      success: (data) => {
+        // 获取当前月份
+        let month = new Date().getMonth() + 1
+        // 制作模板
+        let htmlStr = template("temp_weather", {
+          list: JSON.parse(data).data.forecast,
+          month: month
+        })
+        // 插入
+        $("tbody").html(htmlStr)
+      }
+    })
+  }
+  // - 点击表单下面的四个给定的任意一个城市，将城市在表单中显示，并且下面会显示当前城市的天气
+  $('.hotkey').on("click", "a", clickHot)
+
+  function clickHot() {
+    // 将被点击城市写入输入框
+    $(".input_txt").val($(this).html());
+    // 再次请求
+    clickSearch()
+  }
+</script>
+
+</html>

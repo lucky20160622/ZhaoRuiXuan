@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <button>按钮</button>
+  <div>
+    <!-- <h1>我是标题</h1> -->
+
+    <!-- <li>1</li>
+    <li>1</li>
+    <li>1</li>
+    <li>1</li>
+    <li>1</li>
+    <li>1</li> -->
+  </div>
+
+  <script src="./art-template-4.13.2/template-web.js"></script>
+  <script type="text/template" id="list_templ">
+    <!-- target代表数字的名字 -->
+  {{each target}}
+  <li> {{$index}}-{{$value}}</li>
+  {{/each}}
+  </script>
+  <script>
+    let data = ["宋轶", "张国立", "于文文", "王菲", "江疏影", "王源", "宋祖儿", "易烊千玺", "王一博"];
+
+    let oBtn = document.querySelector('button');
+    oBtn.onclick = function () {
+      let htmlStr = template('list_templ', {
+        target: data
+      })
+      // console.log(htmlStr);
+      document.querySelector('div').innerHTML = htmlStr;
+    }
+
+  </script>
+  
+</body>
+
+</html>

@@ -1,0 +1,99 @@
+1.关于盒子宽度下列正确的是（D）
+
+(A) 盒子宽：就是width的大小
+
+(B) 盒子宽： padding-left + width + padding-right 
+
+(C) 盒子宽： border-left + width + border-right 
+
+(D) 盒子宽： border-left+ padding-left + width + padding-right + border-right
+
+
+2.关于盒子高度下列正确的是（D）
+
+(A) 盒子高：就是height的大小
+
+(B) 盒子高：padding-top +height + padding-bottom 
+
+(C) 盒子高：border-top + height + border-bottom
+
+(D) 盒子高：border-top + padding-top +height + padding-bottom + border-bottom
+
+3关于根据下列代码计算 盒子宽高下列说法正确的是（B）
+
+		div {
+
+​			width: 200px;
+
+​			height: 200px;
+
+​			border: 1px solid #000000;
+
+​			border-top: 5px solid blue;
+
+​			padding: 50px;
+
+​			padding-left: 100px;
+
+​		}
+
+(A) 宽度为200px 高度为200px
+
+(B) 宽度为352px 高度为306px
+
+(C) 宽度为302px 高度为307px
+
+(D) 宽度为302px 高度为252px
+
+
+4.外边距合并及解决方案
+假设有俩个盒子，一个在上面，一个在下面，当给上面的盒子一个margin-top属性，下面的盒子给了一个margin-bottom属性的时候，这俩个盒子的外边距只取最大的。
+解决办法：只给一个margin属性。
+
+5.用公式写两个列子
+  /*外盒尺寸计算（元素空间尺寸）*/
+  Element空间高度 = content height + padding + border + margin
+  Element 空间宽度 = content width + padding + border + margin
+  /*内盒尺寸计算（元素实际大小）*/
+  Element Height = content height + padding + border （Height为内容高度）
+  Element Width = content width + padding + border （Width为内容宽度）
+
+6.什么是浮动？以及清除浮动的方法（4种）
+给父元素添加overflow:hidden;（溢出：隐藏）
+
+隔墙法：在最后一个浮动元素末尾，添加一个空标签，添加clear:both样式
+
+单伪元素法：
+元素：after{
+content:'';
+display:block;
+clean:both;
+height:0;
+}
+
+双伪元素法：
+.clearfix:before,
+.clearfix:after {
+  content:"";
+  display:table;
+}
+.clearfix:after {
+  clean:both;
+}
+.clearfix {
+  *zoom:1;
+}
+
+7.定位都有哪些，以及各自的特点
+绝对定位：position:absolute;参照物是带有定位的上一级父元素；
+相对定位：position:relative;参照物是自身；
+固定定位：positon:flexd;参照物是浏览器窗口的大小
+静态定位：无定位；
+
+8元素的显示与隐藏（display 、visibility、overflow）的特点？
+display隐藏后，不再保留位置，visibility隐藏后继续保留原有位置，overflow:hidden隐藏后覆盖掉超出部分；
+
+9.单行出现省略号与多行出现省略号的方法？
+overflow:hidden;
+text-overflow:ellipsis;
+white-space:nowrap;

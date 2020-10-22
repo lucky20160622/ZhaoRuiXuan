@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>最简单的Ajax代码</h1>
+    <button>按钮</button>
+    <!-- 点击按钮 请求一个路径 获取一个Hello,World 显示在页面上 -->
+    <div></div>
+
+    <script>
+        let oBtn = document.querySelector('button');
+
+        oBtn.onclick = function () {
+
+            // 1.找到一个黑社会大哥 -- 实例化XMLHttpRequest对象
+            let xhr = new XMLHttpRequest();
+            console.log(xhr.readyState); // xhr对象实例化，
+            // 2.要用什么样的方式要钱 负债的人在哪里-- 请求方式(get) 请求地址()
+            xhr.open('GET', '/simple');
+            // console.log(xhr.readyState); // xhr对象实例化,但没有设置请求行
+            // 3.要钱 -- 发送请求
+            xhr.send();
+
+            // console.log(xhr.readyState); // 但是没有接收到数据
+            // 4.钱要的状态 给了50  80 100 
+            // 当readystate改变的时候 触发这个事件
+
+            xhr.onreadystatechange = function () {
+                // console.log(xhr.readyState);
+                // 如果是2 代表接收到了响应头 但为接收到响应内容
+                // 如果是3 代表接收到了响应头 页接受到了响应内容 但未收全
+                // 如果是4 代表响应头接受完毕 内容接受完全
+                // 5.把100万给债主
+                // console.log(xhr.responseText)
+
+                // 浏览器的状态 1 2 3 4 5
+                // 如果xhr的内容接受完毕且浏览器的状态是200代表完全好了的时候 我们才把服务器的数据放到页面上
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    console.log(xhr.responseText)
+                    // document.body.innerHTML = xhr.responseText;
+                    document.querySelector('div').innerHTML = xhr.responseText;
+                }
+            }
+        }
+
+    </script>
+</body>
+
+</html>

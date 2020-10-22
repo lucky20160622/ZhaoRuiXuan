@@ -1,0 +1,170 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>留言板</title>
+  <link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+  <h1>留言板</h1>
+  <div id="content">
+    <div id="post">
+      <div style="background:#3EADC5 ;height:30px;">
+        昵称：<input type="submit" id="shangtian" name="Submit3"
+          style="border:none; background-color:#3EADC5; color:white;" value="默认用户点击改变" />
+      </div>
+      <div>
+        <textarea class="transition"></textarea>
+      </div>
+      <input id="postBt" type="button"
+        style="border:none; background-color:#3EADC5; color:white;border-radius:5px; width:80px; height:30px;"
+        value="发表留言" />
+      <input id="clearBt" type="button"
+        style="border:none; background-color:#3EADC5; color:white;border-radius:5px; width:80px; height:30px;"
+        value="清空" />
+    </div>
+    <!-- 留言区 -->
+    <div id="comment">
+      <!-- 这是创建元素的模板 -->
+      <!-- <span class="comment-item">
+        匿名发言者
+        <span class="fr">2020-03-13 21:08:55</span>
+        <p>
+          <span class="msg">111<input  id="clear" type="button" value="删除"></span>
+        </p>
+      </span> -->
+    </div>
+  </div>
+  <script>
+    //  - 页面已经给定，只写功能即可，不要在给定的页面上面添加样式之类的，只写js效果
+
+    // - 点击左上角的“默认用户点击改变”，弹出一个输入框,标题是"请输入您的名字",
+    //   如果用户没有输入，点击了确定，之前的“默认用户点击改变”的文字被 “匿名发言者”替代
+    //   如果用户没有输入，点击了取消，之前的“默认用户点击改变”的文字也会被 “匿名发言者”替代
+    //   如果用户输入了内容，点击了取消，之前的“默认用户点击改变”的文字也会被 “匿名发言者”替代
+    //   如果用户输入了内容，点击了确定，页面中弹出"欢迎您：XXX",之前的“默认用户点击改变”的文字被“用户输入的名字”替代
+
+    // - 点击“发表留言”,如果文本域的内容为空，则提示“请填写您的留言!”,否则根据页面中给定的模板，创建一条留言，之后将留言添加到留言区域内,
+    //   注意1:最新发布的留言在留言区域内的最上面
+    //   注意2：时间是当前格式化之后的时间
+
+    // - 当点击“清空”按钮的时候，
+    //   如果留言区域内没有留言，则弹出“没有需要清空的数据”
+    //   如果留言区域内有留言，则弹出“清空后不可恢复，是否确认清空?”，当点击弹出框的“取消”的时候，就不清空下面的留言；如果点击弹出框的“确认”的时候，下面留言区域内就会被清空
+
+
+    // 获取元素统一在这里
+    let shangtian = document.querySelector('#shangtian');
+    let postBt = document.querySelector('#postBt');
+    let textArea = document.querySelector('.transition');
+    let comment = document.querySelector('#comment');
+    let clearBt = document.querySelector("#clearBt");
+
+
+    // 功能1
+    // - 点击左上角的“默认用户点击改变”，弹出一个输入框,标题是"请输入您的名字",
+    //   如果用户没有输入，点击了确定，之前的“默认用户点击改变”的文字被 “匿名发言者”替代
+    //   如果用户没有输入，点击了取消，之前的“默认用户点击改变”的文字也会被 “匿名发言者”替代
+    //   如果用户输入了内容，点击了取消，之前的“默认用户点击改变”的文字也会被 “匿名发言者”替代
+    //   如果用户输入了内容，点击了确定，页面中弹出"欢迎您：XXX",之前的“默认用户点击改变”的文字被“用户输入的名字”替代
+
+    // 1.获取元素
+    // 2.给默认用户点击改变 按钮添加点击事件
+    //  let var  name接受到的是一个对象 var 接受到的是字符串
+    var name = "匿名发言者";
+    shangtian.onclick = function () {
+      // 2.1 使用变量来接受 用户的输入(弹个框)
+      name = prompt("请输入您的名字"); // null  object 
+      // console.log(typeof name);
+      // 2.2 如果变量的值去除掉空格 长度为0 或者 变量的值为null 值就是匿名发言者
+      if (name.trim().length == 0 || name == "null") {
+        name = "匿名发言者"
+        shangtian.value = name;
+      } else {
+        // 2.3 反之 弹出一句话 欢迎您 xxxx  把按钮的文字换成输入的值
+        alert(`欢迎您：${name}`);
+        shangtian.value = name;
+      }
+
+    }
+
+
+
+    // 功能2
+    // - 点击“发表留言”,如果文本域的内容为空，则提示“请填写您的留言!”,否则根据页面中给定的模板，创建一条留言，之后将留言添加到留言区域内,
+    //   注意1:最新发布的留言在留言区域内的最上面
+    //   注意2：时间是当前格式化之后的时间
+
+    // 1.获取发表留言按钮 文本域里面的内容 留言的容器
+    // 2.给发表留言按钮添加一个点击事件
+    postBt.onclick = function () {
+      // console.log(textArea.value);
+      // 2.1  声明一个空字符串
+      let str = '';
+      // 2.2  把内容写道模板
+      str += `
+      <span class="comment-item">
+        ${name}
+        <span class="fr">${new Date().getFullYear()}-${new Date().getMonth() + 1}-${new Date().getDate()} ${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}</span>
+        <p>
+          <span class="msg">${textArea.value}<input  id="clear" type="button" value="删除"></span>
+        </p>
+      </span>
+      `
+      // 2.3  把新的内容连在控制字符串的前面 \
+      str += comment.innerHTML;
+      // 2.4 获取到原来的留言  先来连接空字符串+新的内容+ 原来的留言
+      comment.innerHTML = str;
+      // 2.5 把弄好的留言放到comment中
+
+      // 清空输入框
+      textArea.value = '';
+    }
+
+
+    // 功能3
+    // 点击删除按钮 删除某一个留言
+    // 1.获取装留言的容器
+    // 2.给装留言的容器添加一个点击事件
+    comment.onclick = function (e) {
+      // console.dir(e.target)
+      // 2.1 通过事件对象 找到点击目标 并且判断一下这个目标是否是我们要找的目标
+      if (e.target.nodeName = "INPUT") {
+        // console.log(e.target.parentNode.parentNode.parentNode)
+        // 如果点的确实是那个东西 那就用留言容器删除其中的一个留言
+        this.removeChild(e.target.parentNode.parentNode.parentNode);
+      }
+
+    }
+
+
+    // 功能4
+    // - 当点击“清空”按钮的时候，
+    //   如果留言区域内没有留言，则弹出“没有需要清空的数据”
+    //   如果留言区域内有留言，则弹出“清空后不可恢复，是否确认清空?”，当点击弹出框的“取消”的时候，就不清空下面的留言；如果点击弹出框的“确认”的时候，下面留言区域内就会被清空
+
+    // 1.获取清空按钮
+    clearBt.onclick = function () {
+      // 2.获取留言区域内 留言的个数
+      // console.log(comment.children.length);
+
+      // 3.如果不为0 弹一个框 问问是否真的删除  点击确定 删除
+      if (comment.children.length !== 0) {
+        let isDelete = confirm("清空后不可恢复，是否确认清空?");
+
+        if (isDelete) {
+          comment.innerHTML = '';
+        }
+      } else {
+        alert("没有需要清空的数据");
+      }
+    }
+
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<style>
+  /* body {
+    border: 0;
+    margin: 0;
+  } */
+  .big-box {
+    width: 260px;
+    height: 350px;
+    border: 1px solid #009900;
+    padding: 0 10px;
+    /* 图片平铺 */
+    background-image: url(./bg.gif);
+    margin: 0 auto;
+  }
+  .title {
+    color: #fff;
+    font-size: 14px;
+    /* 字体粗细正常 */
+    font-weight: normal;
+    border-left: 5px solid #c9e143;
+    padding-left: 10px;
+    margin: 0 0 -10px;
+  }
+  ul {
+    background-color: #fff;
+    list-style-type: none;
+    padding: 0 15px;
+  }
+  li {
+    /* 图片插入，单个不平铺，水平居左，垂直居中 */
+    /* background-repeat: no-repeat; 下面是简写！！*/
+    background: url(./tb.gif) no-repeat left center;
+    /* 文本 */
+    /* 检索或设置对象的行高*/
+    line-height: 30px;
+    border-bottom: 2px dashed #727272;
+    padding: 0 20px;
+    font-size: 13px;
+  }
+  a {
+    text-decoration: none;
+    color: #1A76D1;
+  }
+</style>
+
+<body>
+  <div class="big-box">
+    <div class="title">
+      <h2>爱宠知识</h2>
+    </div>
+    <ul>
+      <li><a href="http://www.baidu.com">养狗比养猫更健康</a></li>
+      <li><a href="#">养狗比养猫更健康</a></li>
+      <li><a href="#">养狗比养猫更健康</a></li>
+      <li><a href="#">养狗比养猫更健康</a></li>
+      <li><a href="#">养狗比养猫更健康</a></li>
+      <li><a href="#">养狗比养猫更健康</a></li>
+      <li><a href="#">养狗比养猫更健康</a></li>
+      <li><a href="#">养狗比养猫更健康</a></li>
+      <li><a href="#">养狗比养猫更健康</a></li>
+    </ul>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        alert('欢迎进入学生管理系统')
+        while(true){
+            let menNum=prompt(`
+            请输入操作项的序号：
+            1.添加学生信息
+            2.查找学生信息
+            3.修改学生信息
+            4.删除学生信息
+            5.退出管理系统
+            `)
+            if(menNum==5){
+                let esc=confirm('您真的要退出系统吗？')
+            }if(esc){
+                break;
+            }
+            if(menNum==4){
+                let Str=''
+                for(let i=0;i<stuInfo.length;i++){
+                    Str+=`${i}.${stuInfo[i].name}`
+                }
+            }
+        }
+        alert('欢迎进入学生管理系统')
+        while(true){
+            let menNum=prompt(`
+            请输入操作项的序号：
+            1.添加学生信息
+            2.查找学生信息
+            3.修改学生信息
+            4.删除学生信息
+            5.退出管理系统
+            `)
+            if(menNum==5){
+                let esc=confirm('您真的要退出系统吗？')
+            }if(esc){
+                break;
+            }
+            if(menNum==4){
+                let Str=''
+                for(let i=0;i<stuInfo.length;i++){
+                    Str+=`${i}.${stuInfo[i].name}`
+                }
+            }
+        }
+     </script>
+</body>
+</html>

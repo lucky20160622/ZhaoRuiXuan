@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    body{
+        margin: 0;
+        padding: 0;
+        height: 800px;
+        background-image: linear-gradient(to bottom,#27f4eb,#000303);
+    }
+    .shai{
+        width: 200px;
+        height: 200px;
+        margin: 200px auto;
+        position: relative;
+        transform-style:preserve-3d ;
+        transform: rotateX(20deg) rotateY(20deg);
+
+    }
+    .small img{
+        width: 100px;
+        height: 100px;
+    }
+.shai{
+    animation:  move 10s infinite linear;
+}
+    .shai span{
+        display: block;
+        width: 200px;
+        height: 200px;
+        position: absolute;
+        opacity: 0.7·;
+        color: rgb(243,143,246);
+        text-align: center;
+        line-height: 200px;
+        font-size: 50px;
+        border: 8px solid rgb(101,217,254);
+        background-color: rgb(36,88,86);
+        border-radius: 15px;
+    }
+    .front{
+      transform: translateZ(100px);
+    }
+    .front{
+    animation: zero 1s linear infinite;
+    }
+    .back{
+    transform: translateZ(-100px) rotateY(180deg);
+    }
+
+    .back{
+    animation: one 1s linear infinite;
+    }
+    .left{
+        transform: translateX(-100px) rotateY(-90deg);
+    }
+    .left{
+        animation: two 1s linear infinite;
+    }
+    .right{
+        transform: translateX(100px) rotateY(90deg);
+    }
+    .right{
+        animation: three 1s linear infinite;
+    }
+    .top{
+        transform: translateY(100px) rotateX(90deg);
+    }
+    .top{
+        animation: four 1s linear infinite;
+    }
+    .bottom{
+        transform: translateY(-100px) rotateX(90deg);
+    }
+    .bottom{
+        animation: five 1s linear infinite;
+    }
+ @keyframes move {
+        0%{
+            transform: rotateX(10deg) rotateY(10deg) ;
+        }
+        50%{
+            transform: rotateX(370deg) rotateY(370deg);
+            animation-delay: 10s;
+        }
+        100%{
+            transform: rotateX(10deg) rotateY(10deg) ;
+        }
+    } 
+
+    @keyframes zero {
+        0%{
+            transform: translateZ(100px);
+        }
+       50% {
+        transform: translateZ(300px);
+        animation-delay: 3s;
+        }
+
+        100%{
+            transform: translateZ(100px);
+        }
+    }
+    
+     @keyframes one {
+        0%{
+            transform: translateZ(-100px);
+        }
+        50% {
+        transform: translateZ(-300px);
+        animation-delay: 3s;
+        }
+        100%{
+            transform: translateZ(-100px);
+        }
+    }
+    @keyframes two {
+        0%{
+            transform: rotateY(90deg) translateZ(-100px);
+        }
+        50% {
+        transform:rotateY(90deg)  translateZ(-300px);
+        animation-delay: 3s;
+        }
+        100%{
+            transform: rotateY(90deg) translateZ(-100px);
+        }
+    }
+    @keyframes three {
+        0%{
+            transform: rotateY(90deg) translateZ(100px);
+        }
+        50% {
+        transform:rotateY(90deg)  translateZ(300px);
+        animation-delay: 3s;
+        }
+        100%{
+            transform: rotateY(90deg) translateZ(100px);
+        }
+    } 
+    @keyframes four {
+    0%{
+            transform: translateY(100px) rotateX(90deg);
+        }
+        50% {
+        transform:translateY(300px) rotateX(90deg);
+        animation-delay: 3s;
+        }
+        100%{
+            transform: translateY(100px) rotateX(90deg);
+        }
+    } 
+    @keyframes five {
+        0%{
+            transform: translateY(-100px) rotateX(90deg);
+        }
+        50% {
+        transform:translateY(-300px) rotateX(90deg);
+        animation-delay: 3s;
+        }
+        100%{
+            transform: translateY(-100px) rotateX(90deg);
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    .small{
+        width: 100px;
+        height: 100px;
+        margin: 100px auto;
+        position: relative;
+        transform-style:preserve-3d ;
+        transform: rotateX(20deg) rotateY(20deg);
+
+    }
+ 
+/* .small{
+    animation:  move 6s infinite linear;
+} */
+    .small img{
+        /* display: block; */
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        border-radius: 15px;
+    }
+    .small img:nth-child(1){
+      transform: translateZ(50px);
+    }
+    .small img:nth-child(2){
+    transform: translateZ(-50px) rotateY(180deg);
+    }
+    .small img:nth-child(3){
+        transform: translateX(-50px) rotateY(-90deg);
+    }
+    
+    .small img:nth-child(4){
+        transform: translateX(50px) rotateY(90deg);
+    }
+  
+    .small img:nth-child(5){
+        transform: translateY(50px) rotateX(90deg);
+    }
+   
+    .small img:nth-child(6){
+        transform: translateY(-50px) rotateX(90deg);
+    }
+
+ /* @keyframes move {
+        0%{
+            transform: rotateX(10deg) rotateY(10deg) ;
+        }
+        50%{
+            transform: rotateX(370deg) rotateY(370deg);
+            animation-delay: 10s;
+        }
+        100%{
+            transform: rotateX(10deg) rotateY(10deg) ;
+        }
+    } 
+
+    @keyframes zero {
+        0%{
+            transform: translateZ(100px);
+        }
+       50% {
+        transform: translateZ(300px);
+        animation-delay: 3s;
+        }
+
+        100%{
+            transform: translateZ(100px);
+        }
+    }
+    
+     @keyframes one {
+        0%{
+            transform: translateZ(-100px);
+        }
+        50% {
+        transform: translateZ(-300px);
+        animation-delay: 3s;
+        }
+        100%{
+            transform: translateZ(-100px);
+        }
+    }
+    @keyframes two {
+        0%{
+            transform: rotateY(90deg) translateZ(-100px);
+        }
+        50% {
+        transform:rotateY(90deg)  translateZ(-300px);
+        animation-delay: 3s;
+        }
+        100%{
+            transform: rotateY(90deg) translateZ(-100px);
+        }
+    }
+    @keyframes three {
+        0%{
+            transform: rotateY(90deg) translateZ(100px);
+        }
+        50% {
+        transform:rotateY(90deg)  translateZ(300px);
+        animation-delay: 3s;
+        }
+        100%{
+            transform: rotateY(90deg) translateZ(100px);
+        }
+    } 
+    @keyframes four {
+    0%{
+            transform: translateY(100px) rotateX(90deg);
+        }
+        50% {
+        transform:translateY(300px) rotateX(90deg);
+        animation-delay: 3s;
+        }
+        100%{
+            transform: translateY(100px) rotateX(90deg);
+        }
+    } 
+    @keyframes five {
+        0%{
+            transform: translateY(-100px) rotateX(90deg);
+        }
+        50% {
+        transform:translateY(-300px) rotateX(90deg);
+        animation-delay: 3s;
+        }
+        100%{
+            transform: translateY(-100px) rotateX(90deg);
+        }
+    } */
+    </style>
+</head>
+<body>
+    <div class="shai">
+        <span class="front">前面</span>
+        <span class="back">后面</span>
+        <span class="left">左面</span>
+        <span class="right">右面</span>
+        <span class="top">上面</span>
+        <span class="bottom">下面</span>
+        <div class="small">
+            <img src="./yuwenle1.jpg" alt="">
+            <img src="./yuwenle2.jpg" alt="">
+            <img src="./yuwenle3.jpg" alt="">
+            <img src="./yuwenle4.jpg" alt="">
+            <img src="./yuwenle5.jpg" alt="">
+            <img src="./yuwenle6.jpg" alt="">
+        </div>
+    </div>
+ 
+</body>
+</html>

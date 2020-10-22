@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 51.我们正在玩一个猜数字游戏。 游戏规则如下：
+        // 我从 1 到 100选择一个数字。 你需要猜我选择了哪个数字。
+        // 每次你猜错了，我会告诉你这个数字是大了还是小了,如果你猜大了，输出”猜大了”；如果猜小了，输出”猜小了”；如果猜对了，则输出“恭喜你，猜对了”
+        var star = 33;
+        for (var i = 0; i < 100; i++) {
+            var num = prompt("猜猜我的幸运数字是多少");
+            if (num > star) {
+                alert("猜大了，继续");
+            } else if (num < star) {
+                alert("猜小了，继续");
+            } else {
+                alert("恭喜你猜对了，我的幸运数字是" + star);
+                break; //循环结束
+            }
+        }
+    </script>
+</body>
+
+</html>

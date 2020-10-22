@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>天知道</title>
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/main2.css" />
+
+  <style>
+    .tem .iconfont {
+      font-size: 50px;
+    }
+
+    table {
+      width: 600px;
+      border-collapse: collapse;
+      margin: 20px auto;
+    }
+
+    td,
+    th {
+      height: 50px;
+      text-align: center;
+      border: 1px solid #CCC;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="search_form">
+      <div class="logo"><img src="img/logo.png" alt="logo" /></div>
+      <div class="form_group">
+        <input type="text" class="input_txt" placeholder="请输入查询的天气" />
+        <button class="input_sub">搜 索</button>
+      </div>
+      <div class="hotkey">
+        <a href="javascript:;">北京</a>
+        <a href="javascript:;">上海</a>
+        <a href="javascript:;">广州</a>
+        <a href="javascript:;">深圳</a>
+      </div>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>日期</th>
+          <th>高温</th>
+          <th>低温</th>
+          <th>风向</th>
+          <th>天气</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- 模板 -->
+        <tr>
+          <td>5月15日星期五</td>
+          <td>25℃</td>
+          <td>15℃</td>
+          <td>东南风</td>
+          <td>多云</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+<!-- 1. 接口说明:
+
+请求地址：http://wthrcdn.etouch.cn/weather_mini
+请求方法：get
+请求参数：city
+示例：http://wthrcdn.etouch.cn/weather_mini?city=深圳
+
+2. 要求:
+- 页面模板已经给定，最终的效果图也给定
+- 点击"搜索"按钮，将获取到的天气信息按照给定的模板进行展示
+- 点击表单下面的四个给定的任意一个城市，将城市在表单中显示，并且下面会显示当前城市的天气 -->
+   <script src="./js/jquery-1.12.4.min.js"></script>
+   <script>
+     $.ajax({
+      //请求类型
+      type:'get',
+      // 请求地址
+      url:'http://wthrcdn.etouch.cn/weather_mini',
+      // 请求参数
+      data:(city),
+      // 成功时返回函数
+      success: function(){
+        console.log(data);
+      }
+     })
+   </script>
+</html>

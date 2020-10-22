@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>demo</title>
+
+<link type="text/css" href="css/style.css" rel="stylesheet" />
+
+</head>
+<body>
+
+<div class="wrap">
+	<ul class="banner">
+		<li>
+			<a href="#">
+				<img src="img/nrzx_20170124.jpg" alt="图片加载中" class="img">
+			</a>
+		</li>
+		<li>
+			<a href="#">
+				<img src="img/Drive_20170124.jpg" alt="图片加载中" class="img">
+			</a>
+		</li>
+		<li>
+			<a href="#">
+				<img src="img/Island_201701424.jpg" alt="图片加载中" class="img">
+			</a>
+		</li>
+		<li>
+			<a href="#">
+				<img src="img/Shipin_20170124.jpg" alt="图片加载中" class="img">
+			</a>
+		</li>
+		<li>
+			<a href="#">
+				<img src="img/Shoufu_20170124.jpg" alt="图片加载中" class="img">
+			</a>
+		</li>
+		<li>
+			<a href="#">
+				<img src="img/Temai_201701424.jpg" alt="图片加载中" class="img">
+			</a>
+		</li>
+		<li>
+			<a href="#">
+				<img src="img/Youlun_20170124.jpg" alt="图片加载中" class="img">
+			</a>
+		</li>
+	</ul>
+</div>
+
+<script>
+var li = document.getElementsByTagName('li'),
+ img = document.getElementsByClassName('img');
+for(var i = 0,len = li.length;i < len;i++){
+	li[i].index = i;
+	li[i].onmouseover = function(){
+		img[this.index].style.left = '-100px';
+		li[this.index].style.width = '122px';
+	}
+	li[i].onmouseleave = function(){
+		img[this.index].style.left = '0px';
+		li[this.index].style.width = '97px';
+	}
+}
+</script>
+
+</body>
+</html>

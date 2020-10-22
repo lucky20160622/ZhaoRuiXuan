@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>沧海明月</title>
+    <style>
+    /*1.月亮*/
+    
+     body,
+    html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        width: 100%;
+    }
+    
+    body {
+        background-color: #0EA9B1;
+        position: relative;
+    }
+    
+    .moon {
+        width: 100px;
+        height: 100px;
+        background-color: white;
+        border-radius: 50%;
+        position: absolute;
+        top: 50px;
+        left: 50px;
+    }
+    
+    .moon::before,
+    .moon::after {
+        position: absolute;
+        top: 0;
+        left: 0;
+        border-radius: 50%;
+        content: "";
+        display: block;
+        width: 100%;
+        height: 100%;
+        background-color: white;
+        animation: moonlight 1s linear infinite;
+    }
+    /*加月光动画*/
+    
+   @keyframes moonlight {
+        0% {
+            transform: scale(1);
+            opacity: 0.8;
+        }
+        100% {
+            transform: scale(1.5);
+            opacity: 0;
+        }
+    }
+ .bolang {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+    }
+    
+    .bolang img {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+    } 
+    
+      .bolang img:nth-child(1) {
+        animation: dance2 2s linear infinite;
+    }
+    
+    .bolang img:nth-child(2) {
+        animation: dance1 2s linear infinite;
+    }
+    /*波浪*/
+
+    @keyframes dance1 {
+        0% {
+            bottom: 0;
+        }
+        50% {
+            bottom: -20px;
+        }
+        100% {
+            bottom: 0;
+        }
+    }
+    
+    @keyframes dance2 {
+        0% {
+            bottom: 0;
+        }
+        50% {
+            bottom: 20px;
+        }
+        100% {
+            bottom: 0;
+        }
+    }  
+    </style>
+</head>
+
+<body>
+    <section>
+        <div class="moon"></div>
+        <div class="bolang">
+            <img src="./img/1.png" alt="">
+            <img src="./img/2.png" alt="">
+        </div>
+    </section>
+</body>
+
+</html>

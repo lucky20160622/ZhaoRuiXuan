@@ -1,0 +1,118 @@
+body {
+    width: 100%;
+  }
+  
+  .top {
+    width: 100%;
+    /* display: flex; */
+  }
+  
+  .top img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .main {
+    padding: 5px;
+  }
+  
+  /*导航*/
+  .nav ul {
+    height: 90px;
+    margin-bottom: 5px;
+    display: flex;
+    border-radius: 5px;
+  }
+  
+  /*一级导航*/
+  .nav ul:nth-child(-n + 3) li:nth-child(1) {
+    flex: 1;
+  }
+  
+  /*二级导航*/
+  .sub {
+    flex: 2;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .sub a {
+    width: 50%;
+    height: 45px;
+    text-align: center;
+    line-height: 45px;
+    border-left: 1px solid #fff;
+    border-top: 1px solid #fff;
+    color: #fff;
+    font-size: 14px;
+    text-shadow: 0 2px 1px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+  }
+  
+  .sub a:nth-child(-n + 2) {
+    border-top: 0 none;
+  }
+  
+  .nav ul:nth-child(1) {
+    background-color: #ff697a;
+  }
+  
+  .nav ul:nth-child(2) {
+    background-color: #3d98ff;
+  }
+  
+  .nav ul:nth-child(3) {
+    background-color: #44c522;
+  }
+  
+  .nav ul:nth-child(4) {
+    background-color: #fc9720;
+  }
+  
+  .nav ul:nth-child(4) .sub a {
+    width: 33.333%;
+  }
+  
+  .nav ul:nth-child(4) .sub a:nth-child(-n + 3) {
+    border-top: 0 none;
+  }
+  
+  .banner {
+    display: flex;
+  }
+  
+  .banner a {
+    flex: 1;
+  }
+  
+  .banner img {
+    width: 100%;
+  }
+  
+  .footer-nav {
+    display: flex;
+  }
+  
+  .footer-nav a {
+    flex: 1;
+    height: 44px;
+    padding-top: 20px;
+    text-align: center;
+    line-height: 1;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #c2c2c2;
+    font-size: 12px;
+    color: #333;
+    box-sizing: border-box;
+  }
+  
+  /*底部链接*/
+  .footer p {
+    text-align: center;
+    font-size: 12px;
+    color: #999;
+    margin-top: 14px;
+  }
+  .footer .link a {
+    color: #666;
+  }

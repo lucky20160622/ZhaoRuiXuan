@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Document</title>
+  <style>
+    body {
+      margin: 0px;
+    }
+
+    .header_con {
+      height: 100px;
+      background-color: #458ccb;
+    }
+
+    .header {
+      width: 1000px;
+      height: 100px;
+      margin: 0px auto;
+    }
+
+    .logo {
+      float: left;
+      width: 197px;
+      height: 67px;
+      margin-top: 16px;
+    }
+
+    .getJoke {
+      width: 120px;
+      height: 36px;
+      font-size: 16px;
+      background-color: #ff0;
+      border-radius: 4px;
+      cursor: pointer;
+      outline: none;
+      float: right;
+      border: 0px;
+      margin-top: 32px;
+    }
+
+    .joke-container {
+      width: 516px;
+      height: 349px;
+      margin: 40px auto 0;
+      background: url('image/bean01.png') no-repeat;
+      position: relative;
+    }
+
+    .joke-text {
+      width: 390px;
+      height: 155px;
+      position: absolute;
+      left: 52px;
+      top: 29px;
+      font-size: 16px;
+      line-height: 24px;
+      color: #333;
+      overflow: auto;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="header_con">
+    <div class="header">
+      <a href="#" class="logo"><img src="image/logo.png" alt=""></a>
+      <input type="button" value="点我看笑话" class="getJoke" />
+    </div>
+  </div>
+
+  <div class="joke-container">
+    <!-- <div class="joke-text">
+      点按钮，我给你讲个笑话。
+    </div> -->
+  </div>
+</body>
+
+</html>
+<script src="./lib/jquery-3.4.1/jquery-3.4.1.min.js"></script>
+<script src="./lib/art-template-4.13.2/template-web.js"></script>
+<script type="text/template" id="joke">
+  <div class="joke-text">
+    {{content}}
+  </div>
+</script>
+<script>
+  /*
+    功能分析：
+      - 点击按钮 .getJoke 通过$.get 发送ajax请求
+      - 接口地址：https://autumnfish.cn/api/joke
+      - 将响应的笑话展示在 .joke-text中即可
+  */
+
+  $(function () {
+    $('.getJoke').on('click', function () {
+      // 发送请求，获取服务端响应的数据
+      $.get({
+        url: 'https://autumnfish.cn/api/joke',
+        success: function (res) {
+          // 将响应内容设置在页面中展示
+          console.log(res);
+
+          let htmlStr = template('joke', {
+            content: res
+          })
+
+          $('.joke-container').html(htmlStr);
+        }
+      });
+
+    });
+
+  });
+
+
+</script>

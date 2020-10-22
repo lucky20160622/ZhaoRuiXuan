@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>CSS 2D转换</title>
+    <style>
+    html,
+    body {
+        height: 100%;
+    }
+    
+    body {
+        margin: 0;
+        padding: 0;
+        background-color: #F7F7F7;
+        position: relative;
+    }
+    
+    .layer {
+        width: 250px;
+        height: 200px;
+        background-color: red;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    </style>
+</head>
+
+<body>
+    <div class="layer"></div>
+</body>
+
+</html>

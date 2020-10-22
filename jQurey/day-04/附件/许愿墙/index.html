@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/base.css">
+  <link rel="stylesheet" href="./css/index.css">
+</head>
+
+<body>
+  <!-- 头部 -->
+  <header>
+    <div class="send"></div>
+  </header>
+  <!-- 主体内容体 -->
+  <main>
+    <!-- 这个是许愿签的模板 -->
+    <!-- <div class="list"> -->
+    <!-- <div class="list-top">
+        <span>拉拉</span>
+        <span>No.00001</span>
+      </div>
+      <div class="list-center">
+        大家今天要好好把后台布局完成大家今天要好好把后台布局完成大家今天要好好把后台布局完成
+      </div>
+      <div class="list-bottom">
+        <span>今天08:30</span>
+        <span></span>
+      </div>
+    </div> -->
+  </main>
+  <!-- 遮罩层 -->
+  <div class="mask">
+    <div class="box">
+      <div class="mask-title">
+        <span>许下你的愿望</span>
+        <span class="frclose"></span>
+      </div>
+      <div class="mask-content">
+        <div class="mask-nickname">
+          <h3>昵称:</h3>
+          <input type="text">
+        </div>
+        <div class="mask-wish">
+          <h3>愿望:(您还可以输入 <i>50</i> 个字)</h3>
+          <textarea name="" id="" cols="30" rows="10" maxlength="50"></textarea>
+        </div>
+        <div class="release">
+          <img src="./img/send-btn.png" alt="" class="fr">
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- - 实现许愿墙效果(附件):
+- 功能1：根据页面中给定的数据，创建许愿签到页面中，(许愿签的模板已经在页面中给定)
+- 功能2：每个许愿签的位置是随机产生的
+- 功能3：每个许愿签上面的时间(时和分)是和系统当前的时间一样的
+- 功能4：鼠标移动到每个许愿签上面的"X"的时候，这个”X“的背景图的位置在改变(这个小X是一个精灵图)，鼠标离开恢复原样子
+- 功能5: 当鼠标点击每个许愿签上面的"X"的时候，当前这个许愿签就会从页面中消失
+- 功能6：当许愿签堆叠在一起的时候，点击某个许愿签，当前这个许愿签就会在最上面，覆盖住别的许愿签
+- 功能7：点击”我要许愿“，就会显示遮罩层
+- 功能8：点击”遮罩层“右上角的"X",这个遮罩层就会隐藏
+- 功能9：在遮罩层的第二个输入框，不断的输入内容，上面的"50"这个文字在随着内容的输入在不断的减少，最大长度是50
+- 功能10：在遮罩层的2个输入框中输入内容，如果有一个输入框内容为空，或者是输入的都是空格键的话，点击”发布“之后，遮罩层关闭，但是页面中不会添加新的许愿签，如果2个用户都输入了内容，并且不是空格键的话，就会添加一条新的许愿签到页面中，遮罩层关闭，2个输入框的内容都清空
+  注意:当我通过"我要许愿"添加的许愿签，上面的功能都还是没有问题的，点击许愿签上面的"x"的功能还能用 -->
+  <script src="../../../lib/jquery-3.4.1.min.js"></script>
+  <script>
+    //模拟数据
+    var messages = [
+      {
+        id: 1,
+        name: "小刘",
+        content: "今天你拿华为支付了么",
+
+      },
+      {
+        id: 2,
+        name: "小王",
+        content: "天上掉下来个猪八戒",
+
+      },
+      {
+        id: 3,
+        name: "小刚",
+        content: "已识乾坤大犹怜草木青",
+
+      },
+      {
+        id: 4,
+        name: "小红",
+        content: "惊雷这通天修为天塌地陷紫金锤",
+
+      },
+      {
+        id: 5,
+        name: "毛泽东",
+        content: "与天斗其乐无穷",
+
+      },
+      {
+        id: 6,
+        name: "小耳朵",
+        content:
+          "你有什么可豪横的",
+
+      },
+      {
+        id: 7,
+        name: "可乐",
+        content:
+          "百事可乐可口可乐",
+
+      },
+      {
+        id: 8,
+        name: "MC高迪",
+        content:
+          "一人我饮酒醉",
+
+      }
+    ];
+    // 功能1
+    for (let i = 0; i < messages.length; i++) {
+      let obj = messages[i]
+      // let tip=document.createElement('div')
+      $('main').append(
+        `
+        <div class="list"> 
+     <div class="list-top">
+        <span>${obj.name}</span>
+        <span>No.0000${obj.id}</span>
+      </div>
+      <div class="list-center">
+       ${obj.content}
+      </div>
+      <div class="list-bottom">
+        <span>今天${timer()}</span>
+        <span></span>
+      </div>
+    </div> 
+        `
+      )
+    }
+    // 功能2
+    let x=parseInt(Math.random()*734)
+    let y=parseInt(Math.random()*441)
+    $('.list').css({'left':`${x}`+'px'})
+    $('.list').css({'left':`${y}`+'px'})
+    console.log($('.list'));
+    $('main').append($('.list'))
+
+
+    //  功能3
+    function timer() {
+      let date = new Date();
+      let h = date.getHours();
+      let min = date.getMinutes();
+      min = min > 10 ? min : '0' + min;
+      return `${h}:${min}`
+    }
+    //功能4使用toggle切换 未实现             
+    
+    // 功能5
+    $('.list-bottom').click(function(){
+  $(this).closest('.list').remove()
+})
+    // 功能6
+
+    let zIndex=0
+    $('.list').click = ('click',function() {
+          zIndex++;
+         ` ${this}`.css({'zIndex':'zIndex'})
+        });
+
+
+    // 功能7
+    $('.send').click(function () {
+      $('.mask').show()
+
+    })
+    // 功能8
+    $('.frclose').click(function () {
+      $('.mask').hide()
+    })
+    //  功能9
+    // 功能10
+
+    $('.release').click(function () {
+      let input1 = $('.mask-nickname').find('input').val().trim()
+      let input2 = $('.mask-wish').find('textarea').val().trim()
+      if (input1.length !== 0 || input2.length !== 0) {
+        $('main').append(`
+        <div class="list"> 
+     <div class="list-top">
+        <span>${input1}</span>
+        <span>No.00001</span>
+      </div>
+      <div class="list-center">
+       ${input2}
+      </div>
+      <div class="list-bottom">
+        <span>今天${timer()}</span>
+        <span></span>
+      </div>
+    </div> 
+        `)
+      } else {
+        $('.mask').hide()
+      //  清空输入框
+      $('input1').val('')
+      $('input2').val('')
+      }
+      //  隐藏
+      $('.mask').hide()
+      //  清空输入框
+      $('input1').val('')
+      $('input2').val('')
+    })
+
+   
+
+  </script>
+</body>
+
+</html>

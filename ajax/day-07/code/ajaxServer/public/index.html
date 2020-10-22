@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<!-- 使用ajax发送json数据到服务器 -->
+	<h1>最简单的Ajax代码</h1>
+	<button>按钮</button>
+	<div></div>
+
+	<!-- <script src="./js/ajaxTools.js"></script> -->
+	<!-- <script src="./js/ajaxTools2.js"></script> -->
+	<!-- <script src="./js/ajaxTools3.js"></script> -->
+	<!-- 引入jQuery -->
+	<script src="./lib/jquery.min.js"></script>
+	<script>
+		// let oBtn = document.querySelector('button');
+		// let userInfo = {
+		// 	username: 'tom',
+		// 	password: '123456'
+		// }
+		// oBtn.onclick = function () {
+		// // 1.实例化xhr对象
+		// let xhr = new XMLHttpRequest();
+		// // 2.设置请求行
+		// xhr.open('POST', 'http://localhost/json');
+		// // 如果是POST请求,设置请求头
+		// xhr.setRequestHeader('Content-Type', 'application/json');
+		// // 3.发送请求数据
+		// xhr.send(JSON.stringify(userInfo));
+		// // 4.监听并处理响应
+		// xhr.onreadystatechange = function () {
+		// 	if (xhr.readyState == 4 && xhr.status == 200) {
+		// 		// 5.接受响应
+		// 		console.log(xhr.responseText);
+		// 	}
+		// }
+		// }
+
+
+		let oBtn = document.querySelector('button');
+		oBtn.onclick = function () {
+			// ajaxTools.js的用法
+			// ajax('GET', '/reqGet', 'name=zs&age=18', function (data) {
+			// 	console.log(data);
+			// })
+
+			// ajaxTools2的用法
+			// ajax({
+			// 	type: 'GET',
+			// 	url: '/reqGet',
+			// 	data: 'name=zs&age=18',
+			// 	success: function (data) {
+			// 		console.log(data);
+			// 	}
+			// })
+
+			// ajaxTools3的用法
+			// $.ajax({
+			// 	type: 'GET',
+			// 	url: '/reqGet',
+			// 	// 把对象变成name=zs&age=18
+			// 	data: {
+			// 		name: 'zs',
+			// 		age: 18
+			// 	},
+			// 	success: function (data) {
+			// 		console.log(data);
+			// 	}
+			// })
+
+			// $.param({
+			// 	name: 'zs',
+			// 	age: 18
+			// })
+
+
+			// 使用jQuery的ajax
+			$.ajax({
+				// 请求方式
+				type: 'get',
+				// 请求地址
+				url: '/reqGet',
+				// 请求数据
+				data: {
+					name: 'zs',
+					age: 18
+				},
+				// 成功时的回调函数
+				success: function (data) {
+					console.log(data);
+				}
+			})
+		}
+
+
+	</script>
+</body>
+
+</html>

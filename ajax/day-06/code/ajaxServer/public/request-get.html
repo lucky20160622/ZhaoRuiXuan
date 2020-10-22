@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        点击按钮 发送用户名和密码给后端 服务器把用户名和密码打印到div中
+     -->
+
+    <form>
+        <input type="text" name="username">
+        <input type="password" name="password">
+    </form>
+    <button>提交</button>
+     <!-- 我叫xxxx,我的密码是什么 -->
+    <div class="box"></div>
+
+
+
+    <script>
+        //  1.获取按钮 给按钮添加点击事件
+        let oBtn = document.querySelector('button');
+        let userInput = document.querySelector('input[name="username"]');
+        let passInput = document.querySelector('input[name="password"]');
+        oBtn.onclick = function () {
+            //  2.获取username的值 获取password的值
+            let username = userInput.value;
+            let password = passInput.value;
+            //  3.使用ajax把请求发送到服务器
+            // 3.1 实例化XMLHttpRequest
+            let xhr = new XMLHttpRequest();
+            // 3.2 设置请求行(请求方式 请求地址)
+            // ?key1=value1&key2=value2
+            // localhost/getParam?username=zhangsan&password=123456
+            xhr.open('GET', `/getParam?username=${username}&password=${password}`);
+            // 3.3 发送请求
+            xhr.send(null);
+            // 3.4 监听并处理响应
+            xhr.onreadystatechange = function () {
+                //  4.显示到页面上
+                // console.log(typeof xhr.responseText); // 字符串
+                let data = JSON.parse(xhr.responseText);
+                // console.log(data);
+                document.querySelector('.box').innerHTML = `我叫${data.username},我的密码是${data.password}`
+            }
+
+        }
+
+        
+    </script>
+</body>
+
+</html>

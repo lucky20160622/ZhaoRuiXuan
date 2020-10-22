@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <button>按钮</button>
+  <div>
+    <!-- <h1>我是标题</h1> -->
+  </div>
+  <script src="./art-template-4.13.2/template-web.js"></script>
+  <!-- 模板 -->
+  <script type="text/template" id="str_templ">
+    <h1>{{content}}</h1> 
+  </script>
+  <script>
+    let title = "我是标题2";
+    let oBtn = document.querySelector('button');
+    oBtn.onclick = function () {
+      let htmlStr = template('str_templ', {
+        content: title
+      });
+
+      // console.log(htmlStr);
+      document.querySelector('div').innerHTML = htmlStr;
+    }
+
+  </script>
+  
+</body>
+
+</html>

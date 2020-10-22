@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Members</title>
+  <link href="assets/bootstrap.css" rel="stylesheet">
+</head>
+
+<body>
+  <header>
+    <div class="navbar navbar-dark navbar-expand-sm bg-dark shadow-sm">
+      <div class="container">
+        <a href="#" class="navbar-brand d-flex justify-content-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-aperture"><circle cx="12" cy="12" r="10"></circle><line x1="14.31" y1="8" x2="20.05" y2="17.94"></line><line x1="9.69" y1="8" x2="21.17" y2="8"></line><line x1="7.38" y1="12" x2="13.12" y2="2.06"></line><line x1="9.69" y1="16" x2="3.95" y2="6.06"></line><line x1="14.31" y1="16" x2="2.83" y2="16"></line><line x1="16.62" y1="12" x2="10.88" y2="21.94"></line></svg>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav">
+            <li class="nav-item active"><a class="nav-link" href="#">Members</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main role="main">
+    <section class="jumbotron mb-0 bg-white text-center">
+      <div class="container">
+        <h1 class="display-4">New member</h1>
+        <p class="lead text-muted">Add a member~</p>
+        <div>
+          <a href="#" class="btn btn-primary my-2">Members list</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="py-5 bg-light">
+      <form class="container">
+        <div class="row mb-3">
+          <div class="col-md-9">
+            <div class="form-group">
+              <label for="input_name">Member name</label>
+              <input type="text" class="form-control" id="input_name" placeholder="Enter member name">
+            </div>
+            <div class="form-group">
+              <label for="input_bio">Member bio</label>
+              <textarea class="form-control" id="input_bio" cols="80" rows="10" placeholder="Enter member bio"></textarea>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label class="w-100" for="input_avatar">
+                <span class="d-block mb-2">Member avatar</span>
+                <img id="avatar" class="img-thumbnail w-100" src="/assets/default.png" alt="Member avatar">
+              </label>
+              <!-- 上传控件 -->
+              <!-- 控制上传文件的类型
+                  accept  设置mime---content-type 指定文件的类型
+                          设置文件的后缀
+                  multiple  可以多选
+              -->
+              <input type="file" accept="image/*" class="form-control-file" id="input_avatar" aria-describedby="input_avatar_label">
+              <!-- <input type="file" accept=".jpg,.jpeg" multiple class="form-control-file" id="input_avatar" aria-describedby="input_avatar_label"> -->
+              <small id="input_avatar_label" class="form-text text-muted">Upload a picture.</small>
+            </div>
+          </div>
+        </div>
+        <button id="btn_add" class="btn btn-primary btn-block">Save</button>
+      </form>
+    </div>
+  </main> 
+ 
+  <footer class="py-5 text-muted">
+    <p class="container"> 
+      <span>this demo &copy; heima
+      <a class="float-right" href="#">Back to top &uparrow;</a>
+    </p> 
+  </footer>
+  <script src="/assets/jquery.js"></script>
+  <!-- <script>
+    // 新增会员
+    // 1. 图片本地预览
+    //    1.1 flash 插件
+    //    1.2 html 5中的本地预览
+    document.querySelector('#input_avatar').onchange = function () {
+      // 当选择的内容发生变化的时候执行
+      // console.log('xxxx');
+      // 没有选择图片
+      if(!this.files[0]) return;
+      // 获取图片的路径
+      // 根据文件在内存中生成一个临时路径
+      var url = URL.createObjectURL(this.files[0]);
+      // console.log(url);
+      document.querySelector('#avatar').src = url;
+      // console.dir(this);
+    };
+
+
+    // 2. 新增会员
+    $('#btn_add').click(function (e) {
+      e.preventDefault();
+      // 创建formData
+      var formData = new FormData();
+      // 把表单元素的内容添加到formdata中
+      formData.append('name', $('#input_name').val());
+      formData.append('bio', $('#input_bio').val());
+      // 设置上传的文件
+      formData.append('avatar', $('#input_avatar')[0].files[0]);
+
+      // xhr.send(formData)
+
+      // 当post，要提交formdata的时候。jquery的ajax方法要设置两个属性
+
+      // 当send的内容是formdata的时候。并且设置了上传的文件
+      // 此时post请求的content-type要设置为form-data
+      // Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryYDq6MJnf5mSn398E
+      $.ajax({
+        type: 'post',
+        url: '/api/member-add',
+        data: formData,
+        // 让ajax方法不要设置content-type
+        contentType: false,
+        // 不要处理post的数据
+        processData: false,
+        success: function (data) {
+          // 判断是否成功
+          // 跳转会首页
+          location.href = '/';
+        },
+        error: function () {
+          alert('新增会员失败');
+        }
+      });
+      
+      // 取消提交按钮的后续内容的执行
+      return false;
+
+    });
+  </script> -->
+  
+</body>
+
+</html>
+ 

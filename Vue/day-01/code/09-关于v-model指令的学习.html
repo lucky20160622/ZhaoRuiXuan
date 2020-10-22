@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="./lib/vue-2.5.16.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <h3>{{msg}}</h3>
+    <!-- 结论：v-bind 指令，只能把 model 中的数据同步到 页面上；无法把 页面上数据的变化，更新到Model中 -->
+    <input type="text" :value="msg">
+    <hr>
+    <input type="text" v-model="msg">
+    <hr>
+    <button @click="changeMsg">点击修改msg</button>
+  </div>
+
+  <script>
+    // 创建 Vue 实例，得到 ViewModel
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        msg: '最喜欢吃的菜：红烧段哥'
+      },
+      methods: {
+        changeMsg() {
+          this.msg = '清蒸段哥'
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style type="text/css">
+    .tab ul {
+      overflow: hidden;
+      padding: 0;
+      margin: 0;
+    }
+
+    .tab ul li {
+      box-sizing: border-box;
+      padding: 0;
+      float: left;
+      width: 100px;
+      height: 45px;
+      line-height: 45px;
+      list-style: none;
+      text-align: center;
+      border-top: 1px solid blue;
+      border-right: 1px solid blue;
+      cursor: pointer;
+    }
+
+    .tab ul li:first-child {
+      border-left: 1px solid blue;
+    }
+
+    .tab ul li.active {
+      background-color: orange;
+    }
+
+    .tab div {
+      width: 500px;
+      height: 300px;
+      display: none;
+      text-align: center;
+      font-size: 30px;
+      line-height: 300px;
+      border: 1px solid blue;
+      border-top: 0px;
+    }
+
+    .tab div.current {
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <div class="tab">
+      <ul>
+        <li v-for="(item,index) in aList" :key="item.id" :class="index == currentIndex?'active':'' "
+          @click="handleClick(index)">{{item.title}}</li>
+      </ul>
+
+      <div v-for="(item,index) in aList" :key="item.id" :class="index == currentIndex?'current':'' ">
+        <img :src="item.imgSrc" alt="">
+      </div>
+    </div>
+  </div>
+
+  <script src="./lib/vue-3.0.0.js"></script>
+  <script>
+    /*
+     1.遍历展示li
+     2.遍历展示div
+     3.让索引为0的li被选中
+     4.让索引为0的div显示
+     5.点击的时候把当前索引设置成点击的那个元素的索引
+    */
+    let vm = Vue.createApp({
+      // data数据域
+      data() {
+        return {
+          currentIndex: 0,
+          aList: [{
+            id: 1,
+            title: "apple",
+            imgSrc: './image/apple.png',
+            font: "最好吃的苹果在宁夏"
+          },
+          {
+            id: 2,
+            title: "lemon",
+            imgSrc: './image/lemon.png',
+            font: "最好吃的柠檬在云南"
+          },
+          {
+            id: 3,
+            title: "orange",
+            imgSrc: './image/orange.png',
+            font: "最好吃的橘子在小说里"
+          }
+          ]
+        }
+      },
+      methods: {
+        handleClick(index) {
+          this.currentIndex = index;
+        }
+      }
+
+    }).mount('#app')
+
+  </script>
+</body>
+
+</html>

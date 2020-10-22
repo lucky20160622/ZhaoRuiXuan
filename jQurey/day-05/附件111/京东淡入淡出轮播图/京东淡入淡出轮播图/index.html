@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <title>轮播图</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .slider {
+      height: 340px;
+      width: 790px;
+      margin: 100px auto;
+      position: relative;
+    }
+
+    .slider ul li {
+      position: absolute;
+      display: none;
+    }
+
+    .slider ul li:first-child {
+      display: block;
+    }
+
+    .arrow {
+      display: none;
+    }
+
+    .arrow-left,
+    .arrow-right {
+      font-family: "SimSun", "宋体";
+      width: 30px;
+      height: 60px;
+      background-color: rgba(0, 0, 0, 0.1);
+      position: absolute;
+      top: 50%;
+      margin-top: -30px;
+      cursor: pointer;
+      text-align: center;
+      line-height: 60px;
+      color: #fff;
+      font-weight: 700;
+      font-size: 30px;
+    }
+
+    .arrow-left:hover,
+    .arrow-right:hover {
+      background-color: rgba(0, 0, 0, .5);
+    }
+
+    .arrow-left {
+      left: 0;
+    }
+
+    .arrow-right {
+      right: 0;
+    }
+
+    .slider ol {
+      position: absolute;
+      left: 50%;
+      bottom: 20px;
+      transform: translate(-50%);
+    }
+
+    .slider ol li {
+      float: left;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      margin-right: 10px;
+      background-color: #fff;
+    }
+
+    .slider ol li.current {
+      background-color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="slider">
+    <ul>
+      <li><a href="#"><img src="img/jd1.jpg" alt=""></a></li>
+      <li><a href="#"><img src="img/jd2.jpg" alt=""></a></li>
+      <li><a href="#"><img src="img/jd3.jpg" alt=""></a></li>
+      <li><a href="#"><img src="img/jd4.jpg" alt=""></a></li>
+      <li><a href="#"><img src="img/jd5.jpg" alt=""></a></li>
+      <li><a href="#"><img src="img/jd6.jpg" alt=""></a></li>
+      <li><a href="#"><img src="img/jd7.jpg" alt=""></a></li>
+      <li><a href="#"><img src="img/jd8.jpg" alt=""></a></li>
+    </ul>
+    <!--箭头-->
+    <div class="arrow">
+      <span class="arrow-left">&lt;</span>
+      <span class="arrow-right">&gt;</span>
+    </div>
+    <!-- 小圆点 -->
+    <ol>
+
+    </ol>
+  </div>
+  <script src="../../../../lib/jquery-3.4.1.min.js"></script>
+  <script>
+    // 定义变量
+    var $num = 0;
+    // 功能1:显示左右的箭头
+    // // 1.1 需要移入slider上面显示箭头，离开隐藏
+    // $('.slider').hover(function(){
+    //   // 显示箭头，离开隐藏 ，箭头的显示和隐藏
+    //   $('.arrow').toggle()
+    // })
+
+    // 功能2：根据上面的图片创建小圆点
+
+    // 2.1根据上面的图片循环创建小圆点
+    $('.slider>ul li').each(function (index, item) {
+      // console.log(item)   // 代表的是循环遍历的每一项，是一个DOM对象
+      // 2.2 创建li
+      $('.slider ol').append($('<li></li>'))
+    })
+    // 2.3 默认第一个是红色的背景
+    $('.slider ol li').eq(0).addClass('current')
+
+
+    // 功能3：鼠标移入每个小圆点，对应的小圆点要添加current，而且上面的图也在跟着切换
+
+    // 3.1 先要给小圆点注册事件
+    $('.slider ol li').on('mouseenter', function () {
+      // 获取当前的索引
+      var $index = $(this).index()
+      // 直接赋值给$num 
+      $num = $index
+      // 3.2 给当前的小圆点要添加current类名
+      $(this).addClass("current").siblings().removeClass('current')
+      // 3.3 上面的图也在跟着切换
+      $('.slider>ul li').eq($index).stop().fadeIn().siblings().stop().fadeOut()
+    })
+
+    // 功能四:点击右箭头，切换下一张图片，同时下面的小圆点也在跟着切换加类名
+
+    // 4.1 获取右箭头，添加事件
+    $('.arrow-right').on('click', function () {
+      // 4.2 切换下一张
+      $num++;
+      // 进行判断是不是最后一张
+      if ($num == $('.slider>ul li').length) {
+        $num = 0;
+      }
+      $('.slider>ul li').eq($num).stop().fadeIn().siblings().stop().fadeOut()
+      // 4.3 小圆点跟着切换
+      $('.slider ol li').eq($num).addClass("current").siblings().removeClass('current')
+
+    })
+
+    // 功能五:点击左箭头，切换上一张图片，同时下面的小圆点也在跟着切换加类名
+    $('.arrow-left').on('click', function () {
+      // 5.1 $num--；
+      $num--;
+      // 判断
+      if ($num < 0) {
+        $num = $('.slider>ul li').length - 1;
+      }
+      //5.2 切换上一张图片
+      $('.slider>ul li').eq($num).stop().fadeIn().siblings().stop().fadeOut()
+      //5.3 下面的小圆点也在跟着切换加类名
+      $('.slider ol li').eq($num).addClass("current").siblings().removeClass('current')
+
+    })
+
+    // 功能六：自动轮播
+    var timer = setInterval(function () {
+      $('.arrow-right').click()
+    }, 2000)
+
+    // 功能七： 移动到slider上面定时器删除
+    $('.slider')
+      .on('mouseenter', function () {
+        // 移除定时器
+        clearInterval(timer)
+        // 显示
+        $('.arrow').show();
+      })
+      .on('mouseleave', function () {
+        timer = setInterval(function () {
+          $('.arrow-right').click()
+        }, 2000)
+        // 隐藏
+        $('.arrow').hide();
+      })
+  </script>
+</body>
+
+</html>

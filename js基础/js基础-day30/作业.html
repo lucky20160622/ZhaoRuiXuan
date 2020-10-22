@@ -1,0 +1,227 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 1. 录入6个学生成绩信息， 用数组对象存储学生信息，每个学生拥有的属性是学号，姓名，年龄，成绩，例子如下:
+        // var studentArr = [
+        //  {sId:1,name:'张三',age:18,score:80}
+        // ]
+        //    根据现有的存储数据,和用户进行交互,完成对数据的,增,删,改,查,的功能.
+        //   交互设计:提示用户功能选择
+        //    数据处理:
+        //   增删改查局部功能的实现: 
+        //   增: 提示用户输入用户名, 程序校验是否有重复的姓名, 如果有就告知已经存在，需要再次重新输入名字，如果没有就添加进数组,并告知用户添加成功,弹出输出数组进行校验.
+        //   删: 提示用户输入要删除的用户名, 程序校验是否有该用户名,如果有就删除,并返回用户删除成功提醒,弹出数组校验，如果没有就告知用户该用户不存在，需要重新输入要删除的用户名 
+        //   改: 提示用户输入要修改的用户名 程序校验改用户名是否存在 如果有就修改相应索引对应的项,并告知用户修改成功,打印校验 如果没有就告知改用户不存在，需要重新输入要删除的用户名
+        //   查:提示用户输入要查找的用户名 ，所以有就弹出有,没有就弹出没有.
+        //       全栈12班学员名单操作指南：1：增加用户； 2：删除用户；3：修改用户； 4：查找用户
+        //          请输入操作模块编号：
+        //          请输入要增加学员名称
+        //定义对象数组
+        var studentArr = [{
+            sId: 1,
+            name: "张三",
+            age: 18,
+            score: 80
+        },
+        {
+            sId: 2,
+            name: "李四",
+            age: 20,
+            score: 90
+        },
+        {
+            sId: 3,
+            name: "王五",
+            age: 41,
+            score: 68
+        },
+        {
+            sId: 4,
+            name: "赵六",
+            age: 31,
+            score: 79
+        },
+        {
+            sId: 5,
+            name: "田七",
+            age: 67,
+            score: 1
+        },
+        {
+            sId: 6,
+            name: "王八",
+            age: 82,
+            score: 46
+        }
+        ];
+        //定义方法  遍历数组元素
+        function getArr(arr) {
+            var str = "";
+            for (var i = 0; i < arr.length; i++) {
+                str = arr[i].name + "   "
+                document.write(str);
+            }
+        }
+        var num = Number(prompt("1:增加用户 ; 2:删除用户; 3:修改用户; 4:查找用户"));
+        //创建switch语句
+        switch (num) {
+            //增加
+            case 1:
+                while (true) {
+                    //提示用户输入用户名
+                    var uname = prompt("请输入要添加的用户名");
+                    //定义boolean变量 flag  初始值为 false
+                    var flag = false;
+                    //遍历数组元素  判断是否有重复的用户名
+                    for (var i = 0; i < studentArr.length; i++) {
+                        //判断如果 输入姓名  与 数组中的名字相同
+                        if (name === studentArr[i].name) {
+                            //将flag  赋值为 true
+                            flag = true;
+                            //终止循环
+                            break;
+                        } else {
+                            //否则 将flag 赋值为 false
+                            flag = false;
+                        }
+                    }
+                    //判断如果 flag 为 true
+                    if (flag == true) {
+                        //打印名字重复
+                        alert("姓名重复 请重新输入");
+                        //继续死循环
+                        continue;
+                    } else {
+                        studentArr.push({ name: uname });
+                        //打印添加成功
+                        alert("添加成功");
+                        //调用函数
+                        getArr(studentArr);
+                        //终止循环
+                        break;
+                    }
+                }
+                break;
+            //删除    
+            case 2:
+                while (true) {
+                    //提示用户输入用户名
+                    var name = prompt("请输入要删除的用户名");
+                    //定义boolean变量 flag  初始值为 false
+                    var flag = false;
+                    //定义变量 储存要删除元素的索引
+                    var index = 1;
+                    //遍历数组元素  判断是否有重复的用户名
+                    for (var i = 0; i < studentArr.length; i++) {
+                        //判断如果 输入姓名  与 数组中的名字相同
+                        if (name === studentArr[i].name) {
+                            //将flag  赋值为 true
+                            flag = true;
+                            //保存索引
+                            index = i;
+                            //终止循环
+                            break;
+                        } else {
+                            //否则 将flag 赋值为 false
+                            flag = false;
+                        }
+                    }
+                    //判断如果 flag 为 true
+                    if (flag == true) {
+                        //删除这个元素
+                        studentArr.splice(i, 1);
+                        //打印
+                        alert("删除成功");
+                        //调用函数
+                        getArr(studentArr);
+                        //终止循环
+                        break;
+                    } else {
+                        //打印删除成功
+                        alert("删除失败  找不到该用户");
+                        //继续死循环
+                        continue;
+                    }
+                }
+                break;
+            //修改   
+            case 3:
+                while (true) {
+                    //提示用户输入要修改的用户名
+                    var name = prompt("请输入需要修改的用户名");
+                    //定义boolean变量 flag  初始值为 false
+                    var flag = false;
+                    //定义变量 储存要修改元素的索引
+                    var index = 1;
+                    //遍历数组元素  判断是否有重复的用户名
+                    for (var i = 0; i < studentArr.length; i++) {
+                        //判断如果 输入姓名  与 数组中的名字相同
+                        if (name === studentArr[i].name) {
+                            //将flag  赋值为 true
+                            flag = true;
+                            //保存索引
+                            index = i;
+                            //终止循环
+                            break;
+                        } else {
+                            //否则 将flag 赋值为 false
+                            flag = false;
+                        }
+                    }
+                    //判断如果 flag 为 true
+                    if (flag == true) {
+                        //提示用户输入新用户名
+                        var newName = prompt("请输入新用户名");
+                        //修改这个元素
+                        studentArr[index].name = newName;
+                        //打印
+                        alert("修改成功");
+                        //调用函数
+                        getArr(studentArr);
+                        //终止循环
+                        break;
+                    } else {
+                        //打印添加成功
+                        alert("修改失败  找不到该用户");
+                        //继续死循环
+                        continue;
+                    }
+                }
+                break;
+            //查    
+            case 4:
+                var name = prompt("请输入要查找的用户名");
+                //遍历数组元素
+                for (var i = 0; i < studentArr.length; i++) {
+                    //判断如果 输入姓名  与 数组中的名字相同
+                    if (name === studentArr[i].name) {
+                        alert("以找到");
+                        //调用函数
+                        getArr(studentArr);
+                        break;
+                    } else {
+                        alert("未找到");
+                        //调用函数
+                        getArr(studentArr);
+                        break;
+                    }
+                }
+                break;
+            default:
+                alert("请输入范围内数值");
+                break;
+        }
+    </script>
+</body>
+
+</html>

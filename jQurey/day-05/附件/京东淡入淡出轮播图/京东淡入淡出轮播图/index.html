@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <title>轮播图</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .slider {
+      height: 340px;
+      width: 790px;
+      margin: 100px auto;
+      position: relative;
+    }
+
+    .slider ul li {
+      position: absolute;
+      display: none;
+    }
+
+    .slider ul li:first-child {
+      display: block;
+    }
+
+    .arrow {
+      display: none;
+    }
+
+    .arrow-left,
+    .arrow-right {
+      font-family: "SimSun", "宋体";
+      width: 30px;
+      height: 60px;
+      background-color: rgba(0, 0, 0, 0.1);
+      position: absolute;
+      top: 50%;
+      margin-top: -30px;
+      cursor: pointer;
+      text-align: center;
+      line-height: 60px;
+      color: #fff;
+      font-weight: 700;
+      font-size: 30px;
+    }
+
+    .arrow-left:hover,
+    .arrow-right:hover {
+      background-color: rgba(0, 0, 0, .5);
+    }
+
+    .arrow-left {
+      left: 0;
+    }
+
+    .arrow-right {
+      right: 0;
+    }
+
+    .slider ol {
+      position: absolute;
+      left: 50%;
+      bottom: 20px;
+      transform: translate(-50%);
+    }
+
+    .slider ol li {
+      float: left;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      margin-right: 10px;
+      background-color: #fff;
+    }
+
+    .slider ol li.current {
+      background-color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="slider">
+    <ul>
+      <li><a href="#"><img src="img/jd1.jpg" alt=""></a></li>
+      <li><a href="#"><img src="img/jd2.jpg" alt=""></a></li>
+      <li><a href="#"><img src="img/jd3.jpg" alt=""></a></li>
+      <li><a href="#"><img src="img/jd4.jpg" alt=""></a></li>
+      <li><a href="#"><img src="img/jd5.jpg" alt=""></a></li>
+      <li><a href="#"><img src="img/jd6.jpg" alt=""></a></li>
+      <li><a href="#"><img src="img/jd7.jpg" alt=""></a></li>
+      <li><a href="#"><img src="img/jd8.jpg" alt=""></a></li>
+    </ul>
+    <!--箭头-->
+    <div class="arrow">
+      <span class="arrow-left">&lt;</span>
+      <span class="arrow-right">&gt;</span>
+    </div>
+    <!-- 小圆点 -->
+    <ol>
+
+    </ol>
+  </div>
+
+  <!-- - 功能1：显示小圆点，第一个小圆点是有current这个类名的
+- 功能2：鼠标移动到大盒子上面，左右的箭头就会显示出来，鼠标离开就会隐藏
+- 功能3：鼠标经过哪个小圆点上面，这个小圆点的背景色就是红色(current类名已经提供)，同时大图也在跟着切换
+- 功能4：点击右箭头，图片进行下一张的切换，当切换到最后一张的时候，接着从第一张开始，下面的小圆点也在跟着在切换，对应的背景色变红
+- 功能5：点击左箭头，图片进行上一张的切换，当切换到第一张的时候，接着从最后一张继续倒着切换，下面的小圆点也在跟着切换，对应的背景色变红
+- 功能6： 自动轮播的效果
+- 功能7： 当鼠标移动到大盒子上面的时候，停止自动轮播，鼠标离开，自动轮播继续
+  注意： 在点你鼠标移动上去自动轮播停止，你再去测试上面那些功能，看上面的效果是否依旧没有问题 -->
+  <script src="../../../../lib/jquery-3.4.1.min.js"></script>
+  <script>
+    // 功能1
+
+    //  功能2
+    $('.slider').on('mouseenter', function () {
+      $('.arrow').show()
+      clearInterval(timer)
+    })
+    $('.slider').on('mouseleave', function () {
+      $('.arrow').hide()
+      timer = setInterval(function () {
+        $('.arrow-right').click()
+      }, 2000)
+    })
+    //  功能4
+    let index = 0;
+    // 1.点击arrow-right按钮 让轮播图往左走(切换图片)
+    // 1.1 给arrow-right按钮添加点击事件
+    $('.arrow-right').on('click', function () {
+      // 1.1.1 点击一次 记录次数的变量应该+1
+      index++;
+      // 1.1.2 给轮播图的图片做限制
+      if (index > $('.slider li').length - 1) {
+        index = 0;
+      }
+      // 1.1.3 让图片进行切换 
+      // $('.slider li').eq(index).fadeIn(500);
+      // $('.slider li').eq(index).siblings('li').fadeOut(500)
+
+      $('.slider li').eq(index).fadeIn(500).siblings('li').fadeOut(500)
+    })
+
+    // 2.点击arrow-left按钮  让轮播图往右走(切换图片)
+    // 2.1 arrow-right 按钮提那就点击事件
+    $('.arrow-left').on('click', function () {
+      // 2.1.1 点击一次 记录次数的变量应该-1
+      index--;
+      // 2.1.2 给轮播图的图片做限制
+      if (index < 0) {
+        index = $('.slider li').length - 1;
+      }
+      // 2.1.3 让图片进行切换
+      $('.slider li').eq(index).fadeIn(500).siblings('li').fadeOut(500)
+    })
+    // 功能6
+    let timer = setInterval(function () {
+      $('.arrow-right').click()
+    }, 2000)
+
+
+  </script>
+</body>
+
+</html>

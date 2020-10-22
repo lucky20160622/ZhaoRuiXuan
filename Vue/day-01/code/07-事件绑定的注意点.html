@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <div id="app">
+    {{msg}}
+
+    <span @click="handleClick('小明')">点我看看</span>
+  </div>
+  <!-- 1.导入Vue的库文件 -->
+  <script src="./lib/vue-3.0.js"></script>
+  <script>
+    // 使用Vue实例对象的createApp方法创建应用实例获得数据和模板的绑定
+    let vm = Vue.createApp({
+      // 这里的data,就是用来指定被控制区域中要用到的数据
+      data() {
+        return {
+          msg: "哈库呐玛塔塔",
+          count: 1
+        }
+      },
+      methods: {
+        handleClick: function (name) {
+          this.count++;
+          alert(name + "=" + this.count);
+        }
+      }
+    })
+    // 把绑定好数据的模板插入到id为app的div中
+    vm.mount('#app');
+
+
+
+
+  </script>
+</body>
+
+</html>

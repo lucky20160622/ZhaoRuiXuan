@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>最简单的POST请求方式的ajax</h1>
+    <button>按钮</button>
+    <!-- 点击按钮 请求一个路径 获取一个Hello,World 显示在页面上 -->
+    <div></div>
+
+    <script>
+        let oBtn = document.querySelector('button');
+
+
+        oBtn.onclick = function () {
+            // 1.实例化XMLHttpRequest对象
+            let xhr = new XMLHttpRequest();
+            // 2.设置请求行(请求方式 请求地址)
+            xhr.open('POST', '/postParam');
+            // 重点: 使用POST请求必须添加请求头，form表单自动就是这样的Content-Type
+            xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+            // 3.发送请求数据(在get请求中这个地方写null)
+            xhr.send("username=zhangsan&password=123456")
+            // 4.监听并处理响应
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    // 5.把数据显示在页面上
+                    console.log(xhr.responseText)
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

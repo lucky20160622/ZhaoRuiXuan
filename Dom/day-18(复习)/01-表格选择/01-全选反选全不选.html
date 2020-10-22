@@ -1,0 +1,334 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Untitled Document</title>
+
+
+  <style type="text/css">
+    .one {
+      background-color: #9bf7d5;
+    }
+
+    .two {
+      background-color: #f3e99a;
+    }
+
+    .over {
+      background-color: #ef7125;
+    }
+
+    table {
+      border: #249bdb 1px solid;
+      width: 500px;
+      border-collapse: collapse;
+    }
+
+    table td {
+      border: #249bdb 1px solid;
+      padding: 10px;
+    }
+
+    table th {
+      border: #249bdb 1px solid;
+      padding: 10px;
+      background-color: rgb(200, 200, 200);
+    }
+  </style>
+</head>
+
+<body>
+
+  <table id="mailtable">
+    <tr>
+      <th>
+        <input type="checkbox" name="all" />全选
+      </th>
+      <th>
+        发件人
+      </th>
+      <th>
+        邮件名称
+      </th>
+      <th>
+        邮件附属信息
+      </th>
+    </tr>
+
+    <tr class="one">
+      <td>
+        <input type="checkbox" name="mail" />
+      </td>
+      <td>
+        张三11
+      </td>
+      <td>
+        我是邮件11
+      </td>
+      <td>
+        我是附属信息11
+      </td>
+    </tr>
+    <tr class="two">
+      <td>
+        <input type="checkbox" name="mail" />
+      </td>
+      <td>
+        张三22
+      </td>
+      <td>
+        我是邮件22
+      </td>
+      <td>
+        我是附属信息22
+      </td>
+    </tr>
+    <tr class="one">
+      <td>
+        <input type="checkbox" name="mail" />
+      </td>
+      <td>
+        张三33
+      </td>
+      <td>
+        我是邮件33
+      </td>
+      <td>
+        我是附属信息33
+      </td>
+    </tr>
+    <tr class="two">
+      <td>
+        <input type="checkbox" name="mail" />
+      </td>
+      <td>
+        张三44
+      </td>
+      <td>
+        我是邮件44
+      </td>
+      <td>
+        我是附属信息44
+      </td>
+    </tr>
+
+    <tr>
+      <th>
+
+      </th>
+      <th colspan="3">
+        <input type="button" value="全选" />
+        <input type="button" value="取消全选" />
+        <input type="button" value="反选" />
+
+      </th>
+    </tr>
+  </table>
+  <script>
+
+    // 需求2.全选、反选、取消全选效果实现(素材在案例中):
+    // - 点击全选按钮，列表中的选项都被选中
+    // - 点击取消全选按钮，列表中的选项都被取消选中
+    // - 勾选全选复选框，列表中的选项都被选中，取消全选复选框的勾选，列表中的选项都被取消选中
+    // - 点击反选按钮，列表中选项选结果呈相反选中结果（原来选择的都取消选择，原来未选择的都变为选择）
+    // - 点击列表中的复选框(备注：中间那四个复选框) ，当列表中的复选框全部选中，上面的全选复选框也选中，反之不选中
+    // 获取元素
+    let allcheck = document.getElementsByName('all')[0];
+    let lists = document.getElementsByName('mail');
+    // console.log(lists);
+    let allBtn = document.querySelectorAll('input[type="button"]')[0];
+    let cancelBtn = document.querySelectorAll('input[type="button"]')[1];
+    let reverseBtn = document.querySelectorAll('input[type="button"]')[2];
+
+    //- 点击全选按钮，列表中的选项都被选中
+    // 1.获取全选按钮
+    // 2.给全选按钮添加点击事件
+    allcheck.onclick = function () {
+      // 2.1.遍历每项的复选框
+      for (let i = 0; i < lists.length; i++) {
+        // 2.1.1 让每项复选框的checked属性和全选复选框的checked一样
+        lists[i].checked = this.checked;
+      }
+    }
+    // 点击列表中的复选框(备注：中间那四个复选框) ，当列表中的复选框全部选中，上面的全选复选框也选中，反之不选中
+    // 1.遍历每项复选框
+    for (let i = 0; i < lists.length; i++) {
+      // 1.1 给每项复选框添加点击事件
+      lists[i].onclick = function () {
+        // 1.2 假设每项都选中 flag = true
+        let flag = true;
+        // 1.3 通过遍历 看看是否每项真的都选中
+        for (let j = 0; j < lists.length; j++) {
+          // 1.3.1 如果其中有一项没选中 就让flag = false
+          if (!lists[j].checked) {
+            // 1.3.2 只要出现一项没选中那么就说明全选复选框也不能选中 立马停止执行循环
+            flag = false;
+            break;
+          }
+        }
+        // 1.4 让全选复选框的只 = flag
+        allcheck.checked = flag;
+      }
+    }
+    // 点击全选按钮，列表中的选项都被选中
+    allBtn.onclick = function () {
+      // 列表中的选项都选中
+      for (let i = 0; i < lists.length; i++) {
+        lists[i].checked = true;
+      }
+      // 全选复选框选中
+      allcheck.checked = true;
+    }
+    // 点击取消全选按钮，列表中的选项都被取消选中
+    // 给取消全选按钮添加点击事件
+    cancelBtn.onclick = function () {
+      // 遍历每项 让每项都不选中
+      for (let i = 0; i < lists.length; i++) {
+        lists[i].checked = false;
+      }
+      // 全选复选框不选中
+      allcheck.checked = false;
+    }
+
+    // 点击反选按钮，列表中选项选结果呈相反选中结果（原来选择的都取消选择，原来未选择的都变为选择）
+    reverseBtn.onclick = function () {
+      for (let i = 0; i < lists.length; i++) {
+        lists[i].checked = !lists[i].checked;
+      }
+    }
+
+
+    console.log(event)
+
+
+  //   let allcheck = document.getElementsByName('all')[0];
+  //   let lists = document.getElementsByName('mail');
+  //   // console.log(lists);
+  //   let allBtn = document.querySelectorAll('input[type="button"]')[0];
+  //   let cancelBtn = document.querySelectorAll('input[type="button"]')[1];
+  //   let reverseBtn = document.querySelectorAll('input[type="button"]')[2];
+
+  //   allcheck.onclick=function(){
+  //     for(let i=0;i<lists.length;i++){
+  //       lists[i].checked=this.checked
+  //     }
+  //   }
+  //   for(let i=0;i<lists.length;i++){
+  //     lists[i].onclick=function(){
+  //       let flag=true
+  //       for(let j=0;j<lists.length;j++){
+  //         if(!lists[j]!=true){
+  //           flag=false
+  //           break
+  //         }
+  //       }
+  //       allcheck.checked=flag
+  //     }
+  //   }
+  //   allBtn.onclick=function(){
+  //     for(let i=0;i<lists.length;i++){
+  //       lists[i].checked=true
+  //     }
+  //     allcheck.checked=true
+  //   }
+  //   cancelBtn.onclick=function(){
+  //     for(let i=0;i<lists.length;i++){
+  //       lists[i].checked=false
+  //     }
+  //     allcheck.checked=false
+  //   }
+  //    reverseBtn.onclick = function () {
+  //     for (let i = 0; i < lists.length; i++) {
+  //       lists[i].checked = !lists[i].checked;
+  //     }
+  //   }
+
+  //  console.log(event);
+
+
+  // let allcheck = document.getElementsByName('all')[0];
+  //       let lists = document.getElementsByName('mail');
+  //       // console.log(lists);
+  //       let allBtn = document.querySelectorAll('input[type="button"]')[0];
+  //       let cancelBtn = document.querySelectorAll('input[type="button"]')[1];
+  //       let reverseBtn = document.querySelectorAll('input[type="button"]')[2];
+  //       allcheck.onclick = function () {
+  //           for (let i = 0; i < lists.length; i++) {
+  //               lists[i].checked = this.checked
+  //           }
+  //       }
+  //       for (let i = 0; i < lists.length; i++) {
+  //           lists[i].onclick = function () {
+  //               let flag = true
+  //               for (let j = 0; j < lists.length; j++) {
+  //                   if (lists[j].checked) {
+  //                       flag = false
+  //                       break
+  //                   }
+  //               }
+  //               allcheck.checked = flag
+  //           }
+  //       }
+  //       allBtn.onclick = function () {
+  //           for (let i = 0; lists.length; i++) {
+  //               lists[i].checked = true
+  //           }
+  //           allcheck.checked = true
+  //       }
+  //       cancelBtn.onclick = function () {
+  //           for (let i = 0; lists.length; i++) {
+  //               lists[i].checked = false
+  //           }
+  //           allcheck.checked = false
+  //       }
+  //       reverseBtn.onclick = function () {
+  //           for (let i = 0; i < lists.length; i++) {
+  //               lists[i].checked = !lists[i].checked;
+  //           }
+  //       }
+
+  // let allcheck = document.getElementsByName('all')[0];
+  //       let lists = document.getElementsByName('mail');
+  //       // console.log(lists);
+  //       let allBtn = document.querySelectorAll('input[type="button"]')[0];
+  //       let cancelBtn = document.querySelectorAll('input[type="button"]')[1];
+  //       let reverseBtn = document.querySelectorAll('input[type="button"]')[2];
+  //       allcheck.onclick = function () {
+  //           for (let i = 0; i < lists.length; i++) {
+  //               lists[i].checked = this.checked
+  //           }
+  //       }
+  //       for (let i = 0; i < lists.length; i++) {
+  //           lists[i].onclick = function () {
+  //               let flag = true
+  //               for (let j = 0; j < lists.length; j++) {
+  //                   if (lists[j].checked) {
+  //                       flag = false
+  //                       break
+  //                   }
+  //               }
+  //               allcheck.checked = flag
+  //           }
+  //       }
+  //       allBtn.onclick = function () {
+  //           for (let i = 0; lists.length; i++) {
+  //               lists[i].checked = true
+  //           }
+  //           allcheck.checked = true
+  //       }
+  //       cancelBtn.onclick = function () {
+  //           for (let i = 0; lists.length; i++) {
+  //               lists[i].checked = false
+  //           }
+  //           allcheck.checked = false
+  //       }
+  //       reverseBtn.onclick = function () {
+  //           for (let i = 0; i < lists.length; i++) {
+  //               lists[i].checked = !lists[i].checked;
+  //           }
+  //       }
+  </script>
+</body>
+
+</html>

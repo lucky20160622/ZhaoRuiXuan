@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    // 5.输入三角形的三边，根据输入的三角形的三边判断是否能组成三角形，如果可以进一步 判断三角形的类型
+//     等边三角形(三边相等) 等腰三角形(两边相等)  直角三角形(a平方+b平方=c平方)  其他三角形（不满足上面的）
+var a=+prompt('请输入数字')
+var b=+prompt('请输入数值')
+var c=+prompt('请输入数值')
+if((a+b>c&&a+c>b&&b+c>a)||(a-b<c&&a-c<b&&b-c<a)){
+    if(a==b&&a==c){
+        alert('等边三角形')
+    }else if((a==b&&a==c)||(b==a&&b==c)){
+        alert('等腰三角形')
+    }else if (
+          a * a + b * b == c * c ||
+          c * c + b * b == a * a ||
+          a * a + c * c == b * b
+        ) {
+          alert("这个三角形是直角三角形");
+        } else {
+          alert("这个三角形是其他三角形");
+        }
+      } else {
+        alert("这不是个三角形");
+}
+    </script>
+</body>
+</html>

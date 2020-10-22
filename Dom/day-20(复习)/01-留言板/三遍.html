@@ -1,0 +1,325 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>留言板</title>
+  <link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+  <h1>留言板</h1>
+  <div id="content">
+    <div id="post">
+      <div style="background:#3EADC5 ;height:30px;">
+        昵称：<input type="submit" id="shangtian" name="Submit3"
+          style="border:none; background-color:#3EADC5; color:white;" value="默认用户点击改变" />
+      </div>
+      <div>
+        <textarea class="transition"></textarea>
+      </div>
+      <input id="postBt" type="button"
+        style="border:none; background-color:#3EADC5; color:white;border-radius:5px; width:80px; height:30px;"
+        value="发表留言" />
+      <input id="clearBt" type="button"
+        style="border:none; background-color:#3EADC5; color:white;border-radius:5px; width:80px; height:30px;"
+        value="清空" />
+    </div>
+    <!-- 留言区 -->
+    <div id="comment">
+      <!-- 这是创建元素的模板 -->
+      <!-- <span>
+        匿名发言者
+        <span class="fr">2020-03-13 21:08:55</span>
+        <p>
+          <span class="msg">111<input  id="clear" type="button" value="删除"></span>
+        </p>
+      </span> -->
+    </div>
+  </div>
+  <script>
+    //  - 页面已经给定，只写功能即可，不要在给定的页面上面添加样式之类的，只写js效果
+
+    // - 点击左上角的“默认用户点击改变”，弹出一个输入框,标题是"请输入您的名字",
+    //   如果用户没有输入，点击了确定，之前的“默认用户点击改变”的文字被 “匿名发言者”替代
+    //   如果用户没有输入，点击了取消，之前的“默认用户点击改变”的文字也会被 “匿名发言者”替代
+    //   如果用户输入了内容，点击了取消，之前的“默认用户点击改变”的文字也会被 “匿名发言者”替代
+    //   如果用户输入了内容，点击了确定，页面中弹出"欢迎您：XXX",之前的“默认用户点击改变”的文字被“用户输入的名字”替代
+
+    // - 点击“发表留言”,如果文本域的内容为空，则提示“请填写您的留言!”,否则根据页面中给定的模板，创建一条留言，之后将留言添加到留言区域内,
+    //   注意1:最新发布的留言在留言区域内的最上面
+    //   注意2：时间是当前格式化之后的时间
+
+    // - 当点击“清空”按钮的时候，
+    //   如果留言区域内没有留言，则弹出“没有需要清空的数据”
+    //   如果留言区域内有留言，则弹出“清空后不可恢复，是否确认清空?”，当点击弹出框的“取消”的时候，就不清空下面的留言；如果点击弹出框的“确认”的时候，下面留言区域内就会被清空
+
+    // - 当点击每条留言上面的"删除"按钮，对应的这条数据就会被删除掉从留言区域中
+
+
+
+    // 获取元素
+    var changname = document.querySelector('#shangtian')
+    var content = document.querySelector('.transition')
+    // 发表留言
+    var release = document.querySelector('#postBt')
+    var clear = document.querySelector('#clearBt')
+    var messageArea = document.querySelector('#comment')
+
+
+    // 定义变量，放名字
+    var name = "匿名发言者";
+    // 注册事件，更改用户名
+    changname.onclick = function () {
+      // prompt
+      name = prompt("请输入您的名字");
+      // 开始判断
+      if (name.trim().length == 0 || name === "null") {
+        this.value = "匿名发言者"
+        name = "匿名发言者"
+
+      } else if (name.trim().length !== 0) {
+        alert(`欢迎您：${name}`)
+        this.value = name
+      }
+    }
+
+
+    //  发表留言
+    // 证明changename点击了
+    release.onclick = function () {
+      // 获取文本域 内容
+      var val = content.value;
+      if (val.trim().length == 0) {
+        alert("请填写您的留言!")
+      } else {
+        var spanObj = document.createElement('span')
+        // 用户输入了内容
+        var str = ` 
+         ${name}
+        <span class="fr">${time()}</span>
+        <p>
+          <span class="msg">${val}<input  id="clear" type="button" value="删除"></span>
+        </p>
+      `
+        spanObj.innerHTML = str
+        // 插入到留言区域内
+        messageArea.insertBefore(spanObj, messageArea.children[0])
+        //之后我去清空文本域
+        content.value = ""
+        // 删除功能
+        var del = spanObj.querySelector('#clear')
+        del.onclick = function () {
+          messageArea.removeChild(this.parentNode.parentNode.parentNode)
+        }
+
+
+      }
+    }
+        
+
+    // 清空按钮
+    clear.onclick = function () {
+      // 
+      if (messageArea.children.length == 0) {
+        alert("没有需要清空的数据")
+      } else {
+        var isOk = confirm("清空后不可恢复，是否确认清空？")
+        if (isOk) {
+          messageArea.innerHTML = ""
+        }
+      }
+    }
+
+    // 格式化日期
+    function time() {
+      let date = new Date();
+      let y = date.getFullYear();
+      let m = date.getMonth() + 1;
+      let d = date.getDate();
+      let h = date.getHours();
+      let min = date.getMinutes();
+      let s = date.getSeconds();
+      s = s > 10 ? s : '0' + s;
+      return `${y}-${m}-${d} ${h}:${min}:${s}`
+    }
+
+
+        // 获取元素
+    //     var changname = document.querySelector('#shangtian')
+    // var content = document.querySelector('.transition')
+    // // 发表留言
+    // var release = document.querySelector('#postBt')
+    // var clear = document.querySelector('#clearBt')
+    // var messageArea = document.querySelector('#comment')
+
+
+    // // 定义变量，放名字
+    // var name = "匿名发言者";
+    // // 注册事件，更改用户名
+    // changname.onclick = function () {
+    //   // prompt
+    //   name = prompt("请输入您的名字");
+    //   // 开始判断
+    //   if (name.trim().length == 0 || name === "null") {
+    //     this.value = "匿名发言者"
+    //     name = "匿名发言者"
+
+    //   } else if (name.trim().length !== 0) {
+    //     alert(`欢迎您：${name}`)
+    //     this.value = name
+    //   }
+    // }
+
+
+    // //  发表留言
+    // // 证明changename点击了
+    // release.onclick = function () {
+    //   // 获取文本域 内容
+    //   var val = content.value;
+    //   if (val.trim().length == 0) {
+    //     alert("请填写您的留言!")
+    //   } else {
+    //     var spanObj = document.createElement('span')
+    //     // 用户输入了内容
+    //     var str = ` 
+    //      ${name}
+    //     <span class="fr">${time()}</span>
+    //     <p>
+    //       <span class="msg">${val}<input  id="clear" type="button" value="删除"></span>
+    //     </p>
+    //   `
+    //     spanObj.innerHTML = str
+    //     // 插入到留言区域内
+    //     messageArea.insertBefore(spanObj, messageArea.children[0])
+    //     //之后我去清空文本域
+    //     content.value = ""
+    //     // 删除功能
+    //     var del = spanObj.querySelector('#clear')
+    //     del.onclick = function () {
+    //       messageArea.removeChild(this.parentNode.parentNode.parentNode)
+    //     }
+
+
+    //   }
+    // }
+        
+
+    // // 清空按钮
+    // clear.onclick = function () {
+    //   // 
+    //   if (messageArea.children.length == 0) {
+    //     alert("没有需要清空的数据")
+    //   } else {
+    //     var isOk = confirm("清空后不可恢复，是否确认清空？")
+    //     if (isOk) {
+    //       messageArea.innerHTML = ""
+    //     }
+    //   }
+    // }
+
+    // // 格式化日期
+    // function time() {
+    //   let date = new Date();
+    //   let y = date.getFullYear();
+    //   let m = date.getMonth() + 1;
+    //   let d = date.getDate();
+    //   let h = date.getHours();
+    //   let min = date.getMinutes();
+    //   let s = date.getSeconds();
+    //   s = s > 10 ? s : '0' + s;
+    //   return `${y}-${m}-${d} ${h}:${min}:${s}`
+    // }
+    
+
+    //     // 获取元素
+    //     var changname = document.querySelector('#shangtian')
+    // var content = document.querySelector('.transition')
+    // // 发表留言
+    // var release = document.querySelector('#postBt')
+    // var clear = document.querySelector('#clearBt')
+    // var messageArea = document.querySelector('#comment')
+
+
+    // // 定义变量，放名字
+    // var name = "匿名发言者";
+    // // 注册事件，更改用户名
+    // changname.onclick = function () {
+    //   // prompt
+    //   name = prompt("请输入您的名字");
+    //   // 开始判断
+    //   if (name.trim().length == 0 || name === "null") {
+    //     this.value = "匿名发言者"
+    //     name = "匿名发言者"
+
+    //   } else if (name.trim().length !== 0) {
+    //     alert(`欢迎您：${name}`)
+    //     this.value = name
+    //   }
+    // }
+
+
+    // //  发表留言
+    // // 证明changename点击了
+    // release.onclick = function () {
+    //   // 获取文本域 内容
+    //   var val = content.value;
+    //   if (val.trim().length == 0) {
+    //     alert("请填写您的留言!")
+    //   } else {
+    //     var spanObj = document.createElement('span')
+    //     // 用户输入了内容
+    //     var str = ` 
+    //      ${name}
+    //     <span class="fr">${time()}</span>
+    //     <p>
+    //       <span class="msg">${val}<input  id="clear" type="button" value="删除"></span>
+    //     </p>
+    //   `
+    //     spanObj.innerHTML = str
+    //     // 插入到留言区域内
+    //     messageArea.insertBefore(spanObj, messageArea.children[0])
+    //     //之后我去清空文本域
+    //     content.value = ""
+    //     // 删除功能
+    //     var del = spanObj.querySelector('#clear')
+    //     del.onclick = function () {
+    //       messageArea.removeChild(this.parentNode.parentNode.parentNode)
+    //     }
+
+
+    //   }
+    // }
+        
+
+    // // 清空按钮
+    // clear.onclick = function () {
+    //   // 
+    //   if (messageArea.children.length == 0) {
+    //     alert("没有需要清空的数据")
+    //   } else {
+    //     var isOk = confirm("清空后不可恢复，是否确认清空？")
+    //     if (isOk) {
+    //       messageArea.innerHTML = ""
+    //     }
+    //   }
+    // }
+
+    // // 格式化日期
+    // function time() {
+    //   let date = new Date();
+    //   let y = date.getFullYear();
+    //   let m = date.getMonth() + 1;
+    //   let d = date.getDate();
+    //   let h = date.getHours();
+    //   let min = date.getMinutes();
+    //   let s = date.getSeconds();
+    //   s = s > 10 ? s : '0' + s;
+    //   return `${y}-${m}-${d} ${h}:${min}:${s}`
+    // }
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- 前端交互--异步编程与Promise概述 -->
+  <button>点我看效果</button>
+  <script src="./lib/jquery.js"></script>
+  <script>
+    // $('button').click(function () {
+    //   // 发起请求
+    //   $.ajax({
+    //     // 请求方式
+    //     type: 'get',
+    //     // 请求地址
+    //     url: "http://localhost:3000/data",
+    //     // 发送数据
+    //     data: null,
+    //     // 成功时回调函数
+    //     success: function (data) {
+    //       console.log(data);
+    //     }
+    //   })
+    // })
+
+    // =======================================================
+
+
+    // $('button').click(function () {
+    //   // 发起请求
+    //   $.ajax({
+    //     // 请求方式
+    //     type: 'get',
+    //     // 请求地址
+    //     url: "http://localhost:3000/data",
+    //     // 发送数据
+    //     data: null,
+    //     // 成功时回调函数
+    //     success: function (data) {
+    //       console.log(data);
+    //     }
+    //   })
+
+    //   // 发起请求
+    //   $.ajax({
+    //     // 请求方式
+    //     type: 'get',
+    //     // 请求地址
+    //     url: "http://localhost:3000/data1",
+    //     // 发送数据
+    //     data: null,
+    //     // 成功时回调函数
+    //     success: function (data) {
+    //       console.log(data);
+    //     }
+    //   })
+
+    //   // 发起请求
+    //   $.ajax({
+    //     // 请求方式
+    //     type: 'get',
+    //     // 请求地址
+    //     url: "http://localhost:3000/data2",
+    //     // 发送数据
+    //     data: null,
+    //     // 成功时回调函数
+    //     success: function (data) {
+    //       console.log(data);
+    //     }
+    //   })
+
+    // })
+
+
+    // 请求嵌套
+
+    $('button').click(function () {
+      // 发起请求
+      $.ajax({
+        // 请求方式
+        type: 'get',
+        // 请求地址
+        url: "http://localhost:3000/data",
+        // 发送数据
+        data: null,
+        // 成功时回调函数
+        success: function (data) {
+          console.log(data);
+          // 发起请求
+          $.ajax({
+            // 请求方式
+            type: 'get',
+            // 请求地址
+            url: "http://localhost:3000/data1",
+            // 发送数据
+            data: null,
+            // 成功时回调函数
+            success: function (data) {
+              console.log(data);
+              // 发起请求
+              $.ajax({
+                // 请求方式
+                type: 'get',
+                // 请求地址
+                url: "http://localhost:3000/data2",
+                // 发送数据
+                data: null,
+                // 成功时回调函数
+                success: function (data) {
+                  console.log(data);
+                }
+              })
+            }
+          })
+        }
+      })
+
+      // 通过代码嵌套的方式可以解决异步代码按照顺序执行
+      // 但是嵌套代码 可读性差 
+      // 我们把嵌套代码 也叫回调地狱
+      // 如何把嵌套代码变成面条代码 就要使用Promise
+
+
+      // $('.box').width(200).height(300).css().animate()
+
+
+
+
+
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,298 @@
+body {
+  background-color: #f7f7f7;
+}
+/* 顶部 */
+nav {
+  height: calc(90rem / 64);
+  width: 100%;
+  background-color: #ea2d2d;
+  box-sizing: border-box;
+}
+.nav-top {
+  padding: 0 calc(17rem / 64);
+  padding-top: calc(11rem / 64);
+  box-sizing: border-box;
+}
+.nav-top img {
+  float: left;
+  height: calc(28rem / 64);
+}
+.nav-top img:nth-child(2) {
+  margin-left: calc(140rem / 64);
+}
+.nav-top img:last-child {
+  float: right;
+}
+.nav-bottom {
+  padding: 0 calc(12rem / 64);
+  padding-bottom: calc(7rem / 64);
+  padding-top: calc(12rem / 64);
+  box-sizing: border-box;
+}
+.nav-bottom .search {
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: calc(50rem / 64);
+  padding-left: calc(11rem / 64);
+  box-sizing: border-box;
+  height: calc(32rem / 64);
+  line-height: calc(32rem / 64);
+}
+.nav-bottom .search img {
+  height: calc(16rem / 64);
+  vertical-align: baseline;
+}
+.nav-bottom .search input {
+  background-color: rgba(255, 255, 255, 0);
+  border: 0;
+  color: #757575;
+}
+.hint {
+  width: 100%;
+  height: calc(160rem / 64);
+  background-color: #fff;
+  padding-top: calc(10rem / 64);
+
+  box-sizing: border-box;
+}
+.hint img {
+  height: calc(42rem / 64);
+  margin-bottom: calc(5rem / 64);
+}
+.hint a {
+  width: 20%;
+  font-size: calc(11rem / 64);
+  float: left;
+  text-align: center;
+  margin-bottom: calc(14rem / 64);
+}
+/* 广告 */
+.id,
+.id img {
+  width: 100%;
+}
+/* 活动 */
+.new {
+  padding-top: calc(10rem / 64);
+  box-sizing: border-box;
+}
+.new img {
+  height: calc(196rem / 64);
+}
+/* 推荐 */
+.recommend {
+  height: calc(136rem / 64);
+
+  margin: 0 calc(14rem / 64);
+
+  margin-top: calc(14rem / 64);
+}
+.recommend div {
+  float: left;
+}
+.recommend-text {
+  padding-top: calc(20rem / 64);
+  box-sizing: border-box;
+  padding-left: calc(10rem / 64);
+  margin-right: calc(38rem / 64);
+}
+.recommend-text h2 {
+  font-size: calc(24rem / 64);
+  font-weight: bold;
+  margin-bottom: calc(5rem / 64);
+}
+.recommend-text p {
+  font-size: calc(16rem / 64);
+  color: #9a999a;
+}
+.recommend-content div {
+  float: left;
+  text-align: center;
+  margin-right: calc(30rem / 64);
+}
+.recommend-content img {
+  width: calc(70rem / 64);
+}
+.recommend-top {
+  background-color: #fff;
+  width: 100%;
+  padding-bottom: calc(10rem / 64);
+  box-sizing: border-box;
+}
+.recommend-bottom {
+  height: calc(30rem / 64);
+  line-height: calc(30rem / 64);
+  margin-top: calc(2rem / 64);
+  background-color: #fff;
+  width: 100%;
+  border-bottom-right-radius: calc(20rem / 64);
+  border-bottom-left-radius: calc(20rem / 64);
+}
+.recommend-bottom img {
+  height: calc(15rem / 64);
+  float: left;
+  margin-top: calc(10rem / 64);
+  margin-left: calc(10rem / 64);
+}
+.recommend-bottom div {
+  padding: 0 calc(10rem / 64);
+  background-color: #ffcc00;
+  border-radius: 10px;
+  margin: 0 calc(10rem / 64);
+  height: calc(20rem / 64);
+  line-height: 1;
+  margin-top: calc(6rem / 64);
+}
+
+.id-two img {
+  float: left;
+
+  width: 33.33%;
+}
+/* 推荐榜单 */
+.list {
+  padding: 0 calc(12rem / 64);
+  box-sizing: border-box;
+}
+.list > h2 {
+  font-size: calc(24rem / 64);
+  font-weight: bold;
+  margin-top: calc(16rem / 64);
+  margin-bottom: calc(10rem / 64);
+}
+.list-content {
+  display: flex;
+}
+.list-content div {
+  flex: 1;
+  width: calc(112rem / 64);
+  margin-left: calc(10rem / 64);
+  border-radius: calc(20rem / 64);
+  overflow: hidden;
+  background-color: #e7b389;
+  text-align: center;
+  position: relative;
+}
+.list-content div span {
+  position: absolute;
+  padding: calc(5rem / 64) calc(5rem / 64);
+  border: 1px solid #e7b389;
+  bottom: calc(52rem / 64);
+  left: calc(62rem / 64);
+  background-color: #fff;
+  border-radius: calc(20rem / 64);
+  color: #d9a87a;
+}
+.list-content div:first-child {
+  margin-left: 0;
+}
+.list-content div img {
+  width: 100%;
+}
+.list-content div h2 {
+  margin-top: calc(12rem / 64);
+  margin-bottom: calc(2rem / 64);
+  color: #fff;
+}
+.list-content div p {
+  margin-bottom: calc(6rem / 64);
+  color: #f9efe6;
+}
+.list-two {
+  padding: 0 calc(12rem / 64);
+  display: flex;
+  margin-top: calc(10rem / 64);
+}
+.list-two div {
+  flex: 1;
+  background-color: #fff;
+  margin-right: calc(2rem / 64);
+  position: relative;
+}
+.list-two div img {
+  width: 50%;
+}
+.list-two div h2 {
+  font-size: calc(20rem / 64);
+  margin-top: calc(10rem / 64);
+  margin-left: calc(5rem / 64);
+  margin-bottom: calc(5rem / 64);
+}
+.list-two div p {
+  font-size: calc(16rem / 64);
+  margin-left: calc(5rem / 64);
+  color: #999999;
+  margin-bottom: calc(5rem / 64);
+}
+#two {
+  margin-top: calc(2rem / 64);
+}
+.list-two div span {
+  position: absolute;
+  padding: 0 calc(5rem / 64);
+  top: calc(10rem / 64);
+  right: calc(5rem / 64);
+  background-color: #f9f5ee;
+  color: #bf8a4a;
+  border-radius: calc(20rem / 64);
+}
+/* 猜你喜欢 */
+.love {
+  margin-top: calc(30rem / 64);
+  padding: 0 calc(12rem / 64);
+  box-sizing: border-box;
+}
+.love > img {
+  width: 100%;
+}
+.love-content div {
+  width: calc(300rem / 64);
+  float: left;
+  background-color: #fff;
+  border-radius: calc(10rem / 64);
+  margin-top: calc(12rem / 64);
+}
+.love-content div:nth-child(2) {
+  margin-left: calc(16rem / 64);
+}
+.love-content div img {
+  width: 100%;
+}
+.love-content div p {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  word-break: break-all;
+  margin: calc(10rem / 64) calc(10rem / 64);
+}
+.love-content div span {
+  padding: 0 calc(6rem / 64);
+  border: 1px solid #ffbb00;
+  border-radius: calc(10rem / 64);
+}
+.love-content div .one {
+  background-color: #ffbb00;
+  margin-right: calc(6rem / 64);
+  margin-left: calc(12rem / 64);
+}
+.love-content div s {
+  margin-top: calc(10rem / 64);
+  margin-left: calc(12rem / 64);
+  color: red;
+  font-size: calc(26rem / 64);
+  display: inline-block;
+}
+.love-content div b {
+  color: #9e9e9f;
+}
+/* 底部 */
+footer {
+  width: 100%;
+  padding-bottom: calc(60rem / 64);
+}
+footer img {
+  width: 100%;
+}
+footer img:first-child {
+  margin-top: calc(40rem / 64);
+}

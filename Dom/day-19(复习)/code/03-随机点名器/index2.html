@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .container {
+      width: 1600px;
+      position: absolute;
+      left: 50%;
+      transform: translate(-50%);
+      height: 643px;
+      background: url(./images.jpg) no-repeat;
+    }
+
+    .content {
+      width: 700px;
+      height: 350px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+
+    .content p {
+      color: #138eee;
+      font-size: 66px;
+    }
+
+    .content span {
+      color: #fff;
+      font-size: 25px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="content">
+      <!-- 以后名字在这里 -->
+      <p>亲，准备好点名了吗？</p>
+      <!-- 按钮 -->
+      <span>开始点名</span>
+    </div>
+  </div>
+  <script>
+    // 1. 随机点名器效果(附件)：
+
+    // - 点击"开始点名"按钮，文字就会改成"停止点名",上面就会不断替换名字
+    // - 再次点击按钮，文字就会改成"开始点名",上面就显示当前选中的名字
+
+    // 定义数据
+    var names = ["王亚亚", "康春龙", "谢仲龙", "袁旭东", "范志伟", "杜鑫博", "官呈达", "谌雯雯", "杨文林", "周子轩", "苏傲"]
+
+
+    // 1.获取 p标签 span标签
+    let p = document.querySelector('p');
+    let span = document.querySelector('span');
+    // 2.状态变量flag的值为true
+    let flag = true;
+    // 3.定时器的初始化
+    let timer = null;
+
+    // 4.给span添加点击事件、
+    span.onclick = function () {
+      // 5.判断一下flag的值是否为true
+      if (flag) {//  // 5.1 如果为true
+        // 5.1.0 随机出人的名字的序号
+        timer = setInterval(function () {
+          let num = Math.ceil(Math.random() * names.length - 1);
+          p.innerHTML = names[num];
+        }, 30)
+        // 5.1.1 按钮得变  停止点名
+        // 5.1.2 状态得变 false
+        flag = false;
+        this.innerHTML = "停止点名"
+        // 5.1.3 把人的名字写进p标签
+      } else {// 5.2 如果不为true
+
+        // 5.2.1 停止定时器
+        clearInterval(timer);
+        // 5.2.2 状态还要变 true
+        flag = true;
+        this.innerHTML = "开始点名"
+      }
+
+
+
+    }
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <div class="us">
+      <label for="">账号</label> <input type="text" v-model="username" @keyup.alt.enter="clear">
+    </div>
+    <div class="ps">
+      <label for="">密码</label> <input type="password" v-model="password" @keyup.delete="clear">
+    </div>
+
+    <!-- <button @click="clear">点我清空</button> -->
+  </div>
+
+  <script src="./lib/vue-3.0.js"></script>
+  <script>
+    let vm = Vue.createApp({
+      data() {
+        // return {}  如果不写这句话 会提示下面的话
+        //  data() should return an object.
+        return {
+          username: "",
+          password: ""
+        }
+      },
+      methods: {
+        clear() {
+          this.username = "";
+          this.password = ""
+        }
+      }
+    }).mount('#app');
+  </script>
+</body>
+
+</html>

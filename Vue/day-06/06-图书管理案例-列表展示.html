@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    .grid {
+      margin: auto;
+      width: 500px;
+      text-align: center;
+    }
+
+    .grid table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .grid th,
+    td {
+      padding: 10;
+      border: 1px dashed orange;
+      height: 35px;
+      line-height: 35px;
+    }
+
+    .grid th {
+      background-color: orange;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <div class="grid">
+      <table>
+        <thead>
+          <tr>
+            <th>编号</th>
+            <th>名称</th>
+            <th>时间</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(item, index) in books" :key="item.id">
+            <td>{{item.id}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.date}}</td>
+            <td>
+              <a href="">修改</a>
+              <span>|</span>
+              <a href="">删除</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <script src="./lib/vue-3.0.0.js"></script>
+  <script>
+    let vm = Vue.createApp({
+      // data数据域
+      data() {
+        return {
+          books: ""
+        }
+      },
+      // 当页面打开 我们要获取数据,数据在localStorage中
+      created() {
+        // 获取localstorage中的数据 如果没有怎么办
+        this.books = JSON.parse(localStorage.getItem('books') || '[]');
+      },
+      methods: {
+
+      }
+    }).mount('#app')
+  </script>
+</body>
+
+</html>

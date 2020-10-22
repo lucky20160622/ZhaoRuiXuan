@@ -1,0 +1,242 @@
+@media screen and (width: 320px) {
+  html {
+    font-size: calc(320px / 20);
+  }
+}
+@media screen and (width: 375px) {
+    html{
+        font-size:calc(375px / 20)
+    }
+}
+@media screen and (width:414px) {
+    html{
+        font-size:calc(414px /20)
+    }
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(247, 244, 241);
+}
+header {
+  position: relative;
+  width: 100%;
+  height: calc(88rem / 32);
+  line-height: calc(88rem / 32);
+  background-color: rgb(255, 155, 37);
+}
+header i {
+  position: absolute;
+  left: calc(18rem / 32);
+  top: calc(30rem / 32);
+  width: calc(20rem / 32);
+  height: calc(32rem / 32);
+  background-image: url(../image/back-icon.png);
+  background-size: calc(20rem / 32) calc(32rem / 32);
+}
+header span {
+  color: white;
+  margin-left: calc(50rem / 32);
+}
+
+.box {
+  width: 100%;
+  height: calc(82rem / 32);
+  line-height: calc(82rem / 32);
+  overflow: hidden;
+}
+.box span {
+  float: left;
+  margin-left: calc(26rem / 32);
+}
+.box i {
+  font-style: normal;
+  color: rgb(137,137,137);
+  float: right;
+  margin-right: calc(26rem / 32);
+}
+
+.green {
+  background-image: url("../image/backgrpond_1.png");
+  color: white;
+  width: calc(588rem / 32);
+  height: calc(313rem / 32);
+  margin-left: calc(26rem / 32);
+  overflow: hidden;
+  background-size: calc(587rem / 32) calc(314rem / 32);
+  background-repeat: no-repeat;
+}
+.green h3 {
+ margin: 0;
+ padding: 0;
+  font-size: 20px;
+  font-weight: normal;
+  margin-top: calc(36rem / 32);
+  margin-left: calc(30rem / 32);
+}
+.green p {
+  font-size: 12px;
+  margin: 0;
+  color: rgb(178, 237, 197);
+  margin-left: calc(30rem / 32);
+  margin-top: calc(5rem / 32);
+}
+.green span{
+    font-size: 12px;
+}
+.green img{
+    width: calc(22rem / 32);
+    margin-left: calc(30rem / 32);
+    margin-top: calc(55rem / 32);
+}
+.green span:nth-child(5){
+  background-color: rgba(0,0,0,0.5);
+    border-radius: 3px;
+    padding: 2px;
+    margin-left: calc(67rem / 32);
+}
+.green i{
+    margin-top: calc(166rem / 32);
+    margin-left: calc(92rem / 32);
+    /* background-image: url("../image/sprite-sheet_3.png"); */
+    background-size: calc(28rem / 32) calc(21rem / 32);
+    color: rgb(142,142,142);
+    font-style: normal;
+    font-size: 14px;
+}
+
+.sprite{
+  margin-left: calc(26rem / 32);
+  width: calc(588rem / 32);
+  height: calc(220rem / 32);
+  background-image: url("../image/sprite-sheet_2.png");
+  background-size: calc(588rem / 32) calc(220rem / 32);
+  color: white;
+}
+.money{
+  font-size: calc(22rem / 32);
+}
+.money span:nth-child(1){
+  font-size: calc(32rem / 32);
+}
+.money span:nth-child(2){
+  font-size: calc(72rem / 32);
+}
+.money i{
+  font-style: normal;
+  color: rgb(230,194,243);
+}
+.sprite p{
+    font-size: calc(22rem / 32);
+    margin-top: calc(23rem / 32);
+}
+.left{
+  margin-left: calc(30rem / 32);
+}
+.left1{
+  margin-left: calc(36rem / 32);
+  margin-top: calc(-3rem /32);
+}
+.left1 span{
+  background-color: rgba(0,0,0,0.5);
+  padding: 3px;
+  border-radius: 3px;
+  margin-left: calc(160rem / 32);
+}
+
+/* 重复 */
+.sprite-two{
+  margin-left: calc(26rem / 32);
+  width: calc(588rem / 32);
+  height: calc(313rem / 32);
+  margin-top: calc(10rem / 32);
+  background-image: url(../image/sprite-sheet_1.png);
+  background-size: calc(588rem / 32) calc(313rem / 32);
+  color: white;
+  background-repeat: no-repeat;
+}
+.money{
+  font-size: calc(22rem / 32);
+}
+.money span:nth-child(1){
+  font-size: calc(32rem / 32);
+}
+.money span:nth-child(2){
+  font-size: calc(72rem / 32);
+}
+.money i{
+  font-style: normal;
+  color: rgb(230,194,243);
+}
+.sprite-two p{
+  font-size: calc(22rem / 32);
+}
+.left{
+  margin-left: calc(30rem / 32);
+}
+.left1{
+  margin-left: calc(36rem / 32);
+  margin-top: calc(-3rem /32);
+}
+.left1 span{
+  background-color: rgba(0,0,0,0.5);
+  padding: 3px;
+  border-radius: 3px;
+  margin-left: calc(160rem / 32);
+}
+
+
+.discounts {
+  position: relative;
+  width: calc(573rem / 32);
+  height: calc(224rem / 32);
+  margin-left: calc(33rem / 32);
+  margin-top: calc(16rem / 32);
+  background-image: url(../image/矩形2副本.png);
+}
+.discounts-1{
+    position: absolute;
+    border: 2px solid rgb(175,175,175);
+    border-radius: 50%;
+    width: calc(106rem /32 );
+    height: calc(106rem / 32);
+    margin-left: calc(242rem / 32);
+    margin-top: calc(40rem / 32);
+}
+.discounts-1 span{
+    position: absolute;
+    margin-top: calc(50rem / 32);
+    margin-left: calc(9rem / 32);
+    border: 2px solid #aeaeae;
+    width: calc(80rem / 32);
+}
+.discounts-1 i{
+    position: absolute;
+    border: 2px solid #aeaeae;
+    height: calc(80rem /32);
+    margin-top: calc(9rem / 32);
+    margin-left: calc(50rem / 32);
+}
+.youhui{
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  margin-top: calc(165rem / 32);
+  margin-left: calc(242rem / 32);
+  color: rgb(181,181,181);
+}
+.tishi{
+  color: rgb(175,175,175);
+  margin-left: calc(26rem / 32);
+
+}
+.tishi h3{
+  font-weight: normal;
+  font-size: 14px;
+}
+.tishi p{
+  font-size: 12px;
+}

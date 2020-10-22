@@ -1,0 +1,29 @@
+/* 版心 */
+.container {
+    position: relative;
+    width: 1200px;
+    margin: 0 auto;
+}
+
+
+/* 清除浮动 */
+.clearfix:before,
+.clearfix:after {
+    content: '';
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.clearfix {
+    *zoom: 1;
+}
+
+
+/* 网页划字样式 */
+::selection {
+    color: #fff;
+    background: #9d8540;
+}

@@ -1,0 +1,81 @@
+<!DOCTYPE>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>无标题文档</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+  <div class="Xcontent">
+    <ul class="Xcontent01">
+      <div class="Xcontent06"><img src="images/X1.png"></div>
+      <ol class="Xcontent08">
+        <div class="Xcontent07"><img src="images/X1.png"></div>
+        <div class="Xcontent09"><img src="images/X7.png"></div>
+        <div class="Xcontent10"><img src="images/X8.png"></div>
+        <div class="Xcontent11"><img src="images/X9.png"></div>
+        <div class="Xcontent12"><img src="images/X10.png"></div>
+      </ol>
+      <ol class="Xcontent13">
+        <div class="Xcontent14"><a href="#">
+            <p>新物品</p>
+          </a></div>
+        <div class="Xcontent15"><img src="images/X11.png"></div>
+        <div class="Xcontent16">
+          <p>充电5分钟，温暖2小时</p>
+        </div>
+        <div class="Xcontent17">
+          <p class="Xcontent18">售价</p>
+          <p class="Xcontent19">￥<span>69.00</span></p>
+          <div class="Xcontent20">
+            <p class="Xcontent21">促销</p>
+            <img src="images/X12.png">
+            <p class="Xcontent22">领610元新年礼券，满再赠好礼</p>
+          </div>
+          <div class="Xcontent23">
+            <p class="Xcontent24">服务</p>
+            <p class="Xcontent25">30天无忧退货&nbsp;&nbsp;&nbsp;&nbsp; 48小时快速退款 &nbsp;&nbsp;&nbsp;&nbsp; 满88元免邮</p>
+          </div>
+
+        </div>
+        <div class="Xcontent26">
+          <p class="Xcontent27">颜色</p>
+          <div class="Xcontent28"><img src="images/X14.png"></div>
+          <div class="Xcontent29"><img src="images/X1.png"></div>
+        </div>
+        <div class="Xcontent30">
+          <p class="Xcontent31">数量</p>
+          <div class="Xcontent32"><img src="images/X15.png"></div>
+          <form>
+            <input class="input" value="1">
+          </form>
+          <div class="Xcontent33"><img src="images/16.png"></div>
+
+        </div>
+        <div class="Xcontent34"><a href="#"><img src="images/X17.png"></a></div>
+        <div class="Xcontent35"><a href="#"><img src="images/X18.png"></a></div>
+
+      </ol>
+    </ul>
+  </div>
+</body>
+   <script src="../../../lib/jquery-3.4.1.min.js"></script>
+   <script>
+ $(function () {
+    $(".Xcontent30 img ").click(function () {
+      var num = $(".input").val();
+      if (this == $(".Xcontent30 img ")[0]) {
+        if (num > 0) {
+          num--;
+          $(".input").val(num)
+        }
+      } else if (this == $(".Xcontent30 img ")[1]) {
+        num++;
+        $(".input").val(num)
+      }
+    })
+  })
+   </script>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <!-- 页面上所有的 v-model 所绑定到的值，必须在 data 定义 -->
+    <input type="text" v-model="n1">
+    <select v-model="opt">
+      <option value="+">+</option>
+      <option value="-">-</option>
+      <option value="*">*</option>
+      <option value="/">/</option>
+    </select>
+    <input type="text" v-model="n2">
+    <button @click="calc">=</button>
+    <input type="text" readonly :value="result">
+  </div>
+  <!-- 1.引入库 -->
+  <script src="./lib/vue-3.0.js"></script>
+  <script>
+    // 2.写vm并且挂载到app上
+    let vm = Vue.createApp({
+      // 2.1 数据
+      data() {
+        return {
+          n1: "",
+          opt: "",
+          n2: "",
+          result: null
+        }
+      },
+      // 2.2 方法
+      methods: {
+        calc() {
+          // 2.2.1 获取加数
+          let num1 = parseFloat(this.n1);
+          let num2 = parseFloat(this.n2);
+          let opt = this.opt;
+          // console.log(num1, num2, opt)
+          switch (opt) {
+            case "+":
+              this.result = num1 + num2;
+              break;
+            case "-":
+              this.result = num1 - num2;
+              break;
+            case "*":
+              this.result = num1 * num2;
+              break;
+            case "/":
+              this.result = num1 / num2;
+              break;
+          }
+        }
+      }
+    }).mount('#app')
+  </script>
+</body>
+
+</html>

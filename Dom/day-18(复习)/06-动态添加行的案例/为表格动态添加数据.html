@@ -1,0 +1,404 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="index.css" />
+</head>
+
+<body>
+  <div class="wrap">
+    <div>
+      <input type="button" value="添加数据" id="j_btnAddData" class="btnAdd" />
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>课程名称</th>
+          <th>所属学院</th>
+          <th>已学会</th>
+        </tr>
+      </thead>
+      <tbody id="j_tb">
+        <tr>
+          <td>JavaScript</td>
+          <td>传智播客-前端与移动开发学院</td>
+          <td><a href="javascrip:;" class="get">GET</a></td>
+        </tr>
+        <tr>
+          <td>CSS</td>
+          <td>传智播客-前端与移动开发学院</td>
+          <td><a href="javascrip:;" class="get">GET</a></td>
+        </tr>
+        <tr>
+          <td>HTML</td>
+          <td>传智播客-前端与移动开发学院</td>
+          <td><a href="javascrip:;" class="get">GET</a></td>
+        </tr>
+        <tr>
+          <td>jQuery</td>
+          <td>传智播客-前端与移动开发学院</td>
+          <td><a href="javascrip:;" class="get">GET</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <!--遮挡的div-->
+  <div id="j_mask" class="mask"></div>
+  <div id="j_formAdd" class="form-add">
+    <div class="form-add-title">
+      <span>添加数据</span>
+
+      <div id="j_hideFormAdd">x</div>
+    </div>
+    <div class="form-item">
+      <label class="lb" for="j_txtLesson">课程名称：</label>
+      <input class="txt" type="text" id="j_txtLesson" placeholder="请输入课程名称">
+    </div>
+    <div class="form-item">
+      <label class="lb" for="j_txtBelSch">所属学院：</label>
+      <input class="txt" type="text" id="j_txtBelSch" value="传智播客-前端与移动开发学院">
+    </div>
+    <div class="form-submit">
+      <input type="button" value="添加" id="j_btnAdd">
+    </div>
+  </div>
+  <script>
+    //  - 当点击表格中的"GET"可以删除当前行
+    //  - 当点击"添加数据"遮罩层和添加数据的文本框都会显示
+    //  - 当点击文本框对应盒子右上角"X"遮罩层和这个盒子都会隐藏
+    //  - 当在课程文本框和所属学院文本框中都输入内容的时候，点击“添加”按钮，根据数据在表格中创建一行，并且遮罩层和这个盒子都会隐藏
+    //  - 当课程文本框或者是所属学院文本框的内容都为空，或者是有一个为空，那么点击"添加"按钮，都不会在表格中创建一行，并且遮罩层和这个盒子都会隐藏
+    //  - 注意：当根据数据表格中的添加一行之后，再次点击"GET"这一行还能删除当前行
+
+
+
+    // 获取元素
+
+    // 获取tbody
+    var tbody = document.querySelector('#j_tb')
+    // 获取a
+    var dels = document.querySelectorAll('.get')
+    // 添加数据按钮
+    var addBtn = document.querySelector("#j_btnAddData");
+    // 获取遮罩层
+    var mask = document.querySelector("#j_mask")
+    // 输入框的div
+    var formAdd = document.querySelector('#j_formAdd')
+    // 隐藏的小叉
+    var hide = document.querySelector('#j_hideFormAdd')
+    // 课程
+    var lesson = document.querySelector('#j_txtLesson')
+    // 所属的学院
+    var school = document.querySelector('#j_txtBelSch')
+    // 表单输入框下面的添加按钮
+    var formBtn = document.querySelector('#j_btnAdd')
+
+
+    // 当点击表格中的"GET"可以删除当前行
+    tbody.onclick = function (e) {
+      this.removeChild(e.target.parentNode.parentNode)
+    }
+
+    // 当点击"添加数据"遮罩层和添加数据的文本框都会显示
+    addBtn.onclick = function () {
+      mask.style.display = 'block';
+      formAdd.style.display = 'block';
+    }
+    // 当点击文本框对应盒子右上角"X"遮罩层和这个盒子都会隐藏
+    hide.onclick = function () {
+      mask.style.display = 'none';
+      formAdd.style.display = 'none';
+    }
+
+
+    // 点击“添加”按钮 在课程文本框和所属学院文本框中都输入内容的时候 数据在表格中创建一行 罩层和这个盒子都会隐藏
+    // 1.给添加按钮绑定事件
+    formBtn.onclick = function () {
+      // 2.获取文本框的值 获取所属学院文本框的值
+      let lessonValue = lesson.value;
+      let schoolValue = school.value;
+      // console.log(lessonValue, schoolValue)
+      // 3.判断一下如果不为空 
+      if (lessonValue.trim().length !== 0 && schoolValue.trim().length !== 0) {
+        // 3.1.获取tbody中的内容
+        let tbodyStr = tbody.innerHTML;
+        // console.log(tbodyStr);
+        // 3.2 构建tr的结构 并且填充数据
+        tbodyStr += `
+        <tr>
+          <td>${lessonValue}</td>
+          <td>${schoolValue}</td>
+          <td><a href="javascrip:;" class="get">GET</a></td>
+        </tr>
+
+        `;
+
+        // 3.3 把所有tr的结构写道tbody中
+        tbody.innerHTML = tbodyStr;
+        // 3.4 让遮罩层和这个盒子都会隐藏
+        mask.style.display = 'none';
+        formAdd.style.display = 'none';
+        // 写完一个 清空
+        lesson.value = '';
+        school.value = "";
+      } else {
+        // 4.判断一下 如果其中有一个为空
+        mask.style.display = 'none';
+        formAdd.style.display = 'none';
+        // alert("数据填写错误")
+        lesson.value = '';
+        school.value = "";
+      }
+
+    }
+
+
+  // 获取元素
+
+    // 获取tbody
+    // var tbody = document.querySelector('#j_tb')
+    // // 获取a
+    // var dels = document.querySelectorAll('.get')
+    // // 添加数据按钮
+    // var addBtn = document.querySelector("#j_btnAddData");
+    // // 获取遮罩层
+    // var mask = document.querySelector("#j_mask")
+    // // 输入框的div
+    // var formAdd = document.querySelector('#j_formAdd')
+    // // 隐藏的小叉
+    // var hide = document.querySelector('#j_hideFormAdd')
+    // // 课程
+    // var lesson = document.querySelector('#j_txtLesson')
+    // // 所属的学院
+    // var school = document.querySelector('#j_txtBelSch')
+    // // 表单输入框下面的添加按钮
+    // var formBtn = document.querySelector('#j_btnAdd')
+
+
+    // // 当点击表格中的"GET"可以删除当前行
+    // tbody.onclick = function (e) {
+    //   this.removeChild(e.target.parentNode.parentNode)
+    // }
+
+    // // 当点击"添加数据"遮罩层和添加数据的文本框都会显示
+    // addBtn.onclick = function () {
+    //   mask.style.display = 'block';
+    //   formAdd.style.display = 'block';
+    // }
+    // // 当点击文本框对应盒子右上角"X"遮罩层和这个盒子都会隐藏
+    // hide.onclick = function () {
+    //   mask.style.display = 'none';
+    //   formAdd.style.display = 'none';
+    // }
+
+
+    // // 点击“添加”按钮 在课程文本框和所属学院文本框中都输入内容的时候 数据在表格中创建一行 罩层和这个盒子都会隐藏
+    // // 1.给添加按钮绑定事件
+    // formBtn.onclick = function () {
+    //   // 2.获取文本框的值 获取所属学院文本框的值
+    //   let lessonValue = lesson.value;
+    //   let schoolValue = school.value;
+    //   // console.log(lessonValue, schoolValue)
+    //   // 3.判断一下如果不为空 
+    //   if (lessonValue.trim().length !== 0 && schoolValue.trim().length !== 0) {
+    //     // 3.1.获取tbody中的内容
+    //     let tbodyStr = tbody.innerHTML;
+    //     // console.log(tbodyStr);
+    //     // 3.2 构建tr的结构 并且填充数据
+    //     tbodyStr += `
+    //     <tr>
+    //       <td>${lessonValue}</td>
+    //       <td>${schoolValue}</td>
+    //       <td><a href="javascrip:;" class="get">GET</a></td>
+    //     </tr>
+
+    //     `;
+
+    //     // 3.3 把所有tr的结构写道tbody中
+    //     tbody.innerHTML = tbodyStr;
+    //     // 3.4 让遮罩层和这个盒子都会隐藏
+    //     mask.style.display = 'none';
+    //     formAdd.style.display = 'none';
+    //     // 写完一个 清空
+    //     lesson.value = '';
+    //     school.value = "";
+    //   } else {
+    //     // 4.判断一下 如果其中有一个为空
+    //     mask.style.display = 'none';
+    //     formAdd.style.display = 'none';
+    //     // alert("数据填写错误")
+    //     lesson.value = '';
+    //     school.value = "";
+    //   }
+
+    // }
+
+
+    //  // 获取元素
+
+    // // 获取tbody
+    // var tbody = document.querySelector('#j_tb')
+    // // 获取a
+    // var dels = document.querySelectorAll('.get')
+    // // 添加数据按钮
+    // var addBtn = document.querySelector("#j_btnAddData");
+    // // 获取遮罩层
+    // var mask = document.querySelector("#j_mask")
+    // // 输入框的div
+    // var formAdd = document.querySelector('#j_formAdd')
+    // // 隐藏的小叉
+    // var hide = document.querySelector('#j_hideFormAdd')
+    // // 课程
+    // var lesson = document.querySelector('#j_txtLesson')
+    // // 所属的学院
+    // var school = document.querySelector('#j_txtBelSch')
+    // // 表单输入框下面的添加按钮
+    // var formBtn = document.querySelector('#j_btnAdd')
+
+
+    // // 当点击表格中的"GET"可以删除当前行
+    // tbody.onclick = function (e) {
+    //   this.removeChild(e.target.parentNode.parentNode)
+    // }
+
+    // // 当点击"添加数据"遮罩层和添加数据的文本框都会显示
+    // addBtn.onclick = function () {
+    //   mask.style.display = 'block';
+    //   formAdd.style.display = 'block';
+    // }
+    // // 当点击文本框对应盒子右上角"X"遮罩层和这个盒子都会隐藏
+    // hide.onclick = function () {
+    //   mask.style.display = 'none';
+    //   formAdd.style.display = 'none';
+    // }
+
+
+    // // 点击“添加”按钮 在课程文本框和所属学院文本框中都输入内容的时候 数据在表格中创建一行 罩层和这个盒子都会隐藏
+    // // 1.给添加按钮绑定事件
+    // formBtn.onclick = function () {
+    //   // 2.获取文本框的值 获取所属学院文本框的值
+    //   let lessonValue = lesson.value;
+    //   let schoolValue = school.value;
+    //   // console.log(lessonValue, schoolValue)
+    //   // 3.判断一下如果不为空 
+    //   if (lessonValue.trim().length !== 0 && schoolValue.trim().length !== 0) {
+    //     // 3.1.获取tbody中的内容
+    //     let tbodyStr = tbody.innerHTML;
+    //     // console.log(tbodyStr);
+    //     // 3.2 构建tr的结构 并且填充数据
+    //     tbodyStr += `
+    //     <tr>
+    //       <td>${lessonValue}</td>
+    //       <td>${schoolValue}</td>
+    //       <td><a href="javascrip:;" class="get">GET</a></td>
+    //     </tr>
+
+    //     `;
+
+    //     // 3.3 把所有tr的结构写道tbody中
+    //     tbody.innerHTML = tbodyStr;
+    //     // 3.4 让遮罩层和这个盒子都会隐藏
+    //     mask.style.display = 'none';
+    //     formAdd.style.display = 'none';
+    //     // 写完一个 清空
+    //     lesson.value = '';
+    //     school.value = "";
+    //   } else {
+    //     // 4.判断一下 如果其中有一个为空
+    //     mask.style.display = 'none';
+    //     formAdd.style.display = 'none';
+    //     // alert("数据填写错误")
+    //     lesson.value = '';
+    //     school.value = "";
+    //   }
+
+    // }
+
+
+  // 获取元素
+
+    // 获取tbody
+    // var tbody = document.querySelector('#j_tb')
+    // // 获取a
+    // var dels = document.querySelectorAll('.get')
+    // // 添加数据按钮
+    // var addBtn = document.querySelector("#j_btnAddData");
+    // // 获取遮罩层
+    // var mask = document.querySelector("#j_mask")
+    // // 输入框的div
+    // var formAdd = document.querySelector('#j_formAdd')
+    // // 隐藏的小叉
+    // var hide = document.querySelector('#j_hideFormAdd')
+    // // 课程
+    // var lesson = document.querySelector('#j_txtLesson')
+    // // 所属的学院
+    // var school = document.querySelector('#j_txtBelSch')
+    // // 表单输入框下面的添加按钮
+    // var formBtn = document.querySelector('#j_btnAdd')
+
+
+    // // 当点击表格中的"GET"可以删除当前行
+    // tbody.onclick = function (e) {
+    //   this.removeChild(e.target.parentNode.parentNode)
+    // }
+
+    // // 当点击"添加数据"遮罩层和添加数据的文本框都会显示
+    // addBtn.onclick = function () {
+    //   mask.style.display = 'block';
+    //   formAdd.style.display = 'block';
+    // }
+    // // 当点击文本框对应盒子右上角"X"遮罩层和这个盒子都会隐藏
+    // hide.onclick = function () {
+    //   mask.style.display = 'none';
+    //   formAdd.style.display = 'none';
+    // }
+
+
+    // 点击“添加”按钮 在课程文本框和所属学院文本框中都输入内容的时候 数据在表格中创建一行 罩层和这个盒子都会隐藏
+    // 1.给添加按钮绑定事件
+    // formBtn.onclick = function () {
+    //   // 2.获取文本框的值 获取所属学院文本框的值
+    //   let lessonValue = lesson.value;
+    //   let schoolValue = school.value;
+    //   // console.log(lessonValue, schoolValue)
+    //   // 3.判断一下如果不为空 
+    //   if (lessonValue.trim().length !== 0 && schoolValue.trim().length !== 0) {
+    //     // 3.1.获取tbody中的内容
+    //     let tbodyStr = tbody.innerHTML;
+    //     // console.log(tbodyStr);
+    //     // 3.2 构建tr的结构 并且填充数据
+    //     tbodyStr += `
+    //     <tr>
+    //       <td>${lessonValue}</td>
+    //       <td>${schoolValue}</td>
+    //       <td><a href="javascrip:;" class="get">GET</a></td>
+    //     </tr>
+
+    //     `;
+
+    //     // 3.3 把所有tr的结构写道tbody中
+    //     tbody.innerHTML = tbodyStr;
+    //     // 3.4 让遮罩层和这个盒子都会隐藏
+    //     mask.style.display = 'none';
+    //     formAdd.style.display = 'none';
+    //     // 写完一个 清空
+    //     lesson.value = '';
+    //     school.value = "";
+    //   } else {
+    //     // 4.判断一下 如果其中有一个为空
+    //     mask.style.display = 'none';
+    //     formAdd.style.display = 'none';
+    //     // alert("数据填写错误")
+    //     lesson.value = '';
+    //     school.value = "";
+    //   }
+
+    // }
+
+  </script>
+
+</body>
+
+</html>

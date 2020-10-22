@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body,
+      ul,
+      li {
+        padding: 0;
+        margin: 0;
+      }
+      .box {
+        width: 600px;
+        height: 350px;
+        margin: 100px auto;
+        border: 1px solid #ccc;
+        padding: 0 20px;
+      }
+      ul {
+        list-style: none;
+      }
+      li {
+        border-top: 1px solid #ccc;
+        margin-top: 20px;
+        padding-top: 20px;
+        position: relative;
+      }
+      li > div {
+        display: none;
+        padding-top: 20px;
+      }
+      li:first-child div {
+        display: block;
+      }
+      img {
+        position: absolute;
+        right: 0;
+        top: 20px;
+        transform: rotate(270deg);
+      }
+      li:first-child img {
+        transform: rotate(0deg);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <ul>
+        <li>
+          春
+          <div>
+            立春，中国二十四节气之一，又名立春节、正月节、岁节、岁旦等。立，是“开始”之意；春，代表着温暖、生长。上古“斗柄指向法”，以北斗星斗柄指向寅位时为立春
+          </div>
+          <img src="./img/select.png" alt="" />
+        </li>
+        <li>
+          夏
+          <div>
+            二十四节气中的第7个节气，时间点在每年公历5月5日-7日之间，是干支历巳月的起始，太阳到达黄经45°时
+          </div>
+          <img src="./img/select.png" alt="" />
+        </li>
+        <li>
+          秋
+          <div>
+            二十四节气中的第13个节气，时间点在每年公历8月7日-9日之间，是干支历未月的结束以及申月的起始
+          </div>
+          <img src="./img/select.png" alt="" />
+        </li>
+        <li>
+          东
+          <div>
+            二十四节气中的第19个节气，时间点在每年公历11月7日-8日之间，是干支历戌月的结束以及亥月的起始。
+          </div>
+          <img src="./img/select.png" alt="" />
+        </li>
+      </ul>
+    </div>
+    <script src='../../../lib/jquery-3.4.1.min.js'></script>
+    <script>
+      $("li").on("click", function () {
+        $(this).find("div").slideToggle();
+
+        if ($(this).find("div").css("display") == "block") {
+          $(this).find("img").css("transform", "rotate(0)");
+          $(this).siblings("li").find("div").hide();
+          $(this).siblings("li").find("img").css("transform", "rotate(270deg)");
+        } else {
+          $(this).find("img").css("transform", "rotate(270deg)");
+        }
+      });
+    </script>
+  </body>
+</html>

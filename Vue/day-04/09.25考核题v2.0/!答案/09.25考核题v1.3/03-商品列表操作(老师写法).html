@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            width: 400px;
+            border: 1px solid #000;
+            border-collapse: collapse;
+            margin: 0 auto;
+        }
+
+        td,
+        th {
+            border: 1px solid #000;
+            text-align: center;
+        }
+
+        input {
+            width: 50px;
+        }
+
+        .search {
+            width: 600px;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="search">
+        按照价格查询: <input type="text" class="start"> - <input type="text" class="end"> <button
+            class="search-price">搜索</button>
+        按照商品名称查询: <input type="text" class="product"> <button class="search-pro">查询</button>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>产品名称</th>
+                <th>价格</th>
+            </tr>
+        </thead>
+        <tbody>
+
+
+        </tbody>
+    </table>
+
+    <script>
+        // 数据
+        // 利用新增数组方法操作数据
+        var data = [{
+            id: 1,
+            pname: '小米',
+            price: 3999
+        }, {
+            id: 2,
+            pname: 'oppo',
+            price: 999
+        }, {
+            id: 3,
+            pname: '荣耀',
+            price: 1299
+        }, {
+            id: 4,
+            pname: '华为',
+            price: 1999
+        }];
+
+
+        // 获取元素
+        let tbody = document.querySelector('tbody');
+        let searchBtn = document.querySelector('.search-pro');
+        let productText = document.querySelector(".product")
+        let searchPriceBtn = document.querySelector('.search-price');
+        let start = document.querySelector(".start");
+        let end = document.querySelector('.end');
+        // 1.把数据渲染在页面上
+        let showData = function (arr) {
+            tbody.innerHTML = '';
+            // 1.1 声明一个空字符串
+            let tableStr = "";
+
+            // 获取得到的数据并便利
+            arr.forEach((value, index, array) => {
+                tableStr += `<tr>
+                      <td>${value.id}</td>
+                      <td>${value.pname}</td>
+                      <td>&yen;${value.price}</td>
+                    </tr>`;
+            })
+            // 渲染元素到页面上
+            tbody.insertAdjacentHTML("beforeend", tableStr);
+        }
+
+
+        // 调用showData方法 渲染页面
+        showData(data);
+        // 按照价格区间查询
+        searchPriceBtn.addEventListener('click', function () {
+            let newData = data.filter((value, index, array) => {
+                return value.price >= start.value && value.price <= end.value;
+            })
+
+            showData(newData);
+
+        })
+
+        // filterByName(pname);
+        searchBtn.addEventListener('click', function () {
+            let pname = productText.value;
+            let pArray = [];
+            data.some((value, index, array) => {
+                if (value.pname == pname) {
+                    pArray.push(value);
+                    return true;
+                }
+            })
+            showData(pArray);
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <!-- 用输入的姓 和 名 组成姓名  -->
+    <input type="text" v-model="firstName">
+    <input type="text" v-model="lastName">
+    <input type="text" v-model="fullName">
+  </div>
+  <script src="./lib/vue-3.0.0.js"></script>
+  <script>
+    let vm = Vue.createApp({
+      // data数据域
+      data() {
+        return {
+          firstName: "",
+          lastName: ""
+
+        }
+      },
+      computed: {
+        // get获取方法
+        fullName: {
+          get() {
+            return this.firstName + ' ' + this.lastName
+          },
+          // set设置方法
+          set(val) {
+            let arr = val.split(' ');
+
+            console.log(arr);
+            this.firstName = arr[0];
+            this.lastName = arr[1];
+          }
+        }
+      }
+    }).mount('#app')
+
+
+
+    // 普通方法 需要调用
+    // computed和watch 自动执行
+    // 执行效率: computed > watch >methods
+    // watch监听的是data中的属性 computed监听的是和功能相关的属性 methods中是事件调用的
+    // watch监听的必须在data中出现 computed则不强制 methods更不强制
+  </script>
+</body>
+
+</html>

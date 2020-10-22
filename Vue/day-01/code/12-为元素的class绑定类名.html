@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="./lib/vue-2.5.16.js"></script>
+  <style>
+    .red {
+      color: red;
+    }
+
+    .thin {
+      font-weight: 200;
+    }
+
+    .italic {
+      font-style: italic;
+    }
+
+    .size {
+      font-size: 40px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <!-- <button @click="toggle">Toggle</button> -->
+
+    <button @click="flag=!flag">Toggle</button>
+
+    <h1 :class="['red', flag ? 'thin' : '']">嗯，每个胖次都是稳重的人，又稳又重~~~😂</h1>
+  </div>
+
+  <script>
+    // 创建 Vue 实例，得到 ViewModel
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        flag: false
+      },
+      methods: {
+        toggle() {
+          this.flag = !this.flag
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>

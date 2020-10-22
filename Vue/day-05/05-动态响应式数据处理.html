@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <div class="hello">
+      <button @click="setMessage">添加属性</button>
+      {{ student.name }}
+      <input type="text" v-model="student.age">
+    </div>
+  </div>
+  <script src="./lib/vue-3.0.0.js"></script>
+  <script>
+    let vm = Vue.createApp({
+      data() {
+        return {
+          student: {
+            name: "张三",
+          }
+        }
+      },
+      methods: {
+        setMessage() {
+          this.student.age = 18;
+          console.log(this.student)
+        }
+      }
+    }).mount('#app');
+
+
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,17 @@
+{
+  "name": "ajaxServer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "jQuery": "^1.7.4",
+    "jquery": "^3.5.1"
+  }
+}

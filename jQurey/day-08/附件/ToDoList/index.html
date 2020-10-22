@@ -1,0 +1,166 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/index.css">
+</head>
+
+<body>
+  <!-- 输入框 -->
+  <div class="plan">
+    <h1>ToDoList</h1>
+    <div>
+      <input class="txt" placeholder="请输入目标..." type="text">
+      <input type="button" class="add" value="添加">
+    </div>
+  </div>
+  <div class="w">
+    <!-- 正在完成的任务 -->
+    <h2>正在进行的任务</h2>
+    <ol>
+      <!-- <li>
+        <input type="checkbox">
+        <span>吃饭</span>
+      </li> -->
+
+
+    </ol>
+    <!-- 已经完成的任务 -->
+    <h2>已经完成的任务</h2>
+    <ul>
+      <!-- <li>
+        <span>吃饭</span>
+      </li> -->
+    </ul>
+  </div>
+
+
+</body>
+<script src="./lib/jquery-3.4.1.min.js"></script>
+<script>
+  //调用showData
+  showData();
+
+  //为 添加 按钮插件鼠标点击事件
+  $('.add').on('click', function () {
+    //获取 文本框的值 
+    let iptTxt = $('.txt').val();
+
+    //判断 文本框的值 是否为空
+    if (iptTxt.trim().length == 0) {
+      alert('请输入值');
+    } else {
+      //调用setData方法
+      setData(iptTxt);
+
+      //调用showData方法
+      showData();
+
+      //清空文本框
+      $('.txt').val('');
+    }
+  })
+
+  //创建变量
+  let finishTxt = '';
+  
+  //创建正在进行任务的li的选中事件
+  $('ol').on('click', 'input[type="checkbox"]', function () {
+    //获取兄弟元素
+    let finish = $(this).siblings('span').text();
+
+    //获取本地数据
+    let aData = getData();
+
+    //遍历本地数据
+    $.each(aData, function (i, item) {
+      //判断是否有值 和获取的值相等
+      if (item == finish) {
+        finishTxt += `<li>
+            <span>${finish}</span>
+          </li>`;
+      }
+    })
+    //调用删除函数
+    delData(finish);
+
+    //将变量添加到ul中
+    $('ul').html(finishTxt);
+
+    showData();
+  })
+
+
+
+  //显示数据
+  function showData() {
+    //获取 本地数据
+    let aData = getData();
+
+    //创建变量
+    let txtHtml = '';
+
+    //遍历数据
+    $.each(aData, function (i, item) {
+      //变量内容添加
+      txtHtml += `<li>
+            <input type="checkbox">
+            <span>${item}</span>
+        </li>`;
+    })
+
+    //添加到ol中
+    $('ol').html(txtHtml);
+  }
+
+
+  //添加数据
+  function setData(value) {
+    //获取 本地数据
+    let aData = getData();
+
+    //遍历本地数据 
+    $.each(aData, function (i, item) {
+      //判断是否有相同的值 有就删除掉
+      if (item == value) {
+        aData.splice(i, 1);
+      }
+    })
+
+    //本地数据 添加参数
+    aData.push(value);
+
+    //重新添加到本地数据中
+    localStorage.setItem("arrData", JSON.stringify(aData));
+  }
+
+
+  //获取数据
+  function getData() {
+    return JSON.parse(localStorage.getItem("arrData") || "[]");
+  }
+
+
+  //删除数据
+  function delData(value) {
+    //获取 本地数据
+    let aData = getData();
+
+    //遍历 数据
+    $.each(aData, function (i, item) {
+      //判断参数是否和数据中元素相等
+      if (item == value) {
+        aData.splice(i, 1);
+      }
+    })
+
+    //重新添加数组
+    localStorage.setItem('arrData', JSON.stringify(aData));
+  }
+</script>
+
+</html>

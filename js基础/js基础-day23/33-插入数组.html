@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var arr = [99, 85, 82, 63, 60];
+        var user = prompt("请输入一个数字") - 0;
+        arr[arr.length] = user;
+        for (var i = 0; i < arr.length - 1; i++) {
+            for (var j = 0; j < arr.length - 1 - i; j++) {
+                if (arr[j] < arr[j + 1]) {
+                    var temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                }
+            }
+        }
+        alert(arr);
+
+
+    </script>
+</body>
+
+</html>

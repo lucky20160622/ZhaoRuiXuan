@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+       var a = +prompt("请输入第一个数字");
+      var b = +prompt("请输入第二个数字");
+
+      for (var i = 1; i <= a * b; i++) {
+        if (i % a == 0 && i % b == 0) {
+          alert("您输入的两个数字的最大公约数是" + i);
+          break;
+        }
+      }
+      for (var i = a * b; i > 0; i--) {
+    if (a % i == 0 && b % i == 0) {
+        alert("您输入的两个数字的最小公倍数是" + i);
+        break;
+    }
+}
+    </script>
+</body>
+</html>

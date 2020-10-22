@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style type="text/css">
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    ul {
+      list-style-type: none;
+    }
+
+    .parentWrap {
+      width: 200px;
+      text-align: center;
+      margin: 200px auto;
+    }
+
+    .menuGroup {
+      background-color: #00a1bd;
+      height: 20px;
+      overflow: hidden;
+    }
+
+    .groupTitle {
+      display: block;
+      height: 20px;
+      line-height: 20px;
+      font-size: 16px;
+      border-bottom: 1px solid #ccc;
+      cursor: pointer;
+      color: #fff;
+
+    }
+
+    .menuGroup>div {
+      height: 20px;
+      background-color: #fff;
+      color: #000;
+    }
+  </style>
+</head>
+
+<body>
+  <ul class="parentWrap">
+    <li class="menuGroup">
+      <span class="groupTitle">我是一级导航</span>
+      <div>二级导航</div>
+      <div>二级导航</div>
+      <div>二级导航</div>
+    </li>
+    <li class="menuGroup">
+      <span class="groupTitle">我是一级导航</span>
+      <div>二级导航</div>
+      <div>二级导航</div>
+      <div>二级导航</div>
+    </li>
+    <li class="menuGroup">
+      <span class="groupTitle">我是一级导航</span>
+      <div>二级导航</div>
+      <div>二级导航</div>
+      <div>二级导航</div>
+    </li>
+  </ul>
+</body>
+<script src="../animate.js"></script>
+<script>
+
+  //需求:给显示标题的那四个li标签设置鼠标单击事件, 当前这个li标签下面的div显示, 其他的兄弟li下面的div隐藏.
+  var ul = document.querySelector(".parentWrap");
+  for (var i = 0; i < ul.children.length; i++) {
+    ul.children[i].onclick = function () {
+      for (var j = 0; j < ul.children.length; j++) {
+        animate(ul.children[j], {
+          height: 20
+        })
+      }
+      animate(this, {
+        height: 80
+      })
+    }
+
+  }
+</script>
+
+</html>3

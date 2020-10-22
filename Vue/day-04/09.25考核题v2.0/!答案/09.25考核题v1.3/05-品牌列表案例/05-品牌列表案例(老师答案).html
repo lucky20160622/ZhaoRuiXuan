@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+  <script src="./lib/vue3.0.global.js"></script>
+</head>
+
+<body>
+  <div id="app">
+
+    <!-- panel 面板 -->
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">添加品牌</h3>
+      </div>
+      <div class="panel-body">
+        <div class="form-group form-inline">
+
+          <div class="input-group">
+            <div class="input-group-addon">编号</div>
+            <input type="text" class="form-control" v-model="id">
+          </div>
+
+          <div class="input-group">
+            <div class="input-group-addon">品牌名称</div>
+            <input type="text" class="form-control" v-model="name" @keyup.enter="add">
+          </div>
+
+          <div class="input-group">
+            <button class="btn btn-primary" @click="add">添加</button>
+          </div>
+
+          <div class="input-group">
+            <div class="input-group-addon">按名称搜索</div>
+            <input type="text" class="form-control" v-model="keywords">
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- 表格区域 -->
+    <table class="table table-bordered table-hover table-striped">
+      <thead>
+        <tr>
+          <th>编号</th>
+          <th>品牌名称</th>
+          <th>添加时间</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="item in search()" :key="item.id">
+          <td>{{item.id}}</td>
+          <td>{{item.name}}</td>
+          <td>{{item.ctime}}</td>
+          <td>
+            <a href="#" @click.prevent="remove(item.id)">删除</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  <script>
+    let vm = Vue.createApp({
+      data() {
+        return {
+          id: '',
+          name: '',
+          keywords: '',
+          brandlist: [{
+              id: 1,
+              name: '奔驰',
+              ctime: new Date().toLocaleDateString()
+            },
+            {
+              id: 2,
+              name: '宝马',
+              ctime: new Date().toLocaleDateString()
+            },
+            {
+              id: 3,
+              name: '长安奔奔',
+              ctime: new Date().toLocaleDateString()
+            },
+            {
+              id: 4,
+              name: '千里马',
+              ctime: new Date().toLocaleDateString()
+            }
+          ]
+        }
+      },
+      methods: {
+        // 根据关键字，返回符合条件的品牌数组
+        search() {
+          // 根据 用户输入的 this.keywords 关键字，从 this.brandlist 中，过滤出那些符合条件的数据；
+          // 并把过滤的结果，当作一个新数组，作为 search 方法的返回值；
+          const result = this.brandlist.filter(item => item.name.includes(this.keywords))
+          return result
+        },
+
+        // 点击添加新品牌
+        add() {
+          // 分析：
+          // 1. 要判断用户输入的内容是否为空
+          // 2. 组织出一个新的品牌对象
+          // 3. 把新对象，push 到 this.brandlist 中
+          if (!(this.id && this.name)) return alert('数据不能为空！')
+          const newInfo = {
+            id: this.id,
+            name: this.name,
+            ctime: new Date().toLocaleDateString()
+          }
+          this.brandlist.push(newInfo)
+          this.id = this.name = ''
+        },
+        // 点击删除品牌
+        remove(id) {
+          // 1. 根据id,找到要删除那一项的索引值
+          const index = this.brandlist.findIndex(item => item.id === id)
+          // 2. 使用 数组的 splice 方法，根据索引，删除指定的那一项
+          this.brandlist.splice(index, 1)
+        }
+
+      }
+    }).mount("#app");
+  </script>
+</body>
+
+</html>

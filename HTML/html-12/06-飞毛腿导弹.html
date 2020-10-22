@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>CSS 2D转换</title>
+  <style>
+    html,
+    body {
+      height: 100%;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    section {
+      height: 100%;
+      background-color: #DE8910;
+      position: relative;
+    }
+
+    .rocket {
+      width: 100px;
+      height: 190px;
+      position: absolute;
+      bottom: 0;
+     
+      /*1.让火箭倾斜*/
+      transform: rotate(45deg);
+    }
+
+    section:hover .rocket {
+      transition: transform 1s;
+      transform: translate(800px, -300px) rotate(45deg);
+    }
+  </style>
+</head>
+
+<body>
+  <section>
+    <div class="rocket">
+      <img src="./images/rocket.png" alt="">
+    </div>
+  </section>
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .father {
+      width: 500px;
+      height: 500px;
+      background-color: green;
+    }
+
+    .son {
+      width: 200px;
+      height: 200px;
+      background-color: yellowgreen;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <!-- 阻止浏览器默认行为 -->
+    <a href="http://www.baidu.com" @click.prevent="handleDefault">百度</a>
+    <!-- 让事件只触发一次 -->
+    <button @click.once="handleOnce">该事件只触发一次</button>
+    <!-- 阻止事件传播 -->
+    <div class="father" @click="handleFather">
+      <div class="son" @click.stop="handleSon"></div>
+    </div>
+  </div>
+  <script src="./lib/vue-3.0.js"></script>
+  <script>
+    let vm = Vue.createApp({
+      data() {
+        // return {}  如果不写这句话 会提示下面的话
+        //  data() should return an object. 
+      },
+      methods: {
+        handleDefault() {
+          console.log("我是a标签点击之后的效果")
+        },
+        handleOnce() {
+          console.log("我是button标签点击之后的效果")
+        },
+        handleFather() {
+          console.log("我是father被点击之后的效果")
+        },
+        handleSon() {
+          console.log("我是son被点击之后的效果")
+        }
+      }
+    }).mount('#app');
+  </script>
+</body>
+
+</html>

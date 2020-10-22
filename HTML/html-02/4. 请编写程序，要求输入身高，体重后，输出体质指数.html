@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    // 4. 请编写程序，要求输入身高，体重后，输出体质指数
+//     测量一个人的体质指数，体质指数（BMI）=体重（kg）÷身高^2（m），
+//     成人的BMI数值：
+//     过轻：低于18.5
+//     正常：[18.5,23.9]
+//     过重：[24,27]
+//     肥胖：[28,32]
+//     非常肥胖, 高于32 
+var num=+prompt('请输入身高')
+var kg=prompt('请输入体重')
+var BMI=kg/(num*num)
+if(BMI>32){
+    alert('非常肥胖');
+}else if(BMI>28){
+    alert('肥胖');
+}else if(BMI>24){
+    alert('过重');
+}else if(BMI>18.5){
+    alert('正常');
+}else if(BMI<18.5){
+    alert('过轻');
+}
+    </script>
+</body>
+</html>

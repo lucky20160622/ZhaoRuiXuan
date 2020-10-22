@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    .grid {
+      margin: auto;
+      width: 530px;
+      text-align: center;
+    }
+
+    .grid table {
+      border-top: 1px solid #C2D89A;
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .grid th,
+    td {
+      padding: 10;
+      border: 1px dashed orange;
+      height: 35px;
+      line-height: 35px;
+    }
+
+    .grid th {
+      background-color: orange;
+    }
+
+    .grid .book {
+      padding-bottom: 10px;
+      padding-top: 5px;
+      background-color: orange;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <div class="grid">
+      <div>
+        <h1>图书管理</h1>
+        <div class="book">
+          <div>
+            <label for="id">
+              编号：
+            </label>
+            <input type="text" id="id" v-model="id" :disabled="flag">
+            <label for="name">
+              名称：
+            </label>
+            <input type="text" id="name" v-model="name">
+            <button @click="handleAdd">提交</button>
+          </div>
+        </div>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>编号</th>
+            <th>名称</th>
+            <th>时间</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(item, index) in books" :key="item.id">
+            <td>{{item.id}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.date}}</td>
+            <td>
+              <a href="" @click.prevent="handleEdit(item.id)">修改</a>
+              <span>|</span>
+              <a href="" @click.prevent="handleDel(item.id)">删除</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <script src="./lib/vue-3.0.0.js"></script>
+  <script>
+    let vm = Vue.createApp({
+      // data数据域
+      data() {
+        return {
+          // true 代表不能用 false代表能用
+          flag: false,
+          id: '',
+          name: "",
+          books: ""
+        }
+      },
+      // 当页面打开 我们要获取数据,数据在localStorage中
+      created() {
+        // 获取localstorage中的数据 如果没有怎么办
+        this.books = JSON.parse(localStorage.getItem('books') || '[]');
+      },
+      methods: {
+        // 添加图书
+        handleAdd() {
+          // 如果id的那个input能用代表是添加 如果不能用代表是修改
+          // 所以要判断flag的值是true还是false
+          if (this.flag) { // 修改
+            let that = this;
+            // 获取到是哪一个对象的数据变了
+            let index = this.books.findIndex(item => item.id == that.id);
+            // console.log(index);
+            // 设置那个对象的新name
+            this.books[index].name = this.name;
+
+            // 清空给输入框
+            this.id = "";
+            this.name = "";
+            // 让输入框还可以输入
+            this.flag = false;
+          } else {  // 添加
+            // 1.获取到编号
+            // 2.获取到名称
+            // 3.组成新的对象
+            // 4.把对象放到books里面
+            this.books.push({
+              id: new Date().valueOf(),
+              name: this.name,
+              date: new Date().toLocaleDateString()
+            })
+            // 5.把localstorage中的数据进行更新
+            // localStorage.setItem('books', JSON.stringify(this.books));
+            // 6.清空输入框
+            this.id = "";
+            this.name = "";
+          }
+        },
+
+        // 删除图书
+        handleDel(id) {
+          // console.log(id);
+          // console.log(this);
+          let index = this.books.findIndex(item => item.id == id);
+          // console.log(index);
+          this.books.splice(index, 1);
+          // 5.把localstorage中的数据进行更新
+          // localStorage.setItem('books', JSON.stringify(this.books));
+        },
+
+        // 修改图书
+        handleEdit(id) {
+          // id的输入框 不能输入
+          this.flag = true;
+          // 点击编辑的时候要获取id对应的内容(id name)
+          let arr = this.books.filter(item => item.id == id);
+          console.log(arr);
+          this.id = arr[0].id;
+          this.name = arr[0].name;
+        }
+      },
+      // updated当数据有变化 就会执行  只要数据有变化 就把数据更新到localStorage中
+      updated() {
+        localStorage.setItem('books', JSON.stringify(this.books));
+      }
+    }).mount('#app');
+  </script>
+</body>
+
+</html>

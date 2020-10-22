@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .content {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            margin: 0 auto;
+        }
+
+        .center {
+            position: absolute;
+            top: 50%;
+            right: 50%;
+            bottom: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: #006c00;
+        }
+
+        .inner {
+            position: absolute;
+            top: 50%;
+            right: 50%;
+            bottom: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 2px solid #12641b;
+            z-index: 999;
+            animation: rotate 2s linear infinite;
+        }
+
+        .inner span {
+            position: absolute;
+            display: block;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+
+        .inner span:nth-child(1) {
+            top: 80px;
+            left: 192px;
+            background-color: #7fcaeb;
+        }
+
+        .inner span:nth-child(2) {
+            top: 80px;
+            left: -34px;
+            background-color: #fff100;
+        }
+
+        .outer {
+            position: absolute;
+            top: 50%;
+            right: 50%;
+            bottom: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 235px;
+            height: 235px;
+            border-radius: 50%;
+            border: 1px solid #e87c89;
+            z-index: 1;
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+
+            100% {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <div class="center"></div>
+        <div class="inner">
+            <span></span>
+            <span></span>
+        </div>
+        <div class="outer"></div>
+    </div>
+</body>
+
+</html>

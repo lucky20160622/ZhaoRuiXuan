@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+     body{
+         background-color: black;
+     }
+        div{
+            width: 610px;
+            height: 600px;
+            margin: 0 auto;
+        }
+        .box1{
+            opacity: 0.2;
+        }
+        .box2{
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <!-- 需求1. 突出显示效果实现(素材在附件中):
+
+- 布局和功能都需要自己完成
+- 当鼠标移入对应的小方格图片上面，当前的图片高亮显示，其余的图片变暗
+- 当鼠标离开整个大方格内，所有的图片都变亮 -->
+  <div>
+      <img src="./images/01.jpg" alt="">
+      <img src="./images/02.jpg" alt="">
+      <img src="./images/03.jpg" alt="">
+      <img src="./images/04.jpg" alt="">
+      <img src="./images/05.jpg" alt="">
+      <img src="./images/06.jpg" alt="">
+  </div>
+  <script>
+      var img=document.querySelectorAll('img')
+      var div=document.querySelector('div')
+      for(var i=0;i<img.length;i++){
+          img[i].onmouseenter=function(){
+              for(var j=0;j<img.length;j++){
+                  img[j].className="box1"
+              }
+              this.classList.add('box2')
+          }
+      }
+      div.onmouseleave=function(){
+          for(let i=0;img.length;i++){
+              img[i].classList.add('box2')
+          }
+      }
+  </script>
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>留言板</title>
+  <link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+  <h1>留言板</h1>
+  <div id="content">
+    <div id="post">
+      <div style="background:#3EADC5 ;height:30px;">
+        昵称：<input type="submit" id="shangtian" name="Submit3"
+          style="border:none; background-color:#3EADC5; color:white;" value="默认用户点击改变" />
+      </div>
+      <div>
+        <textarea class="transition"></textarea>
+      </div>
+      <input id="postBt" type="button"
+        style="border:none; background-color:#3EADC5; color:white;border-radius:5px; width:80px; height:30px;"
+        value="发表留言" />
+      <input id="clearBt" type="button"
+        style="border:none; background-color:#3EADC5; color:white;border-radius:5px; width:80px; height:30px;"
+        value="清空" />
+    </div>
+    <!-- 留言区 -->
+    <div id="comment">
+      <!-- 这是创建元素的模板 -->
+      <!-- <span>
+        匿名发言者
+        <span class="fr">2020-03-13 21:08:55</span>
+        <p>
+          <span class="msg">111<input id="clear" type="button" value="删除"></span>
+        </p>
+      </span> -->
+    </div>
+  </div>
+  <script>
+    // 功能1，点击留言，用户在文本框中输入内容，先判断输入的内容是否为空，如果为空，则弹出”请填写您的留言“
+    // 功能2，如果用户输入的内容不为空，那么就会将内容添加下面的留言区域内，
+    // 功能3：点击清空留言的时候，下面的留言区的内容就会被清空
+    // 功能4：点击留言区域内的”删除“按钮的时候，会将当前的这一行进行删除
+    // 功能5：默认用户点击改变，会弹出prompt，请输入您的文字，点击确定，弹出”欢迎你，xxx“,点击确定，新的昵称就会覆盖那些文字
+
+    //获取元素
+    var transition = document.querySelector('.transition')
+    var postBt = document.querySelector('#postBt')
+    var clearBt = document.querySelector('#clearBt')
+    var messageArea = document.querySelector('#comment')
+    var fr=document.querySelector('.fr')
+    var msg=document.querySelector('.msg')
+    // var clear=document.querySelectorAll('#clear')
+    var shangtian=document.querySelector('#shangtian')
+
+    //功能1，点击留言，用户在文本框中输入内容，先判断输入的内容是否为空，如果为空，则弹出”请填写您的留言“
+    // 功能2，如果用户输入的内容不为空，那么就会将内容添加下面的留言区域内，
+    postBt.onclick = function () {
+      if (transition.value.trim().length == 0) {
+        alert('请填写您的留言')
+      } else {
+        let span = document.createElement('span')
+        let str = `
+         <span>
+        ${shangtian.value}
+        <span class="fr">${new Date().toLocaleString()}</span>
+        <p>
+          <span class="msg">${transition.value}<input  id="clear" type="button" value="删除"></span>
+        </p>
+      </span>
+         `
+      span.innerHTML=str
+      comment.insertBefore(span,comment.childNodes[0])
+      transition.value=''
+   
+      }
+      
+    }
+
+   // 功能3：点击清空留言的时候，下面的留言区的内容就会被清空
+     clearBt.onclick=function(){
+       if(messageArea.children.length==0){
+         alert('没有需要清空的数据')
+       }else{
+        var isOk= confirm('您真的要删除吗')
+        if(isOk){
+          messageArea.innerHTML=''
+        }
+       }
+     }
+
+       // 功能4：点击留言区域内的”删除“按钮的时候，会将当前的这一行进行删除
+       var dels = document.querySelectorAll('#clear')
+         for(let i =0;i<dels.length;i++){
+           dels[i].onclick = function(){
+              messageArea.removeChild(this.parentNode.parentNode.parentNode)
+           }
+         }
+    
+
+    //  功能5：默认用户点击改变，会弹出prompt，请输入您的文字，点击确定，弹出”欢迎你，xxx“,点击确定，新的昵称就会覆盖那些文字
+        // shangtian.onclick=function(){
+        //   var name=prompt('请输入您的文字')
+        //   if(name!=null){
+        //   alert(`欢迎你${name}`)
+        //   shangtian.value=''
+        //   shangtian.value=name
+        //   }       
+        // }
+       var name='匿名发言者'
+       shangtian.onclick=function(){
+         name=prompt('请输入您的名字')
+         if(name.trim().length==0||name==='null'){
+           this.value='匿名发言者'
+         }else if(name.trim().length!==0){
+           alert(`欢迎您${name}`)
+           this.value=name
+         }
+       }
+      
+  </script>
+
+</body>
+
+</html>

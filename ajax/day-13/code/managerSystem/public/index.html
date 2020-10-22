@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>用户列表</title>
+  <link rel="stylesheet" href="./lib/bootstrap-3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+  <div class="container">
+    <h6>
+      <a href="/add.html" class="btn btn-primary">添加用户</a>
+    </h6>
+    <table class="table table-striped table-bordered">
+      <thead>
+        <tr>
+          <th>用户名</th>
+          <th>年龄</th>
+          <th>爱好</th>
+          <th>邮箱</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- <tr>
+          <td>张三</td>
+          <td>20</td>
+          <td>
+            <span>抽烟</span>
+            <span>喝酒</span>
+            <span>烫头</span>
+          </td>
+          <td>zhangsan@itcast.cn</td>
+          <td>
+            <a href="javascript:;" class="btn btn-danger btn-xs">删除</a>
+            <a href="javascript:;" class="btn btn-success btn-xs">修改</a>
+          </td>
+        </tr> -->
+      </tbody>
+    </table>
+
+    <div class="row">
+      <div class="col-md-12">
+        <ul class="pager pull-right">
+          <!-- <li class="disabled"><a href="#"><span class="glyphicon glyphicon-chevron-left"></span></a></li>
+          <li><a href="#"><span class="glyphicon glyphicon-chevron-right"></span></a></li> -->
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 引入jquery -->
+  <script src="./lib/jquery/jquery-3.5.1.js"></script>
+  <!-- 引入artTemplate -->
+  <script src="./lib/artTemplate/template-web.js"></script>
+  <!-- 模板 -->
+  <script type="text/template" id="list_templ">
+    {{each data}}
+    <tr>
+      <td>{{$value.username}}</td>
+      <td>{{$value.age}}</td>
+      <td>
+        {{each $value.hobbies}}
+        <span>{{$value}}</span>
+        {{/each}}
+      </td>
+      <td>{{$value.email}}</td>
+      <td>
+        <!-- 在这里一定把用户id存在这里 -->
+        <a href="javascript:;" class="btn btn-danger btn-xs delete-btn" data-id="{{$value._id}}">删除</a>
+        <a href="javascript:;" class="btn btn-success btn-xs" data-id="{{$value._id}}">修改</a>
+      </td>
+    </tr>
+    {{/each}}
+  </script>
+  <script type="text/template" id="pagenation_templ">
+    <li class="{{pageNum<=1? 'disabled': ''}}" data-pagenum="{{pageNum-1}}"><a href="#"><span class="glyphicon glyphicon-chevron-left"></span></a></li>
+    <li class="{{pageNum>=pageTotal?'disabled': ''}}" data-pagenum="{{pageNum+1}}"><a href="#"><span class="glyphicon glyphicon-chevron-right"></span></a></li>
+  </script>
+  <!-- 引入业务代码 -->
+  <script src="./js/main.js"></script>
+
+</body>
+
+</html>

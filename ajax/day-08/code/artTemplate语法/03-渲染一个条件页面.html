@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <button>按钮</button>
+  <div>
+
+  </div>
+
+  <script src="./art-template-4.13.2/template-web.js"></script>
+  <script type="text/template" id="judge_templ">
+    {{if data.length > 0 }} 
+        <ul>
+          {{each data}}
+          <li>{{$value}}</li>
+          {{/each}}
+        </ul>
+    {{else }}
+       <p>没有数据</p>
+    {{/if}}
+  </script>
+  <script>
+    // 如果data中有数据 那么就渲染数据 
+    // 如果data中没有数据 那么就渲染一句话 没有数据
+    // let data = ["宋轶", "张国立", "于文文", "王菲", "江疏影", "王源", "宋祖儿", "易烊千玺", "王一博"];
+    let data = [];
+    let oBtn = document.querySelector('button');
+    oBtn.onclick = function () {
+      let htmlStr = template('judge_templ', {
+        flag: true,
+        data: data
+      })
+      // console.log(htmlStr);
+      document.querySelector('div').innerHTML = htmlStr;
+    }
+  </script> 
+</body>
+
+</html>

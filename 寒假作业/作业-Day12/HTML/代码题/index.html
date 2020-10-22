@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      .content {
+        width: 550px;
+        height: 500px;
+        margin: 0 auto;
+        background-color: #ccc;
+      }
+      img {
+        width: 100%;
+      }
+      nav {
+        width: 100%;
+        display: flex;
+        background-color: #ff7878;
+        height: 80px;
+        margin-top: 10px;
+        border-radius: 5px;
+      }
+      nav div:first-child {
+        border-left: 0;
+      }
+      nav > div {
+        flex: 1;
+        border-left: 1px solid #fff;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        color: #fff;
+      }
+      nav div:first-child {
+        margin-top: 10px;
+      }
+      .last div:first-child {
+        margin-top: 0;
+      }
+      .last {
+        background-color: #ff9a1a;
+      }
+      nav > div span {
+        flex: 1;
+        border-bottom: 1px solid #fff;
+        line-height: 40px;
+        text-align: center;
+        color: #fff;
+      }
+      nav > div span:last-child {
+        border-bottom: 0;
+      }
+      nav > div:first-child > div {
+        width: 54px;
+        height: 53px;
+        background-image: url(./img/sprite.png);
+        background-size: 104px 321px;
+        background-position: 0 194px;
+        margin-left: 74px;
+        margin-top: 5px;
+      }
+      @media screen and (max-width: 600px) {
+        .content {
+          width: 100%;
+        }
+      }
+      * {
+        box-sizing: border-box;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="content">
+      <img src="./img/banner.jpg" alt="" />
+
+      <nav>
+        <div>
+          酒店
+          <div></div>
+        </div>
+        <div>
+          <span>海外酒店</span>
+          <span>特价酒店</span>
+        </div>
+        <div>
+          <span>团购</span>
+          <span>民宿 客栈</span>
+        </div>
+      </nav>
+      <nav>
+        <div>
+          酒店
+          <div></div>
+        </div>
+        <div>
+          <span>海外酒店</span>
+          <span>特价酒店</span>
+        </div>
+        <div>
+          <span>团购</span>
+          <span>民宿 客栈</span>
+        </div>
+      </nav>
+      <nav>
+        <div>
+          酒店
+          <div></div>
+        </div>
+        <div>
+          <span>海外酒店</span>
+          <span>特价酒店</span>
+        </div>
+        <div>
+          <span>团购</span>
+          <span>民宿 客栈</span>
+        </div>
+      </nav>
+      <nav class="last">
+        <div><span>团购</span><span>民宿 客栈</span></div>
+        <div>
+          <span>海外酒店</span>
+          <span>特价酒店</span>
+        </div>
+        <div>
+          <span>团购</span>
+          <span>民宿 客栈</span>
+        </div>
+      </nav>
+    </div>
+  </body>
+</html>

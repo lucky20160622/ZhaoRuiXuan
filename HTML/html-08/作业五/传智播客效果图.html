@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: gray;
+        }
+
+        p,
+        a,
+        li,
+        ul,
+        div,
+        span,
+        br,
+        img {
+            padding: 0;
+            margin: 0;
+        }
+
+        .school {
+            width: 930px;
+            height: 745px;
+            background-color: white;
+            margin: 0 auto;
+        }
+
+        .school-top {
+            background-color: rgb(179, 80, 88);
+            width: 100%;
+            height: 95px;
+
+        }
+
+        .school-top-right {
+            color: white;
+
+            float: right;
+
+        }
+
+        .school-top-left {
+            color: white;
+            font-size: 26px;
+            margin-left: 13px;
+            float: left;
+            text-align: center;
+            line-height: 95px;
+            font-weight: 700;
+        }
+
+        .school-top-right span {
+            border: 1px solid #ccc;
+            font-size: 23px;
+            line-height: 95px;
+            margin-right: 15px;
+            background-color: rgb(194, 115, 121);
+        }
+
+        .school-bottom {
+            background-image: url("./images/2019.png");
+            width: 930px;
+            height: 77px;
+            background-repeat: no-repeat;
+            background-size: 100%;
+            margin-top: 108px;
+
+
+        }
+
+        .school-centent {
+            width: 570px;
+            height: 466px;
+            background-color: blue
+        }
+
+        .school-centent-top {
+            width: 535px;
+            height: 150px;
+            background-color: white;
+            position: relative;
+
+        }
+
+        .school-centent-top p {
+            display: inline-block;
+            color: rgb(179, 80, 88);
+            font-size: 20px;
+            font-weight: 600;
+
+            position: absolute;
+            bottom: 37px;
+            /* float:right; */
+
+        }
+
+        .school-centent-top img {
+            margin: 35px 67px;
+            width: 105px;
+            height: 115px;
+            font-size: 80px;
+        }
+        .school-centent-bottom{
+            width: 535px;
+            height: 315px;
+            background-color: violet;
+            position: relative;
+        }
+        .school-centent-bottom-left-top{
+          padding: 45px;
+        }
+        .school-centent-bottom-left-top img{
+            width: 93px;
+            height: 100px;
+        }
+        .school-centent-bottom-left-top span{
+          position: absolute;
+          right: 310px;
+          top: 80px;
+          font-size: 20px;
+          
+        }
+        .school-centent-bottom-left-bottom{
+            padding: 45px;
+        }
+        .school-centent-bottom-left-bottom img{
+            width: 90px;
+            height: 95px;
+            position: absolute;
+            left: 45px;
+            top: 190px;
+            
+        }
+        .school-centent-bottom-left-bottom span{
+            font-size: 20px;
+            position: absolute;
+            left: 143px;
+            top: 222px;
+
+        }
+        .school-centent-bottom-right-top img{
+            width: 90px;
+            height: 95px;
+            position: absolute;
+            right: 125px;
+            top: 40px;
+        }
+        .school-centent-bottom-right-top span{
+            font-size: 20px;
+            position: absolute;
+            right: 35px;
+            top: 75px;
+        }
+        .school-centent-bottom-right-bottom img{
+            font-size: 20px;
+            position: absolute;
+            right: 35px;
+            top: 265px;
+        }
+         .school-centent-bottom-right-bottom span{
+            /* width: 90px; */
+            height: 95px;
+            font-size: 20px;
+            position: absolute;
+            right: 100px;
+            top: 220px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 学院概览 -->
+    <div class="school">
+        <!-- 学院概览内容导航栏 -->
+        <div class="school-top">
+            <!-- 学院导航栏左边 -->
+            <div class="school-top-left">前端与移动开发</div>
+            <!-- 学院导航栏右边 -->
+            <div class="school-top-right">
+                <span>进入学院</span>
+                <span>学习社区</span>
+                <span>申请试听</span>
+            </div>
+     </div>
+        <!-- 学院概览内容 -->
+        <div class="school-centent">
+            <!-- 学院概览内容上部分 -->
+            <div class="school-centent-top">
+                <img src="./images/web_icon.jpg" alt="">
+                <p>大前端改变世界 <br> 我们改变前端</p>
+            </div>
+     
+                <!-- 学院概览内容下部分 -->
+        <div class="school-centent-bottom">
+                 <!-- 学院概览内容下部分左边 上面  -->
+            <div class="school-centent-bottom-left-top"><img src="./images/icon2.png" alt=""><span>课程大纲</span></div>
+            <!-- 学院概览内容下部分左边 下面 -->
+            <div class="school-centent-bottom-left-bottom"><img src="./images/icon1.png" alt=""><span>师资力量</span></div>
+            <!-- 学院概览内容下部分右边  上面  -->
+            <div class="school-centent-bottom-right-top"><img src="./images/icon3.png" alt=""><span>就业前景</span></div>
+            <!-- 学院概览内容下部分右边 下面 -->
+            <div class="school-centent-bottom-right-bottom"><img src="./images/免费xiaz.png" alt=""><span>免费视频下载</span></div>
+        </div>
+           
+       
+     </div>
+
+        <!-- 学院概览内容 大右部分-->
+        <div class="school-centent-right"></div>
+        <!-- 学院概览内容 大右上 -->
+        <div class="school-right-top"></div>
+        <!-- 学院概览内容 大右中 -->
+        <div class="school-right-center"></div>
+        <!-- 学院概览内容 大右下 -->
+        <div class="school-right-bottom"></div>
+        <!-- 学院概览内容 下部分 -->
+        <div class="school-bottom"></div>
+    </div>
+
+</body>
+
+</html>

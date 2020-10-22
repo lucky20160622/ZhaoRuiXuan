@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Document</title>
+  <style>
+    .name {
+      color: #8a2602;
+    }
+
+    .title {
+      color: #8a2602;
+    }
+
+    .search_title {
+      display: block;
+      margin: 80px auto 0;
+    }
+
+    .search_wrap {
+      width: 600px;
+      height: 40px;
+      margin: 30px auto 0;
+      background-color: #ff0;
+    }
+
+    .hero {
+      width: 498px;
+      height: 38px;
+      border: 1px solid #6e4242;
+      padding: 0px;
+      text-indent: 10px;
+      outline: none;
+      float: left;
+      border-top-left-radius: 4px;
+      border-bottom-left-radius: 4px;
+    }
+
+    .search {
+      width: 100px;
+      height: 40px;
+      border: 0px;
+      float: left;
+      font-size: 18px;
+      background-color: #8a2602;
+      color: #fff;
+      border-top-right-radius: 4px;
+      border-bottom-right-radius: 4px;
+      cursor: pointer;
+      outline: none;
+    }
+
+    .yangpi {
+      width: 411px;
+      height: 197px;
+      margin: 47px auto 0;
+      background: url('images/yangpi_bg.png') no-repeat;
+      position: relative;
+
+    }
+
+    .wrap {
+      width: 240px;
+      height: 100px;
+      position: absolute;
+      left: 100px;
+      top: 60px;
+      font-size: 18px;
+      color: #8a2602;
+      line-height: 36px;
+    }
+  </style>
+</head>
+
+<body>
+  <img src="images/search_title.png" alt="" class="search_title">
+
+  <div class="search_wrap">
+    <input type="text" placeholder="请输入查询的名字" class="hero" />
+    <input type="button" value="英雄查询" class="search" />
+  </div>
+  <h2 class="yangpi">
+    <div class="wrap">
+      英雄名称：<span class="name"></span><br>
+      英雄外号：<span class="title"></span>
+    </div>
+  </h2>
+  <script src="./libs/jquery-1.12.4.min.js"></script>
+  <!-- 引入template模板引擎 -->
+  <script src="../libs/template-web.js"></script>
+  <!-- template模板 -->
+  <script type="text/template" id="temp_title">
+    英雄名称：<span class="name">{{hero}}</span><br>
+    英雄外号：<span class="title">{{title}}</span>
+  </script>
+  <script>
+    // 1.给英雄查询按钮添加点击事件
+    $('.search').on('click', function () {
+      // 1.1  获取表单里面的值
+      var hero = $('.hero').val();
+
+      //  1.2 给英雄名称赋值
+      $('.name').text(hero)
+
+      //  1.3  英雄外号先给赋值为"加载中..."
+      $('.title').text("加载中...")
+
+      // 1.4发起ajax请求  
+      $.ajax({
+        url: 'https://autumnfish.cn/api/hero/simple',
+        data: {
+          name: hero
+        },
+        success: function (result) {
+          //  1.4.1如果请求成功的话，把数据渲染到英雄外号
+          let htmlStr = template('temp_title', {
+            hero: hero,
+            title: result
+          })
+          $('.wrap').html(htmlStr);
+        },
+        error: function (err) {
+          // 状态码404代表找不到，非常的重要的一点是:地址写错了
+          // 1.4.1 如果失败的话，输出错误信息
+          console.log(err)
+        }
+
+      })
+
+
+
+    })
+  </script>
+</body>
+
+</html>

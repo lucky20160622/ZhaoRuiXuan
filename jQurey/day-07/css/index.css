@@ -1,0 +1,713 @@
+.section1 {
+    background: url(../images/t1fpyqfltdxxaiulhh-990-600.png) no-repeat center bottom;
+}
+
+.section2 {
+    background: url(../images/t1zdgpfi8exxca6rfn-2000-600.png) no-repeat center bottom;
+}
+
+.section4 {
+    background: #fed url(../images/t1iresfnxaxxca6rfn-2000-600.png) no-repeat center bottom;
+}
+
+.section5 {
+    background: #d04759 url(../images/t1yisqfa4exxa3gmkg-2000-1500.png);
+}
+
+.section {
+    min-width: 1000px;
+    min-height: 600px;
+}
+
+
+/* 第一屏幕 */
+
+.fly {
+    right: 20%;
+    margin-top: 10%;
+    position: absolute;
+    bottom: 580px;
+}
+
+.goods {
+    position: absolute;
+    left: 50%;
+    margin-left: -412px;
+    bottom: 150px;
+}
+
+.shirt01 {
+    position: absolute;
+    bottom: 329px;
+    left: 50%;
+    margin-left: -200px;
+}
+
+.updown {
+    -webkit-animation: fly 3s infinite linear;
+    animation: fly 3s infinite linear
+}
+
+.go {
+    position: fixed;
+    top: 5%;
+    right: 5%;
+    z-index: 999;
+    background: url()
+}
+
+.next {
+    position: fixed;
+    bottom: 120px;
+    right: 10%;
+    z-index: 999
+}
+
+.next:hover,
+.go:hover,
+.shirt01:hover,
+.share:hover,
+.again:hover {
+    cursor: pointer
+}
+
+
+/* 第二屏 内容  */
+
+.word-02-1,
+.word-02-2 {
+    position: absolute;
+    bottom: 500px;
+    left: 50%;
+    margin-bottom: 50px;
+    margin-left: -180px
+}
+
+.word-02-2 {
+    opacity: 0;
+    filter: alpha(opacity=0)\9
+}
+
+.computer {
+    width: 990px;
+    height: 500px;
+    position: absolute;
+    bottom: -3px;
+    left: 50%;
+    margin-left: -495px
+}
+
+.computer .search {
+    background: url(../images/t1ksarfopbxxc8xhzm-222-45.png);
+    position: absolute;
+    bottom: 300px;
+    right: -30px;
+    width: 222px;
+    height: 45px;
+    display: none
+}
+
+.search-02-1 {
+    position: absolute;
+    right: 370px;
+    bottom: 300px;
+    display: none
+}
+
+.search-words {
+    position: relative;
+    left: 70px;
+    font-size: 1.6em;
+    letter-spacing: 10px;
+    opacity: 0;
+}
+
+.goods-02 {
+    position: absolute;
+    bottom: 217px;
+    right: 270px;
+    height: 100px;
+    display: none
+}
+
+.cover {
+    position: absolute;
+    bottom: 334px;
+    right: 496px;
+    width: 101px;
+    height: 90px;
+    z-index: 5;
+    background: #fff;
+    display: none
+}
+
+.shirt-02 {
+    position: absolute;
+    left: 395px;
+    bottom: 335px;
+    width: 100px;
+    z-index: 10;
+    display: none
+}
+
+
+/* 第三屏幕 结构布局 */
+
+.main {
+    width: 700px;
+    height: 500px;
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    margin-left: -350px;
+    background: #ef674d url(../images/t1x0wsfetaxxaiulhh-990-600.png) no-repeat center
+}
+
+.select {
+    width: 300px;
+    height: 250px;
+    position: absolute;
+    right: 8px;
+    bottom: 0
+}
+
+.select .btn {
+    position: absolute;
+    bottom: 10px
+}
+
+.btn-03-a {
+    display: none
+}
+
+.select .img {
+    position: absolute
+}
+
+.select .img-03-a {
+    display: none
+}
+
+.shirt-03 {
+    width: 204px;
+    position: absolute;
+    bottom: 200px;
+    left: 120px;
+    z-index: 5;
+    display: none
+}
+
+.shirt-03-1 {
+    position: absolute;
+    bottom: 202px;
+    left: 115px;
+    display: none
+}
+
+
+/* 第4屏样式布局 */
+
+.cart {
+    width: 500px;
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    margin-left: -250px;
+    z-index: 200;
+}
+
+.shirt-04 {
+    position: relative;
+    bottom: -135px;
+    left: 160px;
+    z-index: -1;
+    display: none;
+}
+
+.note {
+    position: absolute;
+    bottom: 180px;
+    left: 50%;
+    margin-left: -141px;
+    opacity: 0;
+    filter: alpha(opacity=0)\9
+}
+
+.word-04 {
+    position: relative;
+    top: 104px;
+    left: 60px;
+    opacity: 0;
+    filter: alpha(opacity=0)\9
+}
+
+.cloud {
+    position: absolute;
+    bottom: 550px;
+    left: 50%
+}
+
+.word {
+    position: absolute;
+    bottom: 500px;
+    left: 50%;
+    margin-left: -215px
+}
+
+.word-04-2 {
+    display: none
+}
+
+
+/* 第五屏幕动画开始 */
+
+.section5 img {
+    position: absolute;
+}
+
+.shirt-05 {
+    left: 25%;
+    bottom: 800px;
+    display: none
+}
+
+.shirt-05-1 {
+    left: 25%;
+    bottom: 204px;
+    display: none
+}
+
+.shirt-05-2 {
+    left: 25%;
+    bottom: 70px;
+    display: none;
+    z-index: 5
+}
+
+.word-05 {
+    left: 20%;
+    bottom: 570px
+}
+
+.card-05 {
+    bottom: 200px;
+    left: 20%;
+    z-index: 1
+}
+
+.order-05 {
+    bottom: 270px;
+    left: 27%;
+    z-index: 0
+}
+
+.mouse {
+    right: 20%;
+    bottom: 200px
+}
+
+.mouse-05-a {
+    display: none
+}
+
+.hand-05 {
+    right: 24%;
+    bottom: -375px;
+    z-index: 30;
+    display: none
+}
+
+
+/* 第六屏动画 */
+
+.section6 {
+    background: #84d9ed url(../images/t1dvj.fn0gxxb0_fua-2500-600.png) no-repeat 25% 100%;
+}
+
+.box-06 {
+    position: absolute;
+    bottom: 500px;
+    left: -123px;
+    z-index: 10
+}
+
+.words-06-1,
+.words-06-2 {
+    position: absolute;
+    bottom: 479px;
+    left: 30%
+}
+
+.words-06-2 {
+    left: 32%;
+    display: none;
+}
+
+.cloud-06 {
+    position: absolute;
+    left: 50%;
+    bottom: 550px;
+    width: 1500px;
+    z-index: 10
+}
+
+.cloud-06-1,
+.cloud-06-2 {
+    display: inline;
+    position: relative;
+    left: 100px
+}
+
+.cloud-06-2 {
+    left: 500px
+}
+
+.bus-06 {
+    position: absolute;
+    bottom: 0;
+    right: 50%;
+    z-index: 1
+}
+
+.pop-06-1,
+.pop-06-2 {
+    position: absolute;
+    bottom: 119px;
+    right: 48%;
+    display: none
+}
+
+.pop-06-3 {
+    position: absolute;
+    right: 445px;
+    bottom: 400px;
+    display: none;
+    z-index: 20
+}
+
+.boy-06 {
+    position: absolute;
+    right: 50%;
+    bottom: 0;
+    height: 100px;
+    display: none
+}
+
+.girl-06 {
+    position: absolute;
+    right: 315px;
+    bottom: 116px;
+    height: 123px;
+    z-index: 1;
+    display: none
+}
+
+.door-06 {
+    position: absolute;
+    right: 285px;
+    bottom: 116px;
+    display: none
+}
+
+
+/* 第7屏幕的制作 */
+
+.section7 {
+    background: #8ac060 url(../images/t1wf1tfctaxxa3gmkg-2000-1500.png) no-repeat 50% 100%
+}
+
+.star {
+    position: absolute;
+    left: 50%;
+    bottom: 439px;
+    margin-left: -295px;
+    width: 0;
+    height: 20px;
+    background: url(../images/star.png) no-repeat;
+    background-size: 97px;
+}
+
+.good-07 {
+    position: absolute;
+    bottom: 382px;
+    left: 50%;
+    margin-left: -289px;
+    display: none;
+}
+
+
+/* 第8屏幕 */
+
+.section8 {
+    background: url(../images/ksgw.png);
+    overflow: hidden
+}
+
+.btn-08 {
+    position: absolute;
+    bottom: 365px;
+    left: 50%;
+    margin-left: -195px;
+    width: 389px
+}
+
+.btn-08 img {
+    position: absolute;
+    bottom: 0
+}
+
+.btn-08-2,
+.btn-08-3 {
+    display: none
+}
+
+.btn-08:hover {
+    cursor: pointer
+}
+
+.hand-08 {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    margin-left: -85px;
+    z-index: 1
+}
+
+.share,
+.again {
+    position: absolute;
+    bottom: 403px;
+    left: 50%;
+    margin-left: 378px
+}
+
+.again {
+    margin-left: 240px
+}
+
+.updown {
+    -webkit-animation: fly 3s infinite linear;
+    animation: fly 3s infinite linear
+}
+
+@-webkit-keyframes fly {
+    0% {
+        bottom: 580px
+    }
+    50% {
+        bottom: 520px
+    }
+    100% {
+        bottom: 580px
+    }
+}
+
+@keyframes fly {
+    0% {
+        bottom: 580px
+    }
+    50% {
+        bottom: 520px
+    }
+    100% {
+        bottom: 580px
+    }
+}
+
+.shirt_updown {
+    -webkit-animation: goods 1.5s infinite linear;
+    animation: goods 1.5s infinite linear
+}
+
+@-webkit-keyframes goods {
+    50% {
+        bottom: 350px
+    }
+    100% {
+        bottom: 330px
+    }
+}
+
+@keyframes goods {
+    50% {
+        bottom: 350px
+    }
+    100% {
+        bottom: 330px
+    }
+}
+
+.next_updown {
+    -webkit-animation: next .6s infinite linear;
+    animation: next .6s infinite linear
+}
+
+@-webkit-keyframes next {
+    50% {
+        bottom: 100px
+    }
+    100% {
+        bottom: 120px
+    }
+}
+
+@keyframes next {
+    50% {
+        bottom: 100px
+    }
+    100% {
+        bottom: 120px
+    }
+}
+
+.cloud,
+.cloud_anim {
+    -webkit-animation: cloud 70s infinite linear;
+    animation: cloud 70s infinite linear
+}
+
+@-webkit-keyframes cloud {
+    50% {
+        left: -10%
+    }
+    100% {
+        left: 60%
+    }
+}
+
+@keyframes cloud {
+    50% {
+        left: -10%
+    }
+    100% {
+        left: 60%
+    }
+}
+
+.cloud_back_1 {
+    -webkit-animation: cloudBack 30s infinite linear;
+    animation: cloudBack 30s infinite linear
+}
+
+.cloud_back_2 {
+    -webkit-animation: cloudBack 50s infinite linear;
+    animation: cloudBack 50s infinite linear
+}
+
+@-webkit-keyframes cloudBack {
+    100% {
+        left: -10%
+    }
+}
+
+@keyframes cloudBack {
+    100% {
+        left: -10%
+    }
+}
+
+.sns-newshare-panel .sns-new-share-comment {
+    height: 85px!important
+}
+
+iframe {
+    display: none
+}
+
+#ext_overlay,
+.sogoutip {
+    display: none!important
+}
+
+@-webkit-keyframes search {
+    0% {
+        right: -50px;
+        bottom: 300px;
+        opacity: 0;
+    }
+    40%,
+    70% {
+        bottom: 300px;
+        height: 45px;
+        right: 400px;
+        opacity: 1;
+    }
+    100% {
+        right: 250px;
+        height: 30px;
+        bottom: 452px;
+        opacity: 1;
+    }
+}
+
+@keyframes search {
+    0% {
+        right: -50px;
+        bottom: 300px;
+        opacity: 0;
+    }
+    40%,
+    70% {
+        bottom: 300px;
+        height: 45px;
+        right: 400px;
+        opacity: 1;
+    }
+    100% {
+        right: 250px;
+        height: 30px;
+        bottom: 452px;
+        opacity: 1;
+    }
+}
+
+
+/* 沙发从第2屏幕到第3屏幕走动的效果 */
+
+@-webkit-keyframes sofa {
+    0% {
+        opacity: 1;
+        width: auto;
+    }
+    99% {
+        opacity: 1;
+        bottom: -500px;
+        left: 260px;
+        width: auto;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes sofa {
+    0% {
+        opacity: 1;
+        width: auto;
+    }
+    99% {
+        opacity: 1;
+        bottom: -500px;
+        left: 260px;
+        width: auto;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@-webkit-keyframes sofa1 {
+    0% {
+        opacity: 1;
+        width: auto;
+    }
+    99% {
+        z-index: 5;
+        opacity: 1;
+        bottom: -560px;
+        left: 260px;
+    }
+    100% {
+        opacity: 0;
+    }
+}

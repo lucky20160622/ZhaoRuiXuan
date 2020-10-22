@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <button>点我看效果</button>
+  <script>
+    // 原生js
+    let oBtn = document.querySelector('button');
+    oBtn.onclick = function () {
+      queryData("http://localhost:3000/data").then(function (data) {
+        console.log(data);
+        return queryData("http://localhost:3000/data1")
+      }).then(function (data) {
+        console.log(data);
+        return queryData("http://localhost:3000/data2")
+      }).then(function (data) {
+        console.log(data);
+      })
+    }
+
+    function queryData(url) {
+      let p = new Promise(function (resolve, reject) {
+        // 1.实例化XMLHttpRequest对象
+        let xhr = new XMLHttpRequest();
+        // 2.设置请求方式 和请求地址
+        xhr.open("GET", url);
+        // 3.设置请求头(get请求不用设置请求头 但是POST必须设置)
+        // 4.发送请求数据
+        xhr.send(null);
+        // 5.监听并处理响应
+        xhr.onreadystatechange = function () {
+          // 成功的接收到了一个响应
+          if (xhr.readyState !== 4) return;
+          if (xhr.readyState == 4 && xhr.status == 200) {
+            // 从服务器获取到的正确的响应要放到 resolve
+            // console.log(xhr.responseText);
+            resolve(xhr.responseText);
+          } else {
+            reject("服务器错误");
+          }
+        }
+      })
+      return p;
+    }
+
+  </script>
+</body>
+
+</html>

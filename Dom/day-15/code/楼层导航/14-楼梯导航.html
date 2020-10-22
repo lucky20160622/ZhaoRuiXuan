@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/13.css">
+
+</head>
+
+<body>
+  <div class="top">
+    <img src="image/top1.png" alt="" />
+  </div>
+  <div class="louceng">
+    <!-- 楼层1 -->
+    <div class="jd jia" style="height: 404px;">
+      <img src="image/jia.png" alt="" />
+    </div>
+    <!-- 楼层2 -->
+    <div class="jd dian" style="height: 412px;">
+      <img src="image/dian.png" alt="" />
+    </div>
+    <!-- 楼层3 -->
+    <div class="jd fu" style="height: 414px;">
+      <img src="image/fu.png" alt="" />
+    </div>
+    <!-- 楼层4 -->
+    <div class="jd mei" style="height: 411px;">
+      <img src="image/mei.png" alt="" />
+    </div>
+  </div>
+  <div class="bottom">
+    <img src="image/bottom.png" alt="" />
+  </div>
+  <!-- 侧边栏 -->
+  <div class="subnav">
+    <ul>
+      <li>家电通讯</li>
+      <li>电脑数码</li>
+      <li>服饰精品</li>
+      <li>美容珠宝</li>
+    </ul>
+    <div class="back">返回</div>
+
+  </div>
+  <script>
+    //获取元素 
+    let slideBar = document.querySelector('.subnav');
+    let jdtx = document.querySelector('.louceng .jia');
+    let dnsm = document.querySelector('.louceng .dian');
+    let fsjp = document.querySelector('.louceng .fu');
+    let mrzb = document.querySelector('.louceng .mei');
+    let item = document.querySelectorAll('.subnav ul li');
+    let list = document.querySelectorAll('.louceng>div');
+    // console.log(list);
+    // console.log(item);
+    // console.log(slideBar, jdtx, dnsm, fsjp, mrzb)
+    // 功能1:当页面滚动到某一位置(只要大于等于楼层1) 侧边栏就显示 否则不显示
+
+    // 1.给window添加scroll事件
+    window.onscroll = function () {
+      // 1.1 获取页面的scrollTop
+      let pageScrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+      let jdtxTop = jdtx.offsetTop;
+      // console.log(jdtxTop);
+      // 1.2判断页面的scrollTop是不是已经到了 家电通讯这个位置
+      if (pageScrollTop >= jdtxTop) {
+        // 1.2.1 如果是 让侧边栏显示
+        slideBar.style.display = 'block';
+      } else {
+        // 1.2.2 否则不显示
+        slideBar.style.display = 'none';
+      }
+
+
+
+      // 功能2: 当页面滚动到某些位置，侧边栏对应的项会高亮 比如到家电通讯 侧边栏的家电通讯就会高亮
+
+      // 1.获取jdtx dnsm fsjp mrzb的offsetTop
+      // 2.对比一下看看 页面跑出去的距离是否大于等于jdtx的距离 如果大于那就让jdtx显示 其他隐藏
+      // console.log(window.pageYOffset, jdtx.offsetTop);
+      if (window.pageYOffset >= jdtx.offsetTop) {
+        // console.log(1111);
+        for (let i = 0; i < item.length; i++) {
+          // item[i].classList.remove('current');
+          item[i].className = '';
+        }
+        item[0].className = "current";//c//cx'cx,;clx,'c;lx;'xddopfkdkgjfos[[]sps
+      [d[dddgkfbk]]]
+        // jdtx.className = "current";
+      }
+      // 3.对比一下看看 页面跑出去的距离是否大于等于dnsm的距离 如果大于那就dnsm显示 其他隐藏
+      if (window.pageYOffset >= dnsm.offsetTop) {
+        for (let i = 0; i < item.length; i++) {
+          // item[i].classList.remove('current');
+          item[i].className = '';
+        }
+        item[1].className = "current";
+      }
+      // 4.对比一下看看 页面跑出去的距离是否大于等于fsjp的距离 如果大于那就让fsjp显示 其他隐藏
+      if (window.pageYOffset >= fsjp.offsetTop) {
+        for (let i = 0; i < item.length; i++) {
+          // item[i].classList.remove('current');
+          item[i].className = '';
+        }
+        item[2].className = "current";
+      }
+      // 5.对比一下看看 页面跑出去的距离是否大于等于mrzb的距离 如果大于那就让mrzb显示 其他隐藏
+      if (window.pageYOffset >= mrzb.offsetTop) {
+        for (let i = 0; i < item.length; i++) {
+          // item[i].classList.remove('current');
+          item[i].className = '';
+        }
+        item[3].className = "current";
+      }
+    }
+
+    // 功能3: 点击侧边栏中的某一项 会跳到对应的位置
+    // 点击哪一个 就让页面跑出去的距离 = 这一项距离页面顶部的距离
+
+    // 步骤:
+    // 1.获取点击元素的元素
+    // 2.遍历元素
+    for (let i = 0; i < item.length; i++) {
+      // 2.1 获取元素的index
+      item[i].onclick = function () {
+        let index = i;
+        console.log(index);
+        // 2.2 根据点击元素的索引 找到对应的那一项 获取那一项的offsetTop  
+        let listOffset = list[index].offsetTop;
+        // console.log(listOffset);
+        // 2.3 让页面跑出去的距离为那一项的offsetTop animate
+        document.documentElement.scrollTop = listOffset;
+      }
+
+    }
+
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/user.css">
+</head>
+
+<body>
+    <button>动态创建表格</button>
+
+    <div id="box1">
+        <!-- 放表格 -->
+        <!-- <table>
+            <caption>就业榜</caption>
+            <thead>
+                <tr>
+                    <th>姓名</th>
+                    <th>姓名</th>
+                    <th>姓名</th>
+                    <th>姓名</th>
+                    <th>姓名</th>
+                    <th>姓名</th>
+                    <th>姓名</th>
+                  </tr>
+              </thead>
+            <tbody>
+                <tr>
+                    <td>欧阳霸天</td>
+                    <td>欧阳霸天</td>
+                    <td>欧阳霸天</td>
+                    <td>欧阳霸天</td>
+                    <td>欧阳霸天</td>
+                    <td>欧阳霸天</td>
+                    <td>欧阳霸天</td>
+                  </tr>
+              </tbody>
+          </table> -->
+    </div>
+    <script>
+        // 后端的数据
+        var heads = ['姓名', '年龄', '性别', '学号', '薪资', '城市', '操作'];
+        var datas = [{
+            name: '欧阳霸天',
+            age: 19,
+            gender: '男',
+            stuId: '1001',
+            salary: '20000',
+            city: '上海'
+        },
+        {
+            name: '令狐霸天',
+            age: 19,
+            gender: '男',
+            stuId: '1001',
+            salary: '20000',
+            city: '北京'
+        },
+        {
+            name: '诸葛霸天',
+            age: 19,
+            gender: '男',
+            stuId: '1001',
+            salary: '20000',
+            city: '南京'
+        },
+        {
+            name: '西门霸天',
+            age: 19,
+            gender: '男',
+            stuId: '1001',
+            salary: '20000',
+            city: '深圳'
+        },
+        {
+            name: '上官霸天',
+            age: 19,
+            gender: '男',
+            stuId: '1001',
+            salary: '20000',
+            city: '北京'
+        },
+        {
+            name: '欧阳霸天',
+            age: 19,
+            gender: '男',
+            stuId: '1001',
+            salary: '20000',
+            city: '上海'
+        },
+        {
+            name: '令狐霸天',
+            age: 19,
+            gender: '男',
+            stuId: '1001',
+            salary: '20000',
+            city: '北京'
+        },
+        {
+            name: '诸葛霸天',
+            age: 19,
+            gender: '男',
+            stuId: '1001',
+            salary: '20000',
+            city: '南京'
+        },
+        {
+            name: '西门霸天',
+            age: 19,
+            gender: '男',
+            stuId: '1001',
+            salary: '20000',
+            city: '深圳'
+        },
+        {
+            name: '上官霸天',
+            age: 19,
+            gender: '男',
+            stuId: '1001',
+            salary: '20000',
+            city: '北京'
+        },
+        ];
+        let button = document.querySelector('button')
+        let box1 = document.querySelector('#box1')
+        let flag = true
+        button.onclick = function () {
+            if (flag == true) {
+                let table = document.createElement('table')
+                box1.appendChild(table)
+
+                let caption = document.createElement('caption')
+                caption.innerText = '就业榜'
+                table.appendChild(caption)
+
+                let thead = document.createElement('thead')
+                let theadtr = document.createElement('tr')
+                let thstr = ''
+                for (let i = 0; i < heads.length; i++) {
+                    thstr += `<th>${heads[i]}</th>`
+                }
+                theadtr.innerHTML = thstr
+                table.appendChild(theadtr)
+                table.appendChild(thead)
+
+                let tbody = document.createElement('tbody')
+                let str = ''
+                for (let i = 0; i < datas.length; i++) {
+                    str += '<tr>'
+                    for (let key in datas[i]) {
+                        str += `<td>${datas[i][key]}</td>`
+                    }
+                    str += '<td><a herf="#">删除</a></td></tr>'
+                }
+                tbody.innerHTML = str
+                table.appendChild(tbody)
+                box1.appendChild(table)
+                flag = false
+            }
+        }
+
+        box1.onclick = function (e) {
+            let result = confirm('您确定真的要删除么')
+            if (result) {
+                e.target.parentNode.parentNode.parentNode.removeChild(e.target.parentNode.parentNode)
+                if (document.querySelectorAll('tbody tr').length == 0) {
+                    box1.removeChild(document.querySelector('table'))
+                    flag=true
+                }
+            }
+
+        }
+
+    </script>
+</body>
+
+</html>

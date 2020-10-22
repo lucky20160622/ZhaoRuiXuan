@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <div>{{msg}}</div>
+    <button @click='update'>更新</button>
+    <button @click='destroy'>销毁</button>
+  </div>
+  <script type="text/javascript" src="./lib/vue-3.0.0.js"></script>
+  <script type="text/javascript">
+    /*
+      Vue实例的生命周期
+      
+    */
+    var vm = Vue.createApp({
+      data() {
+        return {
+          msg: '生命周期'
+        }
+      },
+      methods: {
+        update: function () {
+          this.msg = 'hello';
+        },
+        destroy: function () {
+          console.log(this);
+          // this.$forceUpdate();
+
+          this.$unmounted();
+        }
+      },
+      // 可以在钩子函数 created、beforeMount、mounted 中进行调用，因为在这三个钩子函数中，data 已经创建，可以将服务端端返回的数据进行赋值。
+
+      // 但是推荐在 created 钩子函数中调用异步请求，因为在 created 钩子函数中调用异步请求有以下优点：
+
+      // 能更快获取到服务端数据，减少页面loading 时间；
+      // ssr不支持 beforeMount 、mounted 钩子函数，所以放在 created 中有助于一致性；
+
+      // 在实例初始化之后,数据观测和事件配置之前被调用 此时data和methods以及页面的DOM结构都没有初始化 什么都做不了
+      // beforeCreate: function () {
+      //   console.log('beforeCreate');
+      // },
+      // // 在实例创建完成后被立即调用 此时data和methods已经可以使用 但是页面还没有被渲染出来
+      // created: function () {
+      //   console.log('created');
+      // },
+      setup: function () {
+        console.log('created');
+      },
+      // 在挂载开始之前被调用 此时页面上还看不到真是数据 只是一个模板而已
+      beforeMount: function () {
+        console.log('beforeMount');
+      },
+      // el被新创建的vm.$el替换,并挂载到实例上去之后调用该钩子.数据已经真是渲染到页面上 在这个钩子函数里面我们可以使用一些第三方的插件
+
+      // 在钩子函数 mounted 被调用前，Vue 已经将编译好的模板挂载到页面上，所以在 mounted 中可以访问操作 DOM。
+      mounted: function () {
+        console.log('mounted');
+      },
+      // 数据更新时调用,发生在虚拟DOM打补丁之前.页面上数据还是旧的
+      beforeUpdate: function () {
+        console.log('beforeUpdate');
+      },
+      // 由于数据更新导致的虚拟DOM重新渲染和打补丁,在这之后会调用该钩子,页面上的数据已经替换成最新的了
+      updated: function () {
+        console.log('updated');
+      },
+      // 实例销毁之前调用
+      beforeUnmount: function () {
+        console.log('beforeDestroy');
+      },
+      // 实例销毁之后调用
+      unmounted: function () {
+        console.log('destroyed');
+      }
+    }).mount('#app')
+
+    // https://v3.cn.vuejs.org/guide/composition-api-lifecycle-hooks.html
+    // https://www.vuemastery.com/courses/vue-3-essentials/lifecycle-hooks/
+
+    // https://blog.csdn.net/kk2442687723/article/details/108749945
+  </script>
+</body>
+
+</html>

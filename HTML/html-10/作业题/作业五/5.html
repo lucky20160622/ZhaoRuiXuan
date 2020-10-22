@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <style>
+    body,
+    p,
+    ul,
+    li {
+      margin: 0;
+      padding: 0;
+    }
+    li {
+      list-style: none;
+    }
+    .box {
+      height: 700px;
+      width: 1533px;
+      margin: 100px auto;
+      background-color: #f5f5f5;
+    }
+    .top span:first-child {
+      color: #333333;
+      font-size: 28px;
+    }
+    .top span:nth-child(n + 2) {
+      display: inline-block;
+      text-align: center;
+      line-height: 28px;
+      width: 43px;
+      height: 28px;
+      border: 1px solid #e0e0e0;
+    }
+    .top span:nth-child(2) {
+      float: right;
+      color: #b0b0b3;
+      border-left: none;
+    }
+    .top span:nth-child(3) {
+      float: right;
+      color: #e0e0e0;
+      margin-left: -10px;
+    }
+    .main {
+      width: 100%;
+      height: 424px;
+      margin-top: 12px;
+    }
+    .seckill {
+      float: left;
+      width: 292px;
+      height: 100%;
+      background-color: #f1eded;
+      overflow: hidden;
+      text-align: center;
+    }
+    .seckill p:first-child {
+      font-size: 28px;
+      color: #ef3a3b;
+      margin-top: 80px;
+    }
+    .seckill img {
+      background-color: #f1eded;
+      margin-top: 38px;
+    }
+    .seckill p:nth-child(3) {
+      color: #706f6f;
+      font-size: 22px;
+      margin-top: 40px;
+    }
+    .seckill ul {
+      margin: 42px 0 0 42px;
+      font-weight: 700;
+    }
+    .seckill ul li:nth-child(2n-1) {
+      float: left;
+      background-color: #605751;
+      width: 57px;
+      height: 58px;
+      font-size: 26px;
+      color: white;
+      text-align: center;
+      line-height: 58px;
+    }
+    .seckill ul li:nth-child(2n) {
+      float: left;
+      font-size: 26px;
+      color: #605751;
+      text-align: center;
+      line-height: 58px;
+    }
+    .main-right {
+      float: left;
+      width: 292px;
+      height: 100%;
+      border-top: 1px solid #2196f3;
+      margin-left: 18px;
+      background-color: white;
+    }
+    .main-right .price {
+      width: 80px;
+      height: 25px;
+      background-color: #e13834;
+      color: white;
+      text-align: center;
+      line-height: 25px;
+      margin: 0 auto;
+    }
+    .main-right img {
+      display: block;
+      margin: 0 auto;
+      margin-top: 20px;
+    }
+    .main-right p {
+      text-align: center;
+    }
+    .main-right p:nth-child(3) {
+      font-size: 20px;
+    }
+    .main-right p:nth-child(4) {
+      font-size: 14px;
+      color: #adadad;
+      margin-top: 14px;
+    }
+    .main-right p:nth-child(5) {
+      color: #fa6509;
+      margin-top: 26px;
+    }
+    .main-right del {
+      color: #afafaf;
+    }
+    #imgs img {
+      margin-top: 45px;
+    }
+    #imgs p:nth-child(2) {
+      font-size: 20px;
+    }
+    #imgs p:nth-child(3) {
+      font-size: 14px;
+      color: #adadad;
+      margin-top: 14px;
+    }
+    #imgs p:nth-child(4) {
+      color: #fa6509;
+      margin-top: 26px;
+    }
+    .footer {
+      width: 100%;
+      height: 150px;
+      margin-top: 28px;
+      background: url("./images/banner.webp");
+    }
+  </style>
+  <body>
+    <div class="box">
+      <div class="top">
+        <span>小米闪购</span>
+        <span>&gt;</span>
+        <span>&lt;</span>
+      </div>
+      <div class="main">
+        <div class="seckill">
+          <p>14:00 场</p>
+          <img src="./images/left.png" alt="" />
+          <p>距离结束还有</p>
+          <ul>
+            <li>00</li>
+            <li>:</li>
+            <li>01</li>
+            <li>:</li>
+            <li>26</li>
+          </ul>
+        </div>
+        <div class="main-right" style="border-color: #ffac13;">
+          <div class="price">
+            5折
+          </div>
+          <img src="./images/1.png" alt="" />
+          <p>米家电水壶 白色</p>
+          <p>一杯水 是一家人的安心</p>
+          <p><span>49.5元 </span><del> 99元</del></p>
+        </div>
+        <div class="main-right" style="border-color: #83c44e">
+          <div class="price">
+            1元
+          </div>
+          <img src="./images/2.jpg" alt="" />
+          <p>北医生巴氏牙刷 (单支装) ...</p>
+          <p>对细节苛刻,是对健康呵护</p>
+          <p><span>1元 </span><del> 9.9元</del></p>
+        </div>
+        <div id="imgs" class="main-right" style="border-color: #2196f3">
+          <img src="./images/3.jpg" alt="" />
+          <p>净化器滤芯 通用版</p>
+          <p>3层高效净化悬浮物</p>
+          <p><span>74.5元 </span><del> 149元</del></p>
+        </div>
+        <div id="imgs" class="main-right" style="border-color:#e53935">
+          <img src="./images/4.webp" alt="" />
+          <p>最生活毛巾·Air(10条装) ...</p>
+          <p>给生活一条好毛巾</p>
+          <p><span>99元 </span><del> 169元</del></p>
+        </div>
+      </div>
+      <div class="footer"></div>
+    </div>
+  </body>
+</html>

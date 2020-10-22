@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    
+// 6. var str="hello world 378nihao",分别统计出字符串中的英文字母、数字、空格的个数
+var str = "hello world 378nihao"
+        let strCount = 0;
+        let numCount = 0;
+        let spaceCount = 0;
+
+        //遍历字符串,把所有的值转化为ASCII码,并让对应的个数自增
+        for (let i = 0; i < str.length; i++) {
+            var ascii = str.charCodeAt(i)
+            //判断数字的ascii键码值的区间范围
+            if (ascii >= 48 && ascii <= 57) {
+                numCount++
+                //判断字母的ascii键码值的区间范围
+            } else if (ascii >= 65 && ascii <= 90 || ascii >= 97 && ascii <= 122) {
+                strCount++
+                //判断空格的ascii键码值
+            } else if (ascii == 32) {
+                spaceCount++
+            }
+        }
+        console.log('数字有:' + numCount + '个' + ',字母有:' + strCount + '个' + ',空格有:' + spaceCount + '个')
+   
+    </script>
+</body>
+</html>

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+  <head lang="en">
+    <meta charset="UTF-8" />
+    <title></title>
+    <style>
+      body {
+        margin: 0 auto;
+        padding: 0px;
+        font-size: 12px;
+        background: url(images/bg.gif) repeat center 36px;
+        text-align: center;
+        background-color: #c30230;
+      }
+
+      #content {
+        margin: 0 auto;
+        width: 960px;
+        background: url(images/content_bg.jpg) no-repeat left top;
+        height: 627px;
+        position: relative;
+      }
+
+      #content .tip1,
+      #content .tip2,
+      #content .tip3,
+      #content .tip4,
+      #content .tip5,
+      #content .tip6,
+      #content .tip7,
+      #content .tip8 {
+        position: absolute;
+        width: 227px;
+        left: 200px;
+        top: 100px;
+      }
+
+      #content .tip1 .tip_h {
+        background: url(images/tip1_h.gif) no-repeat left top;
+      }
+
+      #content .tip1 .tip_h,
+      #content .tip2 .tip_h,
+      #content .tip3 .tip_h,
+      #content .tip4 .tip_h,
+      #content .tip5 .tip_h,
+      #content .tip6 .tip_h,
+      #content .tip7 .tip_h,
+      #content .tip8 .tip_h {
+        width: 227px;
+        padding-top: 45px;
+        height: 23px;
+        text-align: left;
+        cursor: move;
+      }
+
+      #content .tip1 .tip_c {
+        background: url(images/tip1_c.gif) repeat-y;
+      }
+
+      #content .tip1 .tip_c,
+      #content .tip2 .tip_c,
+      #content .tip3 .tip_c,
+      #content .tip4 .tip_c,
+      #content .tip5 .tip_c,
+      #content .tip6 .tip_c,
+      #content .tip7 .tip_c,
+      #content .tip8 .tip_c {
+        width: 200px;
+        padding-left: 12px;
+        padding-right: 15px;
+        min-height: 40px;
+        text-align: left;
+        line-height: 20px;
+        max-height: 160px;
+        word-wrap: break-word;
+        word-break: break-all;
+        overflow: hidden;
+      }
+
+      #content .tip1 .tip_f {
+        background: url(images/tip1_f.gif) no-repeat left top;
+      }
+
+      #content .tip1 .tip_f,
+      #content .tip2 .tip_f,
+      #content .tip3 .tip_f,
+      #content .tip4 .tip_f,
+      #content .tip5 .tip_f,
+      #content .tip6 .tip_f,
+      #content .tip7 .tip_f,
+      #content .tip8 .tip_f {
+        width: 227px;
+        height: 53px;
+        padding-top: 20px;
+      }
+
+      #content .close,
+      #content .close2 {
+        float: left;
+        font-size: 12px;
+        cursor: pointer;
+        color: #000000;
+      }
+
+      .clr {
+        clear: both;
+        overflow: auto;
+        display: block;
+        height: 0px;
+      }
+
+      #content .icon {
+        float: left;
+        width: 35px;
+        padding-left: 15px;
+        height: 35px;
+        text-align: center;
+      }
+
+      #content .name {
+        float: right;
+        padding-right: 15px;
+        text-align: right;
+        font-size: 14px;
+        line-height: 35px;
+        color: #c0f;
+      }
+
+      #content .num {
+        float: left;
+        padding-left: 7px;
+        width: 195px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!--纸条墙-->
+    <div id="content">
+      <div class="tip1" id="tip7" style="top: 63px; left: 82px;">
+        <!-- <div class="tip_h" title="双击关闭纸条">
+        <div class="num">第[49568]条 2020-03-13 16:30:00</div>
+        <div class="close" title="关闭纸条">×</div>
+        <div class="clr"></div>
+      </div>
+      <div class="tip_c">希望早点在学校相聚,我在沭阳等你们</div>
+      <div class="tip_f">
+        <div class="icon"><img src="images/bpic_1.gif" alt="" title=""></div>
+        <div class="name">拉拉留言</div>
+        <div class="clr"></div>
+      </div> -->
+      </div>
+    </div>
+    <script>
+      //模拟数据
+      var messages = [
+        {
+          id: 1,
+          name: "小刘",
+          content: "今天你拿华为支付了么",
+          time: "2020-03-15 00:00:00"
+        },
+        {
+          id: 2,
+          name: "小王",
+          content: "天上掉下来个猪八戒",
+          time: "2020-03-15 10:00:00"
+        },
+        {
+          id: 3,
+          name: "小刚",
+          content: "已识乾坤大犹怜草木青",
+          time: "2020-03-15 13:00:00"
+        },
+        {
+          id: 4,
+          name: "小红",
+          content: "惊雷这通天修为天塌地陷紫金锤",
+          time: "2020-03-15 14:20:00"
+        },
+        {
+          id: 5,
+          name: "毛泽东",
+          content: "与天斗其乐无穷",
+          time: "2020-03-15 00:00:00"
+        },
+        {
+          id: 6,
+          name: "小耳朵",
+          content:
+            "你有什么可豪横的",
+            time: "2020-03-15 20:00:00"
+        },
+        {
+          id: 7,
+          name: "可乐",
+          content:
+            "百事可乐可口可乐",
+            time: "2020-03-15 10:00:00"
+        },
+        {
+          id: 8,
+          name: "MC高迪",
+          content:
+            "一人我饮酒醉",
+            time: "2020-03-14 00:00:00"
+        }
+      ];
+
+      var content = document.getElementById("content");
+
+      for (var i = 0; i < messages.length; i++) {
+        var obj = messages[i];
+        var tip = document.createElement("div");
+        tip.className = "tip1";
+        tip.innerHTML = `
+      <div class="tip_h clearfix" title="双击关闭纸条">
+        <div class="num">第[${obj.id}]条 ${obj.time}</div>
+        <div class="close" title="关闭纸条">×</div>
+        <div class="clr"></div>
+      </div>
+      <div class="tip_c">${obj.content}</div>
+      <div class="tip_f">
+        <div class="icon"><img src="images/bpic_1.gif" alt="" title=""></div>
+        <div class="name">${obj.name}</div>
+        <div class="clr"></div>
+    </div>`;
+
+        var x = parseInt(Math.random() * 734);
+        var y = parseInt(Math.random() * 441);
+        tip.style.left = x + "px";
+        tip.style.top = y + "px";
+        console.log(tip);
+        content.appendChild(tip);
+        var zIndex = 0;
+
+        tip.onclick = function() {
+          zIndex++;
+          this.style.zIndex = zIndex;
+        };
+
+        tip.children[0].ondblclick = function() {
+          content.removeChild(this.parentNode);
+        };
+        tip.children[0].children[1].onclick = function() {
+          content.removeChild(this.parentNode.parentNode);
+        };
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="./lib/vue-2.5.16.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <button @click="lang">浪起来</button>
+    <button @click="stop">消停会</button>
+    <h3>{{msg}}</h3>
+  </div>
+
+  <script>
+    // 创建 Vue 实例，得到 ViewModel
+    var vm = new Vue({
+      el: '#app',
+      // data 中的数据，是 所有 methods 中的方法，所共享的数据
+      data: {
+        msg: '稳住，我们能赢！',
+        // 定时器的Id，默认为null，表示没有开启任何定时器
+        interId: null
+      },
+      methods: {
+        // 点击 按钮，浪起来
+        lang() {
+          if (this.interId !== null) return
+          // 以下的实现方式可以，但是有细微的Bug
+          // clearInterval(this.interId)
+          this.interId = setInterval(() => {
+            // 把 msg 字符串，第一个字符，截取出来，拼接到 最后
+            const header = this.msg.slice(0, 1)
+            const next = this.msg.slice(1)
+            const newStr = next + header
+            this.msg = newStr
+          }, 500)
+        },
+        // 点击按钮，清除定时器
+        stop() {
+          clearInterval(this.interId)
+          this.interId = null
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+
+    // Fetch API 调用接口传递参数
+
+    // GET参数传递-传统URL
+    // fetch('http://localhost:3000/books?id=12').then(function (res) {
+    //   return res.text();
+    // }).then(function (data) {
+    //   console.log(data);
+    // })
+
+    // GET参数传递-Restful的URL
+    // fetch('http://localhost:3000/books/12').then(function (res) {
+    //   return res.text();
+    // }).then(function (data) {
+    //   console.log(data);
+    // })
+    // DELETE请求参数传递-Restful的URL
+    // fetch('http://localhost:3000/books/456', {
+    //   method: 'DELETE'
+    // }).then(function (res) {
+    //   return res.text();
+    // }).then(function (data) {
+    //   console.log(data);
+    // })
+
+    // post 和 put 请求的时候 需要在options 中 设置  请求头 headers   和  body
+    // POST请求参数传递-传统
+    // fetch('http://localhost:3000/books', {
+    //   method: 'POST',
+    //   body: "uname=lisi&pwd=123456",
+    //   headers: {
+    //     'Content-Type': 'application/x-www-form-urlencoded'
+    //   }
+    // }).then(function (res) {
+    //   return res.text();
+    // }).then(function (data) {
+    //   console.log(data);
+    // })
+    // POST请求参数传递-RESTFUL
+    // fetch('http://localhost:3000/books', {
+    //   method: 'POST',
+    //   body: JSON.stringify({
+    //     uname: '工行',
+    //     pwd: '1234235'
+    //   }),
+    //   headers: {
+    //     'Content-Type': 'application/json'
+    //   }
+    // }).then(function (res) {
+    //   return res.text();
+    // }).then(function (data) {
+    //   console.log(data);
+    // })
+    // PUT请求传参
+    fetch('http://localhost:3000/books/123', {
+      method: 'PUT',
+      body: JSON.stringify({
+        uname: '工行',
+        pwd: '123123'
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).then(function (res) {
+      return res.text();
+    }).then(function (data) {
+      console.log(data);
+    })
+
+  </script>
+</body>
+
+</html>

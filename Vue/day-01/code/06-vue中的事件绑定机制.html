@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- M(数据)V(模板)VM(控制器 调度者) -->
+  <div>{{msg}}</div>
+  <!-- 1.写模板(V) -->
+  <!-- 1.1 vue是一个渐进式框架 一个页面中 不需要vue的地方可以不用 需要vue的时候才用 -->
+  <!-- 1.2 在id为app的div中任何代码都是由vue来控制的 -->
+  <!-- 1.3 {{}} 名称为插值表达式 -->
+  <div id="app">
+    <!-- 在p标签上添加点击事件 弹出一个弹出框 -->
+    <p v-on:click="handleClick" v-on:dblclick="handledblClick('小明')" @mouseenter="handelMouseenter">{{content}}</p>
+  </div>
+
+  <!-- 0.引入vue库文件 -->
+  <!-- 0.1 当页面中引入vue库文件 那么全局对象window中就有了一个Vue的实例对象 -->
+  <script src="./lib/vue-3.0.js"></script>
+  <script>
+    // 2.写数据(M)
+    let vm = Vue.createApp({
+      // 如果你要存数据
+      data() {
+        return {
+          content: "点我看看",
+          people: "小红果"
+        }
+      },
+      // 所有的自定义的方法都写在这里
+      methods: {
+        // 方法1(推荐  这是es6的新语法)
+        handleClick() {
+          alert("我被点击了一下");
+        },
+        // 方法2
+        handledblClick: function (name) {
+          alert("我被" + name + "点击了")
+        },
+        // 方法3
+        handelMouseenter: function () {
+          alert("我被" + this.people + "抚摸了一下")
+        }
+      }
+    })
+
+    // 3.写控制器(VM)
+    // mount()代表把模板和数据渲染成一个有数据的html插入到哪个元素中
+    vm.mount('#app');
+
+
+    // 会简单的vue的事件绑定
+    // 会简单的传参的事件绑定
+    // 会简写事件绑定并且传参
+  </script>
+</body>
+
+</html>

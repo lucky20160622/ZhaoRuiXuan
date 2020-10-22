@@ -1,0 +1,90 @@
+html,body ,ul,ol{
+  margin: 0;
+  padding: 0;
+}
+
+html,body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+/* 业务代码在这里 */
+.slider {
+  position: relative;
+  width: 721px;
+  height: 455px;
+  margin: 100px auto;
+  overflow: hidden;
+}
+
+ul {
+  /* 为了让ul进行移动的 */
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 455px;
+  width: calc(721px *4);
+}
+
+ul li {
+  float: left;
+}
+
+a {
+  display: block;
+} 
+
+/* previous前
+   next后
+*/
+.prev,
+.next {
+  display: none;
+  position: absolute;
+  top: 50%;
+  margin-top: -16px;
+  width: 22px;
+  height: 32px;
+  z-index: 10;
+}
+
+.prev {
+  left: 0;
+  background-image: url(../image/arrow-prev.png);
+}
+
+.next {
+  right: 0;
+  background-image: url(../image/arrow-next.png);
+}
+
+/* 小圆点导航 */
+ol {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
+
+ol li {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #ccc;
+  background-color: #fff;
+  box-sizing: border-box;
+  border-radius: 50%;
+  margin: 0 3px;
+}
+
+ol li.active {
+  border: 2px solid #fff;
+  background-color: #ccc;
+}

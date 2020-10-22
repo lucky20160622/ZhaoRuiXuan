@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 这是处理消息
+    let p = new Promise(function (resolve, reject) {
+      // resolve 如果是正常的响应 那么就把结果传给resolve 函数
+      // reject 如果是出现错误的响应那么就把结果传给reject 函数
+      // resolve("这是正确的结果")
+      reject("这是错误的结果")
+
+    })
+
+    // 这是获取消息
+    // p.then(成功时的回调,失败时的回调)
+
+    // 写法1
+    // p.then(function (data) {
+    //   console.log(data)
+    // }, function (err) {
+    //   console.log(err);
+    // }).finally(function () {
+    //   console.log("我完成了")
+    // })
+
+    // 写法2(推荐写法)
+    p.then(function (data) {
+      console.log(data)
+    }).catch(function (err) {
+      console.log(err);
+    }).finally(function () {
+      console.log("我完成了")
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=W, initial-scale=1.0">
+  <title>js五星好评</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    .box {
+      width: 400px;
+      height: 140px;
+      padding: 60px 0;
+      padding-left: 20px;
+      margin: 100px auto;
+      overflow: hidden;
+      box-sizing: border-box;
+    }
+
+    .box ul {
+      float: left;
+      width: 120px;
+      overflow: hidden;
+    }
+
+    .box li {
+      float: left;
+      width: 20px;
+      height: 20px;
+      background: url("./五星好评/star2.png") no-repeat;
+      background-size: 100%;
+      margin-left: 2px;
+    }
+
+    .box>span {
+      float: left;
+    }
+
+    .box .star {
+      background: url("./五星好评/star1.png") no-repeat;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box">
+    <ul>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+    <span></span>
+  </div>
+</body>
+<script src="../../lib/jquery-3.4.1.min.js"></script>
+<script>
+  let arr = ['极差', '失望', '一般', '满意', '惊喜'];
+  let msgFlag = null;
+
+  $(" li").on('mouseover', function () {
+    $(this).addClass('star').prevAll("li").addClass('star').end().nextAll("li").removeClass('star');
+    $("span").text(arr[$(this).index()]);
+
+    console.log(arr[$(this).index()]);
+  });
+  $(" li").on('mouseout', function () {
+    $("li").removeClass('star');
+    if ($(".current").length === 1) {
+      $(".current").addClass('star').prevAll("li").addClass('star').end().nextAll("li").removeClass('star');
+    }
+    $("span").text(msgFlag);
+  });
+
+  $(" li").click(function () {
+    $(this).addClass("current").siblings("li").removeClass("current");
+    msgFlag = arr[$(this).index()]
+  });
+  
+</script>
+
+</html>

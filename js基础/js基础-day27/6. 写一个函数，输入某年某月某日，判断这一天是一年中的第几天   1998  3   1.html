@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 7. 写一个函数，输入某年某月某日，判断这一天是一年中的第几天   1998  3   1
+      // 创建一个函数
+      function getDays() {
+        // 输入年月日
+        var years = +prompt("请输入一个年份");
+        var month = +prompt("请输入一个月份");
+        var day = +prompt("请输入天数");
+        // 累加和
+        var days = 0;
+        // 如果月份等于1月
+        if (month == 1) {
+          // 累加和就等于天数
+          days = day;
+        }
+        // 声明刚数组 保存每个月份的天数
+        var months = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+        for (var i = 0; i < month - 1; i++) {
+          // 累加
+          days += months[i];
+        }
+        // 如果是闰年 并且月份大于2月 那么就让累加和+1
+        if ( ((years % 4 == 0 && years % 100 != 0) || years % 400 == 0) &&month > 2) {
+          days++;
+        }
+        return days;
+      }
+      alert("这一天是一年中的第" + getDays() + "天");
+    </script>
+  </body>
+</html>

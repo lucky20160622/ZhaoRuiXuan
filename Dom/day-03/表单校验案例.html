@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #two {
+            color: #ccc;
+            font-size: 12px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <label for="" id="one">您的成绩：</label>
+        <input type="text" name="" id="" placeholder="请输入分数" value="">
+        <img src="" alt="">
+        <label for="" id="two">请您输入成绩</label>
+
+
+    </div>
+    <script>
+        var input = document.querySelector('input')
+        var two = document.querySelector('#two')
+        var img = document.querySelector('img')
+        input.onblur = function () {
+            img.src = "./img/error.png"
+            two.innerHTML = "请您输入数字"
+        }
+
+        input.onblur = function () {
+            if (input.value > 100) {
+                img.src = "./img/error.png"
+                two.innerHTML = "成绩不能超出100"
+                two.style.color="red"
+            }else if(input.value==''){
+                img.src = "./img/error.png"
+                two.innerHTML = "请输入数字"
+                two.style.color="red"
+            }
+            else if(input.value < 0){
+                img.src = "./img/error.png"
+                two.innerHTML = "成绩不能小于0"
+                two.style.color="red"
+
+            }else if(input.value>=0||value<=100){
+                img.src = "./img/right.png"
+                two.innerHTML = "您输入的成绩正确"
+                two.style.color="green"
+            }
+        }
+     
+    </script>
+</body>
+
+</html>

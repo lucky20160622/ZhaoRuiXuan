@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>漠丶叹尘的空间</title>
+  <link rel="icon" sizes="any" mask href="http://qzonestyle.gtimg.cn/qzone/v8/img/Qzone.svg">
+  <link rel="stylesheet" type="text/css" href="css/index.css">
+</head>
+
+<body>
+  <div class="header">
+    This is the head nav
+  </div>
+  <div class="topInfo">
+    <span class="edit">编辑</span>
+    <div class="zoneName">
+      <h2>漠丶叹尘 的空间</h2>
+      <p>知我者，谓我心忧。不知我者，谓我何求。</p>
+    </div>
+    <div class="support">
+      <img src="image/support_1.png" alt="赞">
+      <span class="num">7</span>
+    </div>
+    <div class="tips">7人赞过</div>
+    <!-- bottom nav -->
+    <div class="top_bottom">
+      <div class="photo">
+        <img src="http://qlogo3.store.qq.com/qzone/1262283870/1262283870/100?1481718124">
+      </div>
+      <div class="uploadphoto">修改头像</div>
+      <div class="container">
+        <ul class="section">
+          <li>主页</li>
+          <li>日志</li>
+          <li>相册</li>
+          <li>留言板</li>
+          <li>说说</li>
+          <li>个人档</li>
+          <li>音乐</li>
+          <li>更多</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- 下面实现留言板功能 -->
+  <div class="mainframe">
+    <div class="title">留言板</div>
+    <div class="message">主人寄语</div>
+    <div class="info">
+      这是主人留下的寄语~
+    </div>
+    <div class="content" contenteditable="true"></div>
+    <input type="button" name="submit" value="发表" class="subbtn">
+    <div class="numofmessage">留言(0)</div>
+    <!-- 下面是留言区 -->
+    <div class="msgFrame">
+      <!-- <div class="content_1">
+    	         <img class="name" src="http://qlogo3.store.qq.com/qzone/1262283870/1262283870/100?1481718124" alt="photo">
+    	         <div class="mainInfo">
+    		         <div class="userId"><a href="#">zipple</a></div>
+    		         <div class="conInfo">
+    				       这是一条留言。
+    		            </div>
+    		         <div class="time">2016-12-19  23:46:11</div>
+    		    </div> -->
+    </div>
+  </div>
+  <script>
+    // - 只需要完成功能，页面已经给定
+    // - 用户在留言框内输入内容，点击发表，就会在留言区域内添加一条留言的内容
+    // - 留言的内容格式在“留言区”已经给定，发表留言的格式请根据这个创建
+    // - 如果留言框的内容为空，那么弹出“您还没有输入任何内容”，就不会添加空的内容在留言区
+    // - 注意:“留言区”的时间是当前的日期时间
+
+
+    // 获取元素
+    var content = document.querySelector('.content')
+    var release = document.querySelector('.subbtn')
+    var messageCount = document.querySelector('.numofmessage')
+    var messageArea = document.querySelector('.msgFrame')
+
+
+    // 获取留言的条数
+    var count = 0;
+
+    // 点击发表按钮
+    release.onclick = function () {
+      // 如果有输入的内容，则创建元素添加，否则，弹出消息
+      var val = content.innerText;
+      if (val.trim().length == 0) {
+        // 证明没有输入内容
+        alert("您还没有输入任何内容")
+        // 如果没有，我就阻止后面程序的运行
+        return false;
+      } else {
+        // 走到这里证明输入了内容
+        // document.createElement() 
+        var divObj1 = document.createElement('div')
+        divObj1.className = "content_1"
+
+
+        // 在这里我们要判断divObj1的位置，放到哪里,
+        // 如果说留言区域的内容是空的话，我就使用appendChild()添加到里面，如果不为空，我是不是要插入到留言区域的第一个元素的前面insertBefore()
+        // 把创建的元素添加到页面中
+  
+
+        if(messageArea.children.length == 0){
+           // 证明里面没有子元素
+           messageArea.appendChild(divObj1)
+        }else{
+            // 插入到第一个的前面
+            messageArea.insertBefore(divObj1,messageArea.children[0])  
+        }
+
+        // 创建img
+        var imgObj = document.createElement('img')
+        imgObj.src = "http://qlogo3.store.qq.com/qzone/1262283870/1262283870/100?1481718124"
+        imgObj.className = "name"
+        imgObj.alt = "photo"
+        // 把img放入到div里面
+        divObj1.appendChild(imgObj)
+        // 创建mainInfo
+        var divObj2 = document.createElement('div')
+        divObj2.className = "mainInfo"
+        divObj1.appendChild(divObj2)
+
+        // 创建userId
+        var divObj3 = document.createElement('div')
+        divObj3.className = "userId"
+        // 创建a标签
+        var aObj = document.createElement('a')
+        aObj.herf = "#"
+        aObj.innerText = "Zipple"
+        // 将a添加进去
+        divObj3.appendChild(aObj)
+        divObj2.appendChild(divObj3)
+        // 创建conInfo
+        var divObj4 = document.createElement('div')
+        divObj4.className = "conInfo"
+        // 这里放的是留言的内容
+        divObj4.innerText = val;
+        divObj2.appendChild(divObj4)
+        // 创建时间的div
+        var divObj5 = document.createElement('div')
+        divObj5.innerText = dateStr
+        divObj2.appendChild(divObj5)
+
+
+        // 点击知乎清空内容区域
+        content.innerText = ""
+
+        // 留言条数自增
+        count++;
+        // 然后我修改留言的数量
+        messageCount.innerText = `留言(${count})`
+
+      }
+    }
+
+
+
+    // 格式化日期功能
+
+    let date = new Date();
+    // 补零函数
+    function fill(num) {
+      return num > 10 ? num : "0" + num;
+    }
+    // 生成时间字符串
+    let dateStr = date.getFullYear() + "-" + fill(date.getMonth() + 1) + "-" + fill(date.getDate()) + " " + fill(date
+      .getHours()) + ":" + fill(date.getMinutes()) + ":" + fill(date.getSeconds());
+
+
+
+
+    //   var content = document.querySelector('.content')
+    // var release = document.querySelector('.subbtn')
+    // var messageCount = document.querySelector('.numofmessage')
+    // var messageArea = document.querySelector('.msgFrame')
+
+
+    // // 获取留言的条数
+    // var count = 0;
+
+    // // 点击发表按钮
+    // release.onclick = function () {
+    //   // 如果有输入的内容，则创建元素添加，否则，弹出消息
+    //   var val = content.innerText;
+    //   if (val.trim().length == 0) {
+    //     // 证明没有输入内容
+    //     alert("您还没有输入任何内容")
+    //     // 如果没有，我就阻止后面程序的运行
+    //     return false;
+    //   } else {
+    //     // 走到这里证明输入了内容
+    //     // document.createElement() 
+    //     var divObj1 = document.createElement('div')
+    //     divObj1.className = "content_1"
+
+
+    //     // 在这里我们要判断divObj1的位置，放到哪里,
+    //     // 如果说留言区域的内容是空的话，我就使用appendChild()添加到里面，如果不为空，我是不是要插入到留言区域的第一个元素的前面insertBefore()
+    //     // 把创建的元素添加到页面中
+  
+
+    //     if(messageArea.children.length == 0){
+    //        // 证明里面没有子元素
+    //        messageArea.appendChild(divObj1)
+    //     }else{
+    //         // 插入到第一个的前面
+    //         messageArea.insertBefore(divObj1,messageArea.children[0])  
+    //     }
+
+    //     // 创建img
+    //     var imgObj = document.createElement('img')
+    //     imgObj.src = "http://qlogo3.store.qq.com/qzone/1262283870/1262283870/100?1481718124"
+    //     imgObj.className = "name"
+    //     imgObj.alt = "photo"
+    //     // 把img放入到div里面
+    //     divObj1.appendChild(imgObj)
+    //     // 创建mainInfo
+    //     var divObj2 = document.createElement('div')
+    //     divObj2.className = "mainInfo"
+    //     divObj1.appendChild(divObj2)
+
+    //     // 创建userId
+    //     var divObj3 = document.createElement('div')
+    //     divObj3.className = "userId"
+    //     // 创建a标签
+    //     var aObj = document.createElement('a')
+    //     aObj.herf = "#"
+    //     aObj.innerText = "Zipple"
+    //     // 将a添加进去
+    //     divObj3.appendChild(aObj)
+    //     divObj2.appendChild(divObj3)
+    //     // 创建conInfo
+    //     var divObj4 = document.createElement('div')
+    //     divObj4.className = "conInfo"
+    //     // 这里放的是留言的内容
+    //     divObj4.innerText = val;
+    //     divObj2.appendChild(divObj4)
+    //     // 创建时间的div
+    //     var divObj5 = document.createElement('div')
+    //     divObj5.innerText = dateStr
+    //     divObj2.appendChild(divObj5)
+
+
+    //     // 点击知乎清空内容区域
+    //     content.innerText = ""
+
+    //     // 留言条数自增
+    //     count++;
+    //     // 然后我修改留言的数量
+    //     messageCount.innerText = `留言(${count})`
+
+    //   }
+    // }
+
+
+
+    // // 格式化日期功能
+
+    // let date = new Date();
+    // // 补零函数
+    // function fill(num) {
+    //   return num > 10 ? num : "0" + num;
+    // }
+    // // 生成时间字符串
+    // let dateStr = date.getFullYear() + "-" + fill(date.getMonth() + 1) + "-" + fill(date.getDate()) + " " + fill(date
+    //   .getHours()) + ":" + fill(date.getMinutes()) + ":" + fill(date.getSeconds());
+
+
+
+    
+    //   var content = document.querySelector('.content')
+    // var release = document.querySelector('.subbtn')
+    // var messageCount = document.querySelector('.numofmessage')
+    // var messageArea = document.querySelector('.msgFrame')
+
+
+    // // 获取留言的条数
+    // var count = 0;
+
+    // // 点击发表按钮
+    // release.onclick = function () {
+    //   // 如果有输入的内容，则创建元素添加，否则，弹出消息
+    //   var val = content.innerText;
+    //   if (val.trim().length == 0) {
+    //     // 证明没有输入内容
+    //     alert("您还没有输入任何内容")
+    //     // 如果没有，我就阻止后面程序的运行
+    //     return false;
+    //   } else {
+    //     // 走到这里证明输入了内容
+    //     // document.createElement() 
+    //     var divObj1 = document.createElement('div')
+    //     divObj1.className = "content_1"
+
+
+    //     // 在这里我们要判断divObj1的位置，放到哪里,
+    //     // 如果说留言区域的内容是空的话，我就使用appendChild()添加到里面，如果不为空，我是不是要插入到留言区域的第一个元素的前面insertBefore()
+    //     // 把创建的元素添加到页面中
+  
+
+    //     if(messageArea.children.length == 0){
+    //        // 证明里面没有子元素
+    //        messageArea.appendChild(divObj1)
+    //     }else{
+    //         // 插入到第一个的前面
+    //         messageArea.insertBefore(divObj1,messageArea.children[0])  
+    //     }
+
+    //     // 创建img
+    //     var imgObj = document.createElement('img')
+    //     imgObj.src = "http://qlogo3.store.qq.com/qzone/1262283870/1262283870/100?1481718124"
+    //     imgObj.className = "name"
+    //     imgObj.alt = "photo"
+    //     // 把img放入到div里面
+    //     divObj1.appendChild(imgObj)
+    //     // 创建mainInfo
+    //     var divObj2 = document.createElement('div')
+    //     divObj2.className = "mainInfo"
+    //     divObj1.appendChild(divObj2)
+
+    //     // 创建userId
+    //     var divObj3 = document.createElement('div')
+    //     divObj3.className = "userId"
+    //     // 创建a标签
+    //     var aObj = document.createElement('a')
+    //     aObj.herf = "#"
+    //     aObj.innerText = "Zipple"
+    //     // 将a添加进去
+    //     divObj3.appendChild(aObj)
+    //     divObj2.appendChild(divObj3)
+    //     // 创建conInfo
+    //     var divObj4 = document.createElement('div')
+    //     divObj4.className = "conInfo"
+    //     // 这里放的是留言的内容
+    //     divObj4.innerText = val;
+    //     divObj2.appendChild(divObj4)
+    //     // 创建时间的div
+    //     var divObj5 = document.createElement('div')
+    //     divObj5.innerText = dateStr
+    //     divObj2.appendChild(divObj5)
+
+
+    //     // 点击知乎清空内容区域
+    //     content.innerText = ""
+
+    //     // 留言条数自增
+    //     count++;
+    //     // 然后我修改留言的数量
+    //     messageCount.innerText = `留言(${count})`
+
+    //   }
+    // }
+
+
+
+    // // 格式化日期功能
+
+    // let date = new Date();
+    // // 补零函数
+    // function fill(num) {
+    //   return num > 10 ? num : "0" + num;
+    // }
+    // // 生成时间字符串
+    // let dateStr = date.getFullYear() + "-" + fill(date.getMonth() + 1) + "-" + fill(date.getDate()) + " " + fill(date
+    //   .getHours()) + ":" + fill(date.getMinutes()) + ":" + fill(date.getSeconds());
+
+
+
+    
+    //   var content = document.querySelector('.content')
+    // var release = document.querySelector('.subbtn')
+    // var messageCount = document.querySelector('.numofmessage')
+    // var messageArea = document.querySelector('.msgFrame')
+
+
+    // // 获取留言的条数
+    // var count = 0;
+
+    // // 点击发表按钮
+    // release.onclick = function () {
+    //   // 如果有输入的内容，则创建元素添加，否则，弹出消息
+    //   var val = content.innerText;
+    //   if (val.trim().length == 0) {
+    //     // 证明没有输入内容
+    //     alert("您还没有输入任何内容")
+    //     // 如果没有，我就阻止后面程序的运行
+    //     return false;
+    //   } else {
+    //     // 走到这里证明输入了内容
+    //     // document.createElement() 
+    //     var divObj1 = document.createElement('div')
+    //     divObj1.className = "content_1"
+
+
+    //     // 在这里我们要判断divObj1的位置，放到哪里,
+    //     // 如果说留言区域的内容是空的话，我就使用appendChild()添加到里面，如果不为空，我是不是要插入到留言区域的第一个元素的前面insertBefore()
+    //     // 把创建的元素添加到页面中
+  
+
+    //     if(messageArea.children.length == 0){
+    //        // 证明里面没有子元素
+    //        messageArea.appendChild(divObj1)
+    //     }else{
+    //         // 插入到第一个的前面
+    //         messageArea.insertBefore(divObj1,messageArea.children[0])  
+    //     }
+
+    //     // 创建img
+    //     var imgObj = document.createElement('img')
+    //     imgObj.src = "http://qlogo3.store.qq.com/qzone/1262283870/1262283870/100?1481718124"
+    //     imgObj.className = "name"
+    //     imgObj.alt = "photo"
+    //     // 把img放入到div里面
+    //     divObj1.appendChild(imgObj)
+    //     // 创建mainInfo
+    //     var divObj2 = document.createElement('div')
+    //     divObj2.className = "mainInfo"
+    //     divObj1.appendChild(divObj2)
+
+    //     // 创建userId
+    //     var divObj3 = document.createElement('div')
+    //     divObj3.className = "userId"
+    //     // 创建a标签
+    //     var aObj = document.createElement('a')
+    //     aObj.herf = "#"
+    //     aObj.innerText = "Zipple"
+    //     // 将a添加进去
+    //     divObj3.appendChild(aObj)
+    //     divObj2.appendChild(divObj3)
+    //     // 创建conInfo
+    //     var divObj4 = document.createElement('div')
+    //     divObj4.className = "conInfo"
+    //     // 这里放的是留言的内容
+    //     divObj4.innerText = val;
+    //     divObj2.appendChild(divObj4)
+    //     // 创建时间的div
+    //     var divObj5 = document.createElement('div')
+    //     divObj5.innerText = dateStr
+    //     divObj2.appendChild(divObj5)
+
+
+    //     // 点击知乎清空内容区域
+    //     content.innerText = ""
+
+    //     // 留言条数自增
+    //     count++;
+    //     // 然后我修改留言的数量
+    //     messageCount.innerText = `留言(${count})`
+
+    //   }
+    // }
+
+
+
+    // // 格式化日期功能
+
+    // let date = new Date();
+    // // 补零函数
+    // function fill(num) {
+    //   return num > 10 ? num : "0" + num;
+    // }
+    // // 生成时间字符串
+    // let dateStr = date.getFullYear() + "-" + fill(date.getMonth() + 1) + "-" + fill(date.getDate()) + " " + fill(date
+    //   .getHours()) + ":" + fill(date.getMinutes()) + ":" + fill(date.getSeconds());
+  </script>
+</body>
+
+</html>

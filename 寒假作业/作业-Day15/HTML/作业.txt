@@ -1,0 +1,28 @@
+1.总结所有的让元素水平居中的方法
+
+
+1、margin auto；
+2、margin-left值为父盒子宽一半减去自身宽度一半
+3、	position: absolute;
+	left: 50%;
+	margin-left: -(宽度值/2);
+4、display：flex 
+justify-content: center;
+
+2.em和rem的区别
+em相对与自身字体大小
+rem相当于浏览器的字体大小
+
+3.less与sass的区别
+
+Less是基于JavaScript，是在客户端处理的。
+Sass是基于Ruby的，是在服务器端处理的。
+
+关于变量在Less和Sass中的唯一区别就是Less用@，Sass用$。
+
+Sass支持条件语句，可以使用if{}else{},for{}循环等等，而Less不支持。
+
+
+ 
+
+4.代码题

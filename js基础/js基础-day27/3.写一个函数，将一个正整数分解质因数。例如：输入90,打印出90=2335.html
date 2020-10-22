@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+ 
+        var num = Number(prompt("请输入一个正整数"));
+        
+        document.write(num+"=");
+        document.write(getSum(num));
+        
+        
+        function getSum(num){
+          
+            var i = 2;
+          
+            if (num == 1) {
+           
+                document.write("1");
+                
+               
+                return "";
+            } else {
+               
+                while(num > 1){
+                   
+                    var a = num % i;
+                 
+                    if(a == 0){
+                   
+                        num /= i;
+         
+                        document.write(i + "*");
+                      
+                        getSum(num);
+          
+                        break;
+                    
+                    }else{
+                   
+                        i++;
+                    }
+                }
+     
+                return "";
+            }
+    }
+        
+        
+        
+        
+        </script>
+</body>
+</html>

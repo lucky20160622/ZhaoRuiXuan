@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <title>轮播图</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .slider {
+      height: 340px;
+      width: 790px;
+      margin: 100px auto;
+      position: relative;
+    }
+
+    .slider ul li {
+      position: absolute;
+      display: none;
+    }
+
+    .slider ul li:first-child {
+      display: block;
+    }
+
+    .arrow {
+      display: none;
+    }
+
+    .arrow-left,
+    .arrow-right {
+      font-family: "SimSun", "宋体";
+      width: 30px;
+      height: 60px;
+      background-color: rgba(0, 0, 0, 0.1);
+      position: absolute;
+      top: 50%;
+      margin-top: -30px;
+      cursor: pointer;
+      text-align: center;
+      line-height: 60px;
+      color: #fff;
+      font-weight: 700;
+      font-size: 30px;
+    }
+
+    .arrow-left:hover,
+    .arrow-right:hover {
+      background-color: rgba(0, 0, 0, .5);
+    }
+
+    .arrow-left {
+      left: 0;
+    }
+
+    .arrow-right {
+      right: 0;
+    }
+
+    .slider ol {
+      position: absolute;
+      left: 50%;
+      bottom: 20px;
+      transform: translate(-50%);
+    }
+
+    .slider ol li {
+      float: left;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      margin-right: 10px;
+      background-color: #fff;
+    }
+
+    .slider ol li.current {
+      background-color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="slider">
+    <ul>
+      <li><a href="#"><img src="img/jd1.jpg" alt=""></a></li>
+      <li><a href="#"><img src="img/jd2.jpg" alt=""></a></li>
+      <li><a href="#"><img src="img/jd3.jpg" alt=""></a></li>
+      <li><a href="#"><img src="img/jd4.jpg" alt=""></a></li>
+      <li><a href="#"><img src="img/jd5.jpg" alt=""></a></li>
+      <li><a href="#"><img src="img/jd6.jpg" alt=""></a></li>
+      <li><a href="#"><img src="img/jd7.jpg" alt=""></a></li>
+      <li><a href="#"><img src="img/jd8.jpg" alt=""></a></li>
+    </ul>
+    <!--箭头-->
+    <div class="arrow">
+      <span class="arrow-left">&lt;</span>
+      <span class="arrow-right">&gt;</span>
+    </div>
+    <!-- 小圆点 -->
+    <ol>
+
+    </ol>
+  </div>
+  <script src="../lib/jquery-3.4.1.min.js"></script>
+  <script>
+    //小圆点
+    for (let i = 0; i < $('.slider ul li').length; i++) {
+      $('ol').append(`<li></li>`)
+    }
+    $('ol li:first-child').addClass('current')
+    $('.slider').on('mouseover', function () {
+      $('.arrow').stop().show(1000)
+      clearInterval(move)
+    })
+    $('.slider').on('mouseout', function () {
+      $('.arrow').stop().hide(1000)
+    })
+    // 箭头显示
+    $('.slider').on('mouseenter', function () {
+      $('.arrow').show();
+    })
+    // 箭头隐藏
+    $('.slider').on('mouseleave', function () {
+      $('.arrow').hide();
+    })
+    //次数
+    let index = 0;
+    $('.arrow-right').on('click', function () {
+      // 点一次就+1
+      index++
+      // index大于最后一个图片的索引时，返回到第一个
+      if (index > $('.slider li').length - 1) {
+        index = 0;
+      }
+      // 当图片到第几个的时候 圆点变色 移除其他的圆点颜色
+      $('.slider li').eq(index).fadeIn(1000).siblings('li').fadeOut(1000)
+      $('ol li').eq(index).addClass('current').siblings().removeClass('current')
+    })
+
+    $('.arrow-left').on('click', function () {
+      index--
+      //限制索引
+      if (index < 0) {
+        index = $('.slider li').length - 1;
+      }
+      // 当图片到第几个的时候 圆点变色 移除其他的圆点颜色
+      $('.slider li').eq(index).fadeIn(1000).siblings('li').fadeOut(1000)
+      $('ol li').eq(index).addClass('current').siblings().removeClass('current')
+    })
+    // 自动轮播
+    setInterval(function () {
+      $('.arrow-right').click();
+    }, 1000)
+
+
+  </script>
+</body>
+
+</html>

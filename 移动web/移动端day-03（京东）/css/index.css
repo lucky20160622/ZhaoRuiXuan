@@ -1,0 +1,648 @@
+.hearder {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  background-color: #c91523;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.hearder span {
+  display: inline-block;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 56px;
+  height: 20px;
+  background-image: url(../images/jd-sprites.png);
+  background-size: 200px 200px;
+  background-position: 0 -109px;
+}
+
+.hearder .search {
+  position: relative;
+  height: 100%;
+  margin-top: 2px;
+  padding-left: 76px;
+  padding-right: 76px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.hearder .search b {
+  display: inline-block;
+  position: absolute;
+  top: 8px;
+  left: 72px;
+  width: 20px;
+  height: 20px;
+  background-image: url(../images/jd-sprites.png);
+  background-size: 200px 200px;
+  background-position: -59px -109px;
+  vertical-align: middle;
+  margin-left: 10px;
+  margin-right: 5px;
+}
+
+.hearder .search input {
+  border: none;
+  width: 100%;
+  height: 30px;
+  margin-top: 3px;
+  background-color: #fff;
+  border-radius: 15px;
+  padding-left: 30px;
+}
+
+.hearder i {
+  position: absolute;
+  top: 0;
+  right: 10px;
+  width: 54px;
+  height: 100%;
+  color: #fff;
+  font-size: 15px;
+  text-align: center;
+  line-height: 40px;
+}
+
+.main {
+  width: 100%;
+  background-color: #f5f5f5;
+}
+
+.main .slideshow {
+  width: 100%;
+}
+
+.main .slideshow img {
+  width: 100%;
+  vertical-align: middle;
+}
+
+.main .shortcut {
+  width: 100%;
+  background-color: #fff;
+}
+
+.main .shortcut ul {
+  overflow: hidden;
+  padding-top: 8px;
+}
+
+.main .shortcut ul li {
+  width: 25%;
+  float: left;
+}
+
+.main .shortcut ul li a {
+  display: block;
+  text-align: center;
+  padding-bottom: 8px;
+}
+
+.main .shortcut ul li a img {
+  width: 40px;
+  height: 40px;
+}
+
+.main .shortcut ul li a span {
+  display: block;
+  color: #551a8b;
+  margin-top: 4px;
+}
+
+.main .seckill {
+  width: 100%;
+  background-color: #fff;
+  margin-top: 6px;
+}
+
+.main .seckill .seckill-top {
+  width: 100%;
+  overflow: hidden;
+  padding: 4px 0;
+}
+
+.main .seckill .seckill-top h3 {
+  position: relative;
+  float: left;
+  color: #c91523;
+  font-weight: 400;
+  font-size: 16px;
+  margin-left: 34px;
+}
+
+.main .seckill .seckill-top h3::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -22px;
+  width: 18px;
+  height: 24px;
+  background-image: url(../images/jd-sprites.png);
+  background-position: -84px -109px;
+  background-size: 200px 200px;
+}
+
+.main .seckill .seckill-top .time {
+  float: left;
+  margin-left: 10px;
+}
+
+.main .seckill .seckill-top .time span:nth-child(odd) {
+  color: #fff;
+  background-color: #000;
+  padding: 1px 2px;
+  border-radius: 2px;
+}
+
+.main .seckill .seckill-top .time .dian {
+  font-weight: 700;
+}
+
+.main .seckill .seckill-top a {
+  position: relative;
+  float: right;
+  color: #666;
+  margin-right: 20px;
+}
+
+.main .seckill .seckill-top a::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: 50px;
+  width: 12px;
+  height: 18px;
+  background-image: url(../images/jd-sprites.png);
+  background-position: 18px -48px;
+  background-size: 200px 200px;
+}
+
+.main .seckill .seckill-bottom {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 0 10px;
+  padding-bottom: 15px;
+}
+
+.main .seckill .seckill-bottom a {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  width: 33.333333%;
+  text-align: center;
+  padding: 0 10px;
+  margin-top: 2px;
+}
+
+.main .seckill .seckill-bottom a img {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.main .seckill .seckill-bottom a span,
+.main .seckill .seckill-bottom a del {
+  display: block;
+}
+
+.main .seckill .seckill-bottom a span {
+  color: #dc6871;
+  font-size: 16px;
+}
+
+.main .seckill .seckill-bottom a del {
+  color: #777;
+  text-decoration: line-through;
+  margin-top: 4px;
+}
+
+.main .revelry {
+  position: relative;
+  width: 100%;
+}
+
+.main .revelry .title {
+  width: 100%;
+}
+
+.main .revelry .revelry-in {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  width: 100%;
+  padding: 0 10px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.main .revelry .revelry-in a {
+  float: left;
+  width: 50%;
+}
+
+.main .revelry .revelry-in a img {
+  width: 100%;
+}
+
+.main .major {
+  background-color: #fff;
+}
+
+.main .major .major-top {
+  width: 100%;
+  overflow: hidden;
+}
+
+.main .major .major-top a {
+  display: block;
+  width: 33.33333%;
+  float: left;
+}
+
+.main .major .major-top a img {
+  width: 100%;
+}
+
+.main .major .major-bottom {
+  width: 100%;
+  overflow: hidden;
+}
+
+.main .major .major-bottom a {
+  float: left;
+  width: 50%;
+}
+
+.main .major .major-bottom a img {
+  width: 100%;
+}
+
+.main .adv {
+  width: 100%;
+  padding: 10px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.main .adv a {
+  width: 100%;
+}
+
+.main .adv a img {
+  width: 100%;
+}
+
+.main .market {
+  width: 100%;
+  background-color: #fff;
+}
+
+.main .market h3 {
+  height: 30px;
+  color: #f25353;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 30px;
+  padding-left: 10px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.main .market ul {
+  width: 100%;
+}
+
+.main .market ul li {
+  width: 100%;
+  overflow: hidden;
+}
+
+.main .market ul li a {
+  float: left;
+  width: 50%;
+}
+
+.main .market ul li a img {
+  width: 100%;
+}
+
+.main .theme {
+  width: 100%;
+  background-color: #fff;
+}
+
+.main .theme h3 {
+  height: 30px;
+  color: #f25353;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 30px;
+  padding-left: 10px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.main .theme ul {
+  width: 100%;
+}
+
+.main .theme ul .first {
+  width: 100%;
+  overflow: hidden;
+}
+
+.main .theme ul .first a {
+  float: left;
+  width: 50%;
+}
+
+.main .theme ul .first a img {
+  width: 100%;
+}
+
+.main .theme ul .first a:nth-last-child(-n+2) {
+  width: 25%;
+}
+
+.main .theme ul .second {
+  width: 100%;
+  overflow: hidden;
+}
+
+.main .theme ul .second a {
+  float: left;
+  width: 25%;
+}
+
+.main .theme ul .second a img {
+  width: 100%;
+}
+
+.main .brand {
+  width: 100%;
+  background-color: #fff;
+  overflow: hidden;
+}
+
+.main .brand h3 {
+  height: 30px;
+  color: #f25353;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 30px;
+  padding-left: 10px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.main .brand a {
+  float: left;
+}
+
+.main .brand a:nth-child(2) {
+  width: 40%;
+}
+
+.main .brand a:nth-child(2) img {
+  width: 100%;
+}
+
+.main .brand a:nth-last-child(-n+2) {
+  width: 30%;
+}
+
+.main .brand a:nth-last-child(-n+2) img {
+  width: 100%;
+}
+
+.main .item {
+  width: 100%;
+  background-color: #fff;
+  overflow: hidden;
+}
+
+.main .item .item-top {
+  width: 100%;
+  overflow: hidden;
+}
+
+.main .item .item-top h3 {
+  float: left;
+  height: 30px;
+  color: #f25353;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 30px;
+  padding-left: 10px;
+}
+
+.main .item .item-top a {
+  position: relative;
+  float: right;
+  color: #f15353;
+  line-height: 30px;
+  padding-right: 18px;
+}
+
+.main .item .item-top a::before {
+  content: '';
+  position: absolute;
+  top: 6px;
+  left: -20px;
+  width: 18px;
+  height: 18px;
+  background-image: url(../images/icon-login.png);
+  background-size: 18px;
+}
+
+.main .item .item-top a img {
+  position: absolute;
+  top: 12px;
+  right: 10px;
+  width: 6px;
+  height: 6px;
+}
+
+.main .item ul {
+  width: 100%;
+  overflow: hidden;
+  margin-top: 10px;
+  margin-bottom: 16px;
+}
+
+.main .item ul li {
+  float: left;
+  width: 50%;
+  padding: 0 10px;
+}
+
+.main .item ul li a {
+  display: block;
+  width: 100%;
+}
+
+.main .item ul li a img {
+  width: 100%;
+}
+
+.main .item ul li a p {
+  height: 40px;
+  line-height: 20px;
+  margin-top: 8px;
+  color: #333;
+  font-size: 13px;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  word-break: break-all;
+}
+
+.main .item ul li .money {
+  width: 100%;
+  overflow: hidden;
+  border-top: 2px solid #ececec;
+  margin-top: 6px;
+  padding-top: 12px;
+}
+
+.main .item ul li .money h5 {
+  float: left;
+  color: #f15353;
+  font-weight: 400;
+  vertical-align: middle;
+}
+
+.main .item ul li .money span {
+  float: right;
+  color: #999;
+  border: 1px solid #a8a8a8;
+  padding: 1px 3px;
+  vertical-align: middle;
+}
+
+.main .do-more {
+  width: 100%;
+  padding-bottom: 44px;
+}
+
+.main .do-more .more {
+  display: block;
+  width: 100%;
+  border-top: 1px solid #DEDEDE;
+  border-bottom: 1px solid #DEDEDE;
+}
+
+.main .do-more .more p {
+  width: 100%;
+  height: 32px;
+  color: #7f7f7f;
+  font-size: 13px;
+  text-align: center;
+  line-height: 32px;
+}
+
+.main .do-more .four-lj {
+  width: 100%;
+  border-bottom: 1px solid #DEDEDE;
+  text-align: center;
+  padding: 18px 0;
+}
+
+.main .do-more .four-lj a {
+  display: inline-block;
+  width: 66px;
+  color: #848689;
+  border-right: 1px solid #b6b8b9;
+}
+
+.main .do-more .four-lj a:last-child {
+  border-right: none;
+}
+
+.main .do-more ul {
+  width: 100%;
+  color: #848689;
+  overflow: hidden;
+  text-align: center;
+  border-bottom: 1px solid #DEDEDE;
+  padding-bottom: 10px;
+}
+
+.main .do-more ul li {
+  float: left;
+  width: 33.3333%;
+  margin-top: 47px;
+}
+
+.main .do-more ul li a {
+  position: relative;
+  width: 45px;
+  color: #848689;
+  font-size: 12px;
+}
+
+.main .do-more ul li a::before {
+  content: '';
+  position: absolute;
+  top: -42px;
+  left: 2px;
+  width: 40px;
+  height: 40px;
+  background-image: url(../images/jd-sprites.png);
+}
+
+.main .do-more ul li:nth-child(1) a:before {
+  background-size: 200px 200px;
+  background-position: -120px -64px;
+}
+
+.main .do-more ul li:nth-child(2) a:before {
+  background-size: 200px 200px;
+  background-position: -40px -64px;
+}
+
+.main .do-more ul li:nth-child(3) a:before {
+  background-size: 200px 200px;
+  background-position: -80px -64px;
+}
+
+.main .do-more .last {
+  width: 100%;
+  height: 44px;
+  color: #848689;
+  text-align: center;
+  line-height: 44px;
+}
+
+nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 44px;
+  background-color: #fff;
+}
+
+nav a {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  height: 100%;
+  text-align: center;
+}
+
+nav a img {
+  width: 57px;
+  height: 44px;
+}
+/*# sourceMappingURL=index.css.map */

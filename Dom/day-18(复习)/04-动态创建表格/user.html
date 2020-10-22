@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/user.css">
+</head>
+
+<body>
+  <button>动态创建表格</button>
+  <div id="box1">
+
+  </div>
+  <script>
+    // - 根据给定的数据，动态创建表格
+    //  - 点击“动态创建表格”按钮，根据页面中的数据创建表格，(第一个数组是用来创建表头的，第二个数组是用来创建表体的)
+    //  - 如果页面中有一个表格，再点击"动态创建表格"按钮，不会再次创建表格，保证页面中有且只有一个表格
+    //  - 点击每行中的"删除"，会弹出"你真的要删除嘛?",如果点击弹出框中的“确定”,那么就把对应的这一行删除，如果点击“取消”那么不删除
+    //  - 当tobody中的行都被删除之后，这个表格也会被从页面中移除，再次点击“动态创建表格”继续可以创建表格
+    // 后端的数据
+    var heads = ['姓名', '年龄', '性别', '学号', '薪资', '城市', '操作'];
+    var datas = [{
+        name: '欧阳霸天',
+        age: 19,
+        gender: '男',
+        stuId: '1001',
+        salary: '20000',
+        city: '上海'
+      },
+      {
+        name: '令狐霸天',
+        age: 19,
+        gender: '男',
+        stuId: '1001',
+        salary: '20000',
+        city: '北京'
+      },
+      {
+        name: '诸葛霸天',
+        age: 19,
+        gender: '男',
+        stuId: '1001',
+        salary: '20000',
+        city: '南京'
+      },
+      {
+        name: '西门霸天',
+        age: 19,
+        gender: '男',
+        stuId: '1001',
+        salary: '20000',
+        city: '深圳'
+      },
+      {
+        name: '上官霸天',
+        age: 19,
+        gender: '男',
+        stuId: '1001',
+        salary: '20000',
+        city: '北京'
+      },
+      {
+        name: '欧阳霸天',
+        age: 19,
+        gender: '男',
+        stuId: '1001',
+        salary: '20000',
+        city: '上海'
+      },
+      {
+        name: '令狐霸天',
+        age: 19,
+        gender: '男',
+        stuId: '1001',
+        salary: '20000',
+        city: '北京'
+      },
+      {
+        name: '诸葛霸天',
+        age: 19,
+        gender: '男',
+        stuId: '1001',
+        salary: '20000',
+        city: '南京'
+      },
+      {
+        name: '西门霸天',
+        age: 19,
+        gender: '男',
+        stuId: '1001',
+        salary: '20000',
+        city: '深圳'
+      },
+      {
+        name: '上官霸天',
+        age: 19,
+        gender: '男',
+        stuId: '1001',
+        salary: '20000',
+        city: '北京'
+      },
+    ];
+
+
+    // 获取元素
+    var btn = document.querySelector('button')
+    var box1 = document.querySelector('#box1')
+
+
+    // 设置一个flag,假设表格没有创建
+    var flag = false;
+
+    // 添加点击事件
+    btn.onclick = function () {
+      // 需要先判断flag的状态
+      if (!flag) {
+        //创建表格
+        var table = document.createElement('table')
+        // 创建标题
+        var caption = document.createElement('caption')
+        caption.innerText = "就业榜"
+        table.appendChild(caption)
+        box1.appendChild(table)
+
+        // 根据数据创建表头
+        var thead = document.createElement('thead')
+        var tr = document.createElement('tr')
+        thead.appendChild(tr)
+        table.appendChild(thead)
+        // 循环遍历heads数据去创建th
+        for (let i = 0; i < heads.length; i++) {
+          var th = document.createElement('th')
+          th.innerText = heads[i]
+          tr.appendChild(th)
+        }
+
+        // 根据数据创建tbody
+        var tbody = document.createElement('tbody')
+        table.appendChild(tbody)
+        // 首先循环数组创建tr
+        for (let i = 0; i < datas.length; i++) {
+          var tbodyTr = document.createElement('tr')
+          //添加到tbody里面
+          tbody.appendChild(tbodyTr)
+          var obj = datas[i] // 这个对应的是数组里面的每一条对象
+
+          // 循环遍历对象
+          for (var key in obj) {
+            //接下来我们需要创建td
+            var td = document.createElement('td')
+            td.innerText = obj[key]
+            tbodyTr.appendChild(td)
+          }
+
+          //创建最后一个td
+          var lastTd = document.createElement('td')
+          lastTd.innerHTML = `<a herf= "#">删除</a>`
+          tbodyTr.appendChild(lastTd)
+
+        }
+        //创建完表格之后，我重置flag
+        flag = true
+      }
+
+     // 删除tbody的每一行
+     var dels = document.querySelectorAll('tbody>tr>td:last-child')
+    //  console.log(dels)
+    // 当tobody中的行都被删除之后，这个表格也会被从页面中移除，再次点击“动态创建表格”继续可以创建表格
+    for(let i = 0;i<dels.length;i++){
+       dels[i].onclick = function(){
+           // confirm确认框
+           var isOk = confirm("你真的要删除嘛?")
+           // 返回值是布尔值
+           if(isOk){
+            // 删除对应这行tr
+            tbody.removeChild(this.parentNode)
+            // 在这里面判断tbody.children
+            if(tbody.children.length==0){
+               // 将这个表格移除
+               box1.innerHTML = ""
+               // 再次能够创建表格
+               flag = false
+            }
+           }
+       }
+    }
+     
+
+    }
+
+
+
+      // var btn = document.querySelector('button')
+    // var box1 = document.querySelector('#box1')
+
+
+    // // 设置一个flag,假设表格没有创建
+    // var flag = false;
+
+    // // 添加点击事件
+    // btn.onclick = function () {
+    //   // 需要先判断flag的状态
+    //   if (!flag) {
+    //     //创建表格
+    //     var table = document.createElement('table')
+    //     // 创建标题
+    //     var caption = document.createElement('caption')
+    //     caption.innerText = "就业榜"
+    //     table.appendChild(caption)
+    //     box1.appendChild(table)
+
+    //     // 根据数据创建表头
+    //     var thead = document.createElement('thead')
+    //     var tr = document.createElement('tr')
+    //     thead.appendChild(tr)
+    //     table.appendChild(thead)
+    //     // 循环遍历heads数据去创建th
+    //     for (let i = 0; i < heads.length; i++) {
+    //       var th = document.createElement('th')
+    //       th.innerText = heads[i]
+    //       tr.appendChild(th)
+    //     }
+
+    //     // 根据数据创建tbody
+    //     var tbody = document.createElement('tbody')
+    //     table.appendChild(tbody)
+    //     // 首先循环数组创建tr
+    //     for (let i = 0; i < datas.length; i++) {
+    //       var tbodyTr = document.createElement('tr')
+    //       //添加到tbody里面
+    //       tbody.appendChild(tbodyTr)
+    //       var obj = datas[i] // 这个对应的是数组里面的每一条对象
+
+    //       // 循环遍历对象
+    //       for (var key in obj) {
+    //         //接下来我们需要创建td
+    //         var td = document.createElement('td')
+    //         td.innerText = obj[key]
+    //         tbodyTr.appendChild(td)
+    //       }
+
+    //       //创建最后一个td
+    //       var lastTd = document.createElement('td')
+    //       lastTd.innerHTML = `<a herf= "#">删除</a>`
+    //       tbodyTr.appendChild(lastTd)
+
+    //     }
+    //     //创建完表格之后，我重置flag
+    //     flag = true
+    //   }
+
+    //  // 删除tbody的每一行
+    //  var dels = document.querySelectorAll('tbody>tr>td:last-child')
+    // //  console.log(dels)
+    // // 当tobody中的行都被删除之后，这个表格也会被从页面中移除，再次点击“动态创建表格”继续可以创建表格
+    // for(let i = 0;i<dels.length;i++){
+    //    dels[i].onclick = function(){
+    //        // confirm确认框
+    //        var isOk = confirm("你真的要删除嘛?")
+    //        // 返回值是布尔值
+    //        if(isOk){
+    //         // 删除对应这行tr
+    //         tbody.removeChild(this.parentNode)
+    //         // 在这里面判断tbody.children
+    //         if(tbody.children.length==0){
+    //            // 将这个表格移除
+    //            box1.innerHTML = ""
+    //            // 再次能够创建表格
+    //            flag = false
+    //         }
+    //        }
+    //    }
+    // }
+     
+
+    // }
+
+
+
+      // var btn = document.querySelector('button')
+    // var box1 = document.querySelector('#box1')
+
+
+    // // 设置一个flag,假设表格没有创建
+    // var flag = false;
+
+    // // 添加点击事件
+    // btn.onclick = function () {
+    //   // 需要先判断flag的状态
+    //   if (!flag) {
+    //     //创建表格
+    //     var table = document.createElement('table')
+    //     // 创建标题
+    //     var caption = document.createElement('caption')
+    //     caption.innerText = "就业榜"
+    //     table.appendChild(caption)
+    //     box1.appendChild(table)
+
+    //     // 根据数据创建表头
+    //     var thead = document.createElement('thead')
+    //     var tr = document.createElement('tr')
+    //     thead.appendChild(tr)
+    //     table.appendChild(thead)
+    //     // 循环遍历heads数据去创建th
+    //     for (let i = 0; i < heads.length; i++) {
+    //       var th = document.createElement('th')
+    //       th.innerText = heads[i]
+    //       tr.appendChild(th)
+    //     }
+
+    //     // 根据数据创建tbody
+    //     var tbody = document.createElement('tbody')
+    //     table.appendChild(tbody)
+    //     // 首先循环数组创建tr
+    //     for (let i = 0; i < datas.length; i++) {
+    //       var tbodyTr = document.createElement('tr')
+    //       //添加到tbody里面
+    //       tbody.appendChild(tbodyTr)
+    //       var obj = datas[i] // 这个对应的是数组里面的每一条对象
+
+    //       // 循环遍历对象
+    //       for (var key in obj) {
+    //         //接下来我们需要创建td
+    //         var td = document.createElement('td')
+    //         td.innerText = obj[key]
+    //         tbodyTr.appendChild(td)
+    //       }
+
+    //       //创建最后一个td
+    //       var lastTd = document.createElement('td')
+    //       lastTd.innerHTML = `<a herf= "#">删除</a>`
+    //       tbodyTr.appendChild(lastTd)
+
+    //     }
+    //     //创建完表格之后，我重置flag
+    //     flag = true
+    //   }
+
+    //  // 删除tbody的每一行
+    //  var dels = document.querySelectorAll('tbody>tr>td:last-child')
+    // //  console.log(dels)
+    // // 当tobody中的行都被删除之后，这个表格也会被从页面中移除，再次点击“动态创建表格”继续可以创建表格
+    // for(let i = 0;i<dels.length;i++){
+    //    dels[i].onclick = function(){
+    //        // confirm确认框
+    //        var isOk = confirm("你真的要删除嘛?")
+    //        // 返回值是布尔值
+    //        if(isOk){
+    //         // 删除对应这行tr
+    //         tbody.removeChild(this.parentNode)
+    //         // 在这里面判断tbody.children
+    //         if(tbody.children.length==0){
+    //            // 将这个表格移除
+    //            box1.innerHTML = ""
+    //            // 再次能够创建表格
+    //            flag = false
+    //         }
+    //        }
+    //    }
+    // }
+     
+
+    // }
+
+
+
+      // var btn = document.querySelector('button')
+    // var box1 = document.querySelector('#box1')
+
+
+    // // 设置一个flag,假设表格没有创建
+    // var flag = false;
+
+    // // 添加点击事件
+    // btn.onclick = function () {
+    //   // 需要先判断flag的状态
+    //   if (!flag) {
+    //     //创建表格
+    //     var table = document.createElement('table')
+    //     // 创建标题
+    //     var caption = document.createElement('caption')
+    //     caption.innerText = "就业榜"
+    //     table.appendChild(caption)
+    //     box1.appendChild(table)
+
+    //     // 根据数据创建表头
+    //     var thead = document.createElement('thead')
+    //     var tr = document.createElement('tr')
+    //     thead.appendChild(tr)
+    //     table.appendChild(thead)
+    //     // 循环遍历heads数据去创建th
+    //     for (let i = 0; i < heads.length; i++) {
+    //       var th = document.createElement('th')
+    //       th.innerText = heads[i]
+    //       tr.appendChild(th)
+    //     }
+
+    //     // 根据数据创建tbody
+    //     var tbody = document.createElement('tbody')
+    //     table.appendChild(tbody)
+    //     // 首先循环数组创建tr
+    //     for (let i = 0; i < datas.length; i++) {
+    //       var tbodyTr = document.createElement('tr')
+    //       //添加到tbody里面
+    //       tbody.appendChild(tbodyTr)
+    //       var obj = datas[i] // 这个对应的是数组里面的每一条对象
+
+    //       // 循环遍历对象
+    //       for (var key in obj) {
+    //         //接下来我们需要创建td
+    //         var td = document.createElement('td')
+    //         td.innerText = obj[key]
+    //         tbodyTr.appendChild(td)
+    //       }
+
+    //       //创建最后一个td
+    //       var lastTd = document.createElement('td')
+    //       lastTd.innerHTML = `<a herf= "#">删除</a>`
+    //       tbodyTr.appendChild(lastTd)
+
+    //     }
+    //     //创建完表格之后，我重置flag
+    //     flag = true
+    //   }
+
+    //  // 删除tbody的每一行
+    //  var dels = document.querySelectorAll('tbody>tr>td:last-child')
+    // //  console.log(dels)
+    // // 当tobody中的行都被删除之后，这个表格也会被从页面中移除，再次点击“动态创建表格”继续可以创建表格
+    // for(let i = 0;i<dels.length;i++){
+    //    dels[i].onclick = function(){
+    //        // confirm确认框
+    //        var isOk = confirm("你真的要删除嘛?")
+    //        // 返回值是布尔值
+    //        if(isOk){
+    //         // 删除对应这行tr
+    //         tbody.removeChild(this.parentNode)
+    //         // 在这里面判断tbody.children
+    //         if(tbody.children.length==0){
+    //            // 将这个表格移除
+    //            box1.innerHTML = ""
+    //            // 再次能够创建表格
+    //            flag = false
+    //         }
+    //        }
+    //    }
+    // }
+     
+
+    // }
+ 
+  </script>
+</body>
+
+</html>

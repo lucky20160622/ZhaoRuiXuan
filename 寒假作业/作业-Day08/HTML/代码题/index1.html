@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    nav {
+      margin-top: 100px;
+      position: relative;
+      height: 40px;
+      width: 100%;
+      background-color: #444444;
+    }
+
+    ul {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      list-style: none;
+      background-color: #444444;
+    }
+
+    li {
+      position: relative;
+      padding: 11px 20px;
+      font-size: 16px;
+      text-align: center;
+      float: left;
+      color: #fff;
+    }
+
+    li:first-child {
+      background-color: #1066a4;
+    }
+
+    li:hover {
+      background-color: #1066a4;
+    }
+
+    li i {
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 26px;
+      height: 20px;
+      background: url("./img/sprite1.png") no-repeat;
+      background-position: -60px 0px;
+    }
+
+    li:nth-child(8) i{
+      background-position: -137px 0px;
+
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <ul>
+      <li>首页</li>
+      <li>Java</li>
+      <li>iOS</li>
+      <li>UI设计</li>
+      <li>前端与移动开发 <i></i></li>
+      <li>PHP</li>
+      <li>C/C++</li>
+      <li>Python <i></i></li>
+      <li>网络营销</li>
+      <li>问答专区</li>
+    </ul>
+  </nav>
+</body>
+
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    html,
+    body {
+      padding: 0;
+      margin: 0;
+    }
+
+    .box {
+      width: 343px;
+      height: 139px;
+      margin: 100px auto;
+      background-color: #003169;
+      overflow: hidden;
+      border-radius: 10px;
+      position: relative;
+    }
+
+    .box img {
+      position: absolute;
+      width: 100%;
+      height: auto;
+      transition: all 0.8s;
+    }
+
+    .box .img1 {
+      transform: translateY(-258px);
+      opacity: 0.9;
+    }
+
+    .box:hover .img1 {
+      transform: translateY(0);
+    }
+
+    .box:hover .img2 {
+      transform: translateY(-258px);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box">
+    <img src="./images/paopao.png" alt="" class="img1">
+    <img src="./images/paopao.png" alt="" class="img2">
+  </div>
+</body>
+
+</html>

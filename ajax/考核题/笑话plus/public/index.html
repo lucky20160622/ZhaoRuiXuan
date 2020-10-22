@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Document</title>
+  <style>
+    body {
+      margin: 0px;
+    }
+
+    .header_con {
+      height: 100px;
+      background-color: #458ccb;
+    }
+
+    .header {
+      width: 1100px;
+      height: 100px;
+      margin: 0px auto;
+    }
+
+    .logo {
+      float: left;
+      width: 197px;
+      height: 67px;
+      margin-top: 16px;
+    }
+
+    .getJoke {
+      border: 1px solid #27aeb6;
+      width: 200px;
+      height: 36px;
+      border-radius: 18px;
+      text-indent: 15px;
+      font-size: 18px;
+      outline: none;
+      float: right;
+      margin-top: 32px;
+    }
+
+    .items {
+      width: 1100px;
+      text-align: center;
+      margin: 30px auto;
+    }
+
+    .item0,
+    .item1,
+    .item2 {
+      width: 475px;
+      height: 421px;
+      display: inline-block;
+      margin: 20px;
+      overflow: auto;
+      background: url('images/bean02.png') no-repeat;
+      position: relative;
+    }
+
+    .item1 {
+      background: url('images/bean03.png') no-repeat;
+    }
+
+    .item2 {
+      background: url('images/bean04.png') no-repeat;
+    }
+
+    .item_txt {
+      width: 370px;
+      height: 146px;
+      position: absolute;
+      left: 64px;
+      top: 96px;
+      text-align: left;
+      overflow: auto;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="header_con">
+    <div class="header">
+      <a href="#" class="logo"><img src="images/logo.png" alt=""></a>
+      <!-- 输入框 -->
+      <input type="text" placeholder="要看几条笑话呀" class="getJoke" />
+    </div>
+  </div>
+
+  <!-- 这个.items是放置笑话的父盒子 -->
+  <div class="items">
+    <!-- 下面的结构是一条笑话需要的结构 -->
+    <!-- 
+    <div class="item0">
+      <div class="item_txt">
+        白雪公主逃出皇宫来到森林深处，看到七个小矮人正在欢乐地唱歌起舞。小矮人发现有陌生人闯入，为首的一个上前问她，你是谁？白雪公主迟疑了一下回答，我。。。曾经是一个公主。。。小矮人大笑一声，热情地把她拉到人群中说：你来的正好，妹子，我们现在就缺个点歌的！
+      </div>
+    </div>
+  </div> -->
+  </div>
+  <!-- 1. 接口说明:
+  请求地址：https://autumnfish.cn/api/joke/list
+  请求方法：get
+  请求参数：num
+  2. 要求:
+  在表单中输入看笑话的条数，如果表单的值为空，那么不发起请求，如果表单内容不为空，按回车键，页面中就会展示获取到的对应条数的笑话内容 -->
+    <script src="./libs/jquery-1.12.4.min.js"></script>
+    <script src="./libs/template-web.js"></script>
+    <script type="text/template" id='cc'>
+      <div class='items'>{{content}}</div>
+    </script>
+    <script>
+      let items=document.querySelector('.items')
+      // let htmlStr=template('cc',{
+      //   content:
+      // })
+       $.ajax({
+      //请求类型
+      type:'get',
+      // 请求地址
+      url:'https://autumnfish.cn/api/joke/list',
+      // 请求参数
+      data:{
+        num:1
+      },
+      // 成功时返回函数
+      success: function(data){
+        console.log(data);
+      }
+     })
+    </script>
+</body>
+
+</html>
