@@ -3,7 +3,7 @@
 ## 简答题(40分)
 
 ### 1. 请写出computed 和 watch 的区别和运用的场景
-
+                
 ```text
 computed是计算属性 依赖其他属性值  有缓存值 当依赖其他属性值发生变化时，才会
 再下一次获取computed的值时 重新计算computed的值。
