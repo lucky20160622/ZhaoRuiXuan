@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+    <script>
+      // 解构赋值
+
+      // let a = 6;
+      // let b = 5;
+      // // 解构赋值
+      // [b,a] = [a,b];
+      // console.log(a,b);
+
+      // 模式匹配 原来的数据是是什么格式 解构赋值的时候就是什么格式
+      // let arr = [1, 2, 3];
+
+      // let [a,b,c] = arr;
+      // console.log(a)
+
+
+      // 空位置
+
+      // let [,,na] = ['a','b','c'];
+      // console.log(na)
+
+      // let [bar, foo] = [1];
+      // console.log(bar);
+      // console.log(foo);
+
+      // let [a,b,c,d=6] = [1,2,3]
+      // console.log(d);
+
+
+      // 对象的解构赋值
+      let { foo, bar } = { foo: 'aaa', bar: 'bbb' };
+
+      let { foo1:foo, bar:bar1 } = { foo: 'aaa', bar: 'bbb' };
+
+    
+
+      console.log(foo1);
+      // console.log(foo);
+
+      // let obj = {
+      //   name: "name",
+      //   age: "age"
+      // }
+      //   age = "age"
+      // let obj = {
+      //   name,
+      //   age
+      // }
+
+      // console.log(obj.age);
+    </script>
+</body>
+</html>
