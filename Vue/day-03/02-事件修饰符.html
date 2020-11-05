@@ -26,10 +26,10 @@
     <a href="http://www.baidu.com" @click.prevent="handleDefault">百度</a>
     <!-- 让事件只触发一次 -->
     <button @click.once="handleOnce">该事件只触发一次</button>
-    <!-- 阻止事件传播 -->
+    <!-- 阻止事件传播 -->         
     <div class="father" @click="handleFather">
       <div class="son" @click.stop="handleSon"></div>
-    </div>       
+    </div>             
   </div>                
   <script src="./lib/vue-3.0.js"></script>
   <script>    
