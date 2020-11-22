@@ -30,7 +30,7 @@
     <div class="father" @click="handleFather">
       <div class="son" @click.stop="handleSon"></div>
     </div>                                                 
-  </div>                          
+  </div>                                          
   <script src="./lib/vue-3.0.js"></script>
   <script>                         
     let vm = Vue.createApp({      
@@ -38,7 +38,7 @@
         // return {}  如果不写这句话 会提示下面的话
         //  data() should return an object. 
       },                  
-      methods: {            
+      methods: {                           
         handleDefault() {          
           console.log("我是a标签点击之后的效果")
         },
